@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 
 Card.propTypes = {
   techName: PropTypes.string,
-  toDetailPage: PropTypes.func.isRequired,
+  toDetail: PropTypes.func.isRequired,
 }
 
-export default function Card({ techName, toDetailPage }) {
+export default function Card({ techName, toDetail }) {
   return (
-    <Wrapper onClick={toDetailPage}>
+    <CardWrapper onClick={toDetail}>
       <Text>{techName}</Text>
-    </Wrapper>
+    </CardWrapper>
   )
 }
 
-const Wrapper = styled.section`
+const CardWrapper = styled.section`
   display: grid;
   align-content: center;
   padding: 30px;
