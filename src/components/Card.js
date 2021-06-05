@@ -14,14 +14,14 @@ export default function Card({ techName }) {
 }
 
 const Wrapper = styled.section`
-  padding: 10px;
+  display: grid;
+  align-content: center;
+  padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 6px 10px #0006;
-  background: rgba(222, 123, 234, 0.8);
+  box-shadow: 0 4px 8px #0006;
+  background: white;
 `
 const Text = styled.p`
   text-align: center;
-  font-size: large;
   font-weight: 600;
-  margin: 0;
 `

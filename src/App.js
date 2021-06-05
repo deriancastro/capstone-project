@@ -1,38 +1,20 @@
-import styled from 'styled-components/macro'
-import Card from './components/Card'
-import Header from './components/Header'
+import TutorialPage from './pages/TutorialPage'
 
 export default function App() {
+  const list = [
+    'Uchimata',
+    'Harai goshi',
+    'Seoi nage',
+    'Ko uchi gari',
+    'O soto gari',
+    'Kubi nage',
+    'Yoko tomoe',
+    'Kata guruma',
+  ]
+
   return (
-    <Wrapper>
-      <Header>TUTORIAL</Header>
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <Card techName={'Uchimata'} />
-      <div>hallo</div>
-    </Wrapper>
+    <div>
+      <TutorialPage pageName="TUTORIAL" techNamesList={list} />
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-rows: 60px auto 60px;
-  gap: 10px;
-  height: 100vh;
-  padding: 10px;
-`

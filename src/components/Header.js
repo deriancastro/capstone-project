@@ -21,4 +21,5 @@ const Wrapper = styled.section`
   display: grid;
   background: papayawhip;
   padding: 10px;
+  box-shadow: 0 3px 0 #0003;
 `
