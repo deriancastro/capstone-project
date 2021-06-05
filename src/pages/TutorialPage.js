@@ -6,9 +6,14 @@ import Card from '../components/Card'
 TutorialPage.proptype = {
   pageName: PropTypes.string,
   techNamesList: PropTypes.string,
+  toDetailPage: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({ pageName, techNamesList }) {
+export default function TutorialPage({
+  pageName,
+  techNamesList,
+  toDetailPage,
+}) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
@@ -16,7 +21,7 @@ export default function TutorialPage({ pageName, techNamesList }) {
         <List>
           {techNamesList.map(techName => (
             <li key={techName}>
-              <Card techName={techName} />
+              <Card techName={techName} toDetailPage={toDetailPage} />
             </li>
           ))}
         </List>

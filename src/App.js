@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import TutorialPage from './pages/TutorialPage'
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('tutorialPage')
+
   const list = [
     'Uchimata',
     'Harai goshi',
@@ -14,7 +17,17 @@ export default function App() {
 
   return (
     <div>
-      <TutorialPage pageName="TUTORIAL" techNamesList={list} />
+      {currentPage === 'tutorialPage' && (
+        <TutorialPage
+          pageName="TUTORIAL"
+          techNamesList={list}
+          toDetailPage={handleToDetailPage}
+        />
+      )}
     </div>
   )
+
+  function handleToDetailPage() {
+    setCurrentPage('detailPage')
+  }
 }

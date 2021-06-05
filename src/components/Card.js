@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 
 Card.propTypes = {
   techName: PropTypes.string,
+  toDetailPage: PropTypes.func.isRequired,
 }
 
-export default function Card({ techName }) {
+export default function Card({ techName, toDetailPage }) {
   return (
-    <Wrapper>
+    <Wrapper onClick={toDetailPage}>
       <Text>{techName}</Text>
     </Wrapper>
   )
