@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 Card.propTypes = {
   techName: PropTypes.string,
-  toDetail: PropTypes.func.isRequired,
+  toDetail: PropTypes.func,
 }
 
 export default function Card({ techName, toDetail }) {
   return (
-    <CardWrapper onClick={toDetail}>
+    <CardWrapper onClick={toDetail} role="card">
       <Text>{techName}</Text>
     </CardWrapper>
   )

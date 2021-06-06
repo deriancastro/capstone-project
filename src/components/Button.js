@@ -16,5 +16,6 @@ const ButtonStyled = styled.button`
   font-weight: 600;
   font-size: large;
   border: none;
+  padding: 12px;
   background: ${p => (p.isActive ? 'steelblue' : 'papayawhip')};
 `

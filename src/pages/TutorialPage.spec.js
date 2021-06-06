@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import TutorialPage from './TutorialPage'
 
 describe('TutorialPage', () => {
-  it('renders one header and eight cards', () => {
+  it('renders 1 header and 8 cards', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
@@ -16,6 +16,7 @@ describe('TutorialPage', () => {
           'Yoko tomoe',
           'Kata guruma',
         ]}
+        toDetailPage={jest.fn()}
       />
     )
 
