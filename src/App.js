@@ -6,6 +6,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
 
+
   const techNamesList = [
     'Uchimata',
     'Harai goshi',
