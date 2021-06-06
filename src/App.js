@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import TutorialPage from './pages/TutorialPage'
 
-function App() {
+export default function App() {
+  const techNamesList = [
+    'Uchimata',
+    'Harai goshi',
+    'Seoi nage',
+    'Ko uchi gari',
+    'O soto gari',
+    'Kubi nage',
+    'Yoko tomoe',
+    'Kata guruma',
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TutorialPage pageName="TUTORIAL" techNamesList={techNamesList} />
     </div>
-  );
+  )
 }
-
-export default App;
