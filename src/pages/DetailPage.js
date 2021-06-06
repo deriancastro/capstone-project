@@ -36,8 +36,8 @@ const Nav = styled.nav`
 `
 const Container = styled.section`
   display: grid;
-  align-content: center;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 
   img {
     border-radius: 20px;
