@@ -6,20 +6,12 @@ Header.propTypes = {
 }
 
 export default function Header({ children }) {
-  return (
-    <Wrapper>
-      <Title>{children}</Title>
-    </Wrapper>
-  )
+  return <Title>{children}</Title>
 }
 
 const Title = styled.h2`
-  text-align: center;
-  margin: 0;
-`
-const Wrapper = styled.section`
-  display: grid;
   background: papayawhip;
   padding: 10px;
   box-shadow: 0 3px 0 #0003;
+  text-align: center;
 `

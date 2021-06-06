@@ -6,7 +6,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
 
-  const list = [
+  const techNamesList = [
     'Uchimata',
     'Harai goshi',
     'Seoi nage',
@@ -22,7 +22,7 @@ export default function App() {
       {currentPage === 'tutorialPage' && (
         <TutorialPage
           pageName="TUTORIAL"
-          techNamesList={list}
+          techNamesList={techNamesList}
           toDetailPage={handleToDetailPage}
         />
       )}
