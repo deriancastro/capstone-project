@@ -1,7 +1,7 @@
 import TutorialPage from './pages/TutorialPage'
 
 export default function App() {
-  const list = [
+  const techNamesList = [
     'Uchimata',
     'Harai goshi',
     'Seoi nage',
@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <div>
-      <TutorialPage pageName="TUTORIAL" techNamesList={list} />
+      <TutorialPage pageName="TUTORIAL" techNamesList={techNamesList} />
     </div>
   )
 }

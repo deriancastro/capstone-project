@@ -21,7 +21,6 @@ const Wrapper = styled.section`
   box-shadow: 0 4px 8px #0006;
   background: white;
 `
-const Text = styled.p`
+const Text = styled.h3`
   text-align: center;
-  font-weight: 600;
 `
