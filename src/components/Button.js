@@ -12,7 +12,9 @@ export default function Button(props) {
 }
 
 const ButtonStyled = styled.button`
-  padding: 12px;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: large;
   border: none;
-  background: ${p => (p.isActive ? 'stelblue' : 'papayawhip')};
+  background: ${p => (p.isActive ? 'steelblue' : 'papayawhip')};
 `
