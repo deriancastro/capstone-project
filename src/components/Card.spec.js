@@ -14,7 +14,7 @@ describe('Card', () => {
     const handleToDetail = jest.fn()
     render(<Card toDetail={handleToDetail} />)
 
-    const card = screen.getByRole('card')
+    const card = screen.getByTestId('card')
     userEvent.click(card)
     expect(handleToDetail).toHaveBeenCalledTimes(1)
   })
