@@ -3,34 +3,43 @@ import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Card from '../components/Card'
 
-TutorialPage.proptype = {
+TutorialPage.propTypes = {
   pageName: PropTypes.string,
-  techNamesList: PropTypes.string,
+  techNamesList: PropTypes.array,
+  toDetailPage: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({ pageName, techNamesList }) {
+export default function TutorialPage({
+  pageName,
+  techNamesList,
+  toDetailPage,
+}) {
   return (
-    <Wrapper>
+    <PageWrapper>
       <Header>{pageName}</Header>
       <Container>
         <List>
           {techNamesList.map(techName => (
             <li key={techName}>
-              <Card techName={techName} />
+              <Card
+                techName={techName}
+                toDetail={() => toDetailPage(techName)}
+              />
             </li>
           ))}
         </List>
       </Container>
-    </Wrapper>
+    </PageWrapper>
   )
 }
 
-const Wrapper = styled.div`
+const PageWrapper = styled.div`
   display: grid;
   grid-template-rows: 60px auto;
   gap: 3px;
   height: 100vh;
 `
+
 const Container = styled.section`
   overflow-y: scroll;
   padding: 10px;

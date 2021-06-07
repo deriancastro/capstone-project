@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import TutorialPage from './TutorialPage'
 
 describe('TutorialPage', () => {
-  it('renders one header and eight cards', () => {
+  it('renders 1 header and 8 cards', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
@@ -16,6 +17,7 @@ describe('TutorialPage', () => {
           'Yoko tomoe',
           'Kata guruma',
         ]}
+        toDetailPage={jest.fn()}
       />
     )
 
@@ -36,5 +38,20 @@ describe('TutorialPage', () => {
     expect(itemList[5]).toHaveTextContent('Kubi nage')
     expect(itemList[6]).toHaveTextContent('Yoko tomoe')
     expect(itemList[7]).toHaveTextContent('Kata guruma')
+  })
+
+  it('calls toDetailPage correctly', () => {
+    const handleToDetail = jest.fn()
+    render(
+      <TutorialPage
+        pageName="TUTORIAL"
+        techNamesList={['Uchimata']}
+        toDetailPage={handleToDetail}
+      />
+    )
+
+    const card = screen.getByRole('card')
+    userEvent.click(card)
+    expect(handleToDetail).toHaveBeenCalledTimes(1)
   })
 })
