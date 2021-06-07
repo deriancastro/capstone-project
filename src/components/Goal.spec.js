@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Goal from './Goal'
 
 describe('Goal', () => {
@@ -22,7 +23,7 @@ describe('Goal', () => {
     expect(text).toBeInTheDocument()
   })
 
-  /*it('calls isChecked correctly', () => {
+  it('calls isChecked correctly', () => {
     const isChecked = jest.fn()
     render(
       <Goal
@@ -30,9 +31,10 @@ describe('Goal', () => {
         goalNumber={1}
         isChecked={isChecked}
       />
-
-     const
-
     )
-  })*/
+
+    const checkbox = screen.getByRole('checkbox')
+    userEvent.click(checkbox)
+    expect(isChecked).toHaveBeenCalledTimes(1)
+  })
 })
