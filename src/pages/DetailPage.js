@@ -11,7 +11,7 @@ DetailPage.propTypes = {
 
 export default function DetailPage({ toTutorialPage, pageName }) {
   return (
-    <PageWrapper>
+    <Wrapper>
       <Header>{pageName}</Header>
       <Container>
         <img src={judo}></img>
@@ -19,18 +19,18 @@ export default function DetailPage({ toTutorialPage, pageName }) {
       <Nav>
         <Button onClick={toTutorialPage}>Back</Button>
       </Nav>
-    </PageWrapper>
+    </Wrapper>
   )
 }
 
-const PageWrapper = styled.div`
+const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 60px auto 50px;
   height: 100vh;
 `
 const Nav = styled.nav`
   display: grid;
-  box-shadow: 3px #0003;
+  box-shadow: 0 -3px 3px #0003;
 `
 const Container = styled.section`
   display: grid;
