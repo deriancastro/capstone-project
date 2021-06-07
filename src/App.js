@@ -6,7 +6,6 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
 
-
   const techNamesList = [
     'Uchimata',
     'Harai goshi',
@@ -24,24 +23,21 @@ export default function App() {
         <TutorialPage
           pageName="TUTORIAL"
           techNamesList={techNamesList}
-          toDetailPage={handleToDetailPage}
+          onNavigate={showDetailPage}
         />
       )}
 
       {currentPage === 'detailPage' && (
-        <DetailPage
-          pageName={currentTechName}
-          toTutorialPage={handleToTutorialPage}
-        />
+        <DetailPage pageName={currentTechName} onNavigate={showTutorialPage} />
       )}
     </div>
   )
 
-  function handleToDetailPage(techName) {
+  function showDetailPage(techName) {
     setCurrentPage('detailPage')
     setCurrentTechName(techName)
   }
-  function handleToTutorialPage() {
+  function showTutorialPage() {
     setCurrentPage('tutorialPage')
   }
 }

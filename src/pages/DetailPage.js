@@ -2,22 +2,22 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Button from '../components/Button'
-import judo from '../img/judo.jpg'
+import judoImage from '../img/judo.jpg'
 
 DetailPage.propTypes = {
   pageName: PropTypes.string,
-  toTutorialPage: PropTypes.func.isRequired,
+  onNavigate: PropTypes.func.isRequired,
 }
 
-export default function DetailPage({ toTutorialPage, pageName }) {
+export default function DetailPage({ onNavigate, pageName }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
       <Container>
-        <img src={judo}></img>
+        <img src={judoImage}></img>
       </Container>
       <Nav>
-        <Button onClick={toTutorialPage}>Back</Button>
+        <Button onClick={onNavigate}>Back</Button>
       </Nav>
     </Wrapper>
   )

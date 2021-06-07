@@ -6,14 +6,10 @@ import Card from '../components/Card'
 TutorialPage.propTypes = {
   pageName: PropTypes.string,
   techNamesList: PropTypes.array,
-  toDetailPage: PropTypes.func.isRequired,
+  onNavigate: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({
-  pageName,
-  techNamesList,
-  toDetailPage,
-}) {
+export default function TutorialPage({ pageName, techNamesList, onNavigate }) {
   return (
     <PageWrapper>
       <Header>{pageName}</Header>
@@ -23,7 +19,7 @@ export default function TutorialPage({
             <li key={techName}>
               <Card
                 techName={techName}
-                toDetail={() => toDetailPage(techName)}
+                onNavigate={() => onNavigate(techName)}
               />
             </li>
           ))}

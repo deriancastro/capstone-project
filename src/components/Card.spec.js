@@ -3,19 +3,19 @@ import userEvent from '@testing-library/user-event'
 import Card from './Card'
 
 describe('Card', () => {
+  const noop = () => {}
+
   it('renders a text with the name of the judo technique ', () => {
-    render(
-      <Card techName="Uchimata" onClick={jest.fn()} toDetail={jest.fn()} />
-    )
+    render(<Card techName="Uchimata" onClick={noop} toDetail={noop} />)
     expect(screen.getByText('Uchimata')).toBeInTheDocument()
   })
 
-  it('calls onClick correctly', () => {
-    const handleToDetail = jest.fn()
-    render(<Card toDetail={handleToDetail} />)
+  it('calls onNavigate correctly', () => {
+    const onNavigate = jest.fn()
+    render(<Card onNavigate={onNavigate} />)
 
     const card = screen.getByTestId('card')
     userEvent.click(card)
-    expect(handleToDetail).toHaveBeenCalledTimes(1)
+    expect(onNavigate).toHaveBeenCalledTimes(1)
   })
 })
