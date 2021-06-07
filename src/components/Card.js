@@ -8,13 +8,13 @@ Card.propTypes = {
 
 export default function Card({ techName, toDetail }) {
   return (
-    <CardWrapper onClick={toDetail} role="card">
+    <Wrapper onClick={toDetail} data-testid="card">
       <Text>{techName}</Text>
-    </CardWrapper>
+    </Wrapper>
   )
 }
 
-const CardWrapper = styled.section`
+const Wrapper = styled.section`
   display: grid;
   align-content: center;
   padding: 30px;

@@ -21,9 +21,9 @@ describe('TutorialPage', () => {
       />
     )
 
-    const header = screen.getByRole('heading', { name: 'TUTORIAL' })
-    expect(header).toBeInTheDocument()
-    expect(header).toHaveTextContent('TUTORIAL')
+    const heading = screen.getByRole('heading', { name: 'TUTORIAL' })
+    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveTextContent('TUTORIAL')
 
     const list = screen.getByRole('list')
     expect(list).toBeInTheDocument()
@@ -50,7 +50,7 @@ describe('TutorialPage', () => {
       />
     )
 
-    const card = screen.getByRole('card')
+    const card = screen.getByTestId('card')
     userEvent.click(card)
     expect(handleToDetail).toHaveBeenCalledTimes(1)
   })

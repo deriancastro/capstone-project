@@ -17,9 +17,7 @@ export default function DetailPage({ toTutorialPage, pageName }) {
         <img src={judo}></img>
       </Container>
       <Nav>
-        <Button onClick={toTutorialPage} isActive={false}>
-          Back
-        </Button>
+        <Button onClick={toTutorialPage}>Back</Button>
       </Nav>
     </PageWrapper>
   )
