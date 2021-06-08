@@ -6,33 +6,41 @@ import Button from '../components/Button'
 
 GoalsPage.propTypes = {
   pageName: PropTypes.string,
-  goalsList: PropTypes.arrayOf(PropTypes.shape({ text: PropTypes.string })),
-  isChecked: PropTypes.func,
+  goalsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      id: PropTypes.string,
+      isChecked: PropTypes.bool,
+    })
+  ),
+  onCheckGoal: PropTypes.func,
   onNavigate: PropTypes.func.isRequired,
 }
 
 export default function GoalsPage({
   pageName,
   goalsList,
-  isChecked,
+  onCheckGoal,
   onNavigate,
 }) {
+  console.log(goalsList)
   return (
     <Wrapper>
       <Header>{pageName}</Header>
-      <Container>
+      <ScrollContainer>
         <List>
-          {goalsList.map(({ text }, index) => (
-            <li key={index}>
+          {goalsList.map(({ text, id, isChecked }, index) => (
+            <li key={id}>
               <Goal
                 goalText={text}
                 goalNumber={index + 1}
                 isChecked={isChecked}
+                onCheckGoal={onCheckGoal}
               />
             </li>
           ))}
         </List>
-      </Container>
+      </ScrollContainer>
       <Nav>
         <Button onClick={onNavigate}>back</Button>
       </Nav>
@@ -46,7 +54,7 @@ const Wrapper = styled.div`
   gap: 3px;
   height: 100vh;
 `
-const Container = styled.section`
+const ScrollContainer = styled.section`
   overflow-y: scroll;
   padding: 10px;
 `

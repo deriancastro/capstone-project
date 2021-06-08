@@ -7,6 +7,8 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
 
+  const goalsList = require('./data/goalsList.json')
+
   const techNamesList = [
     'Uchimata',
     'Harai goshi',
@@ -16,24 +18,6 @@ export default function App() {
     'Kubi nage',
     'Yoko tomoe',
     'Kata guruma',
-  ]
-
-  const goalsList = [
-    { text: 'Improve the performance of my left uchimata' },
-    { text: 'See the yoko tomoe tutorial' },
-    { text: 'Ask the trainer about the next competition' },
-    { text: 'Check my weigth every 2 days' },
-    { text: 'Do the strength plan for the week' },
-    { text: 'Improve the performance of my left uchimata' },
-    { text: 'See the yoko tomoe tutorial' },
-    { text: 'Ask the trainer about the next competition' },
-    { text: 'Check my weigth every 2 days' },
-    { text: 'Do the strength plan for the week' },
-    { text: 'Improve the performance of my left uchimata' },
-    { text: 'See the yoko tomoe tutorial' },
-    { text: 'Ask the trainer about the next competition' },
-    { text: 'Check my weigth every 2 days' },
-    { text: 'Do the strength plan for the week' },
   ]
 
   return (
@@ -55,7 +39,7 @@ export default function App() {
         <GoalsPage
           pageName="GOALS"
           goalsList={goalsList}
-          isChecked={handleIsChecked}
+          onCheckGoal={handleOnCheckGoal}
           onNavigate={showTutorialPage}
         />
       )}
@@ -72,7 +56,7 @@ export default function App() {
   function showGoalsPage() {
     setCurrentPage('goalsPage')
   }
-  function handleIsChecked() {
+  function handleOnCheckGoal() {
     return console.log('The data will save in Localstorage')
   }
 }

@@ -10,13 +10,13 @@ describe('GoalsPage', () => {
       <GoalsPage
         pageName="GOALS"
         goalsList={[
-          { text: 'Improve the performance of my left uchimata' },
-          { text: 'See the yoko tomoe tutorial' },
-          { text: 'Ask the trainer about the next competition' },
-          { text: 'Check my weigth every 2 days' },
-          { text: 'Do the strength plan for the week' },
+          { text: 'Improve the performance of my left uchimata', id: '1' },
+          { text: 'See the yoko tomoe tutorial', id: '2' },
+          { text: 'Ask the trainer about the next competition', id: '3' },
+          { text: 'Check my weigth every 2 days', id: '4' },
+          { text: 'Do the strength plan for the week', id: '5' },
         ]}
-        isChecked={noop}
+        onCheckGoal={noop}
         onNavigate={noop}
       />
     )
@@ -29,20 +29,20 @@ describe('GoalsPage', () => {
     expect(goalsList).toHaveLength(5)
   })
 
-  it('calls isChecked correctly', () => {
-    const isChecked = jest.fn()
+  it('calls onCheckGoal correctly', () => {
+    const onCheckGoal = jest.fn()
     render(
       <GoalsPage
         pageName="GOALS"
         goalsList={[{ text: 'Improve the performance of my left uchimata' }]}
-        isChecked={isChecked}
+        onCheckGoal={onCheckGoal}
         onNavigate={noop}
       />
     )
 
     const checkbox = screen.getByRole('checkbox')
     userEvent.click(checkbox)
-    expect(isChecked).toHaveBeenCalledTimes(1)
+    expect(onCheckGoal).toHaveBeenCalledTimes(1)
   })
 
   it('calls onNavigate correctly', () => {
@@ -51,7 +51,7 @@ describe('GoalsPage', () => {
       <GoalsPage
         pageName="GOALS"
         goalsList={[{ text: 'Improve the performance of my left uchimata' }]}
-        isChecked={noop}
+        onCheckGoal={noop}
         onNavigate={onNavigate}
       />
     )

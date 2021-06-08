@@ -20,7 +20,7 @@ export default function TutorialPage({
   return (
     <Wrapper>
       <Header>{pageName}</Header>
-      <Container>
+      <ScrollContainer>
         <List>
           {techNamesList.map(techName => (
             <li key={techName}>
@@ -28,7 +28,7 @@ export default function TutorialPage({
             </li>
           ))}
         </List>
-      </Container>
+      </ScrollContainer>
       <Nav>
         <Button onClick={onNavigate}>toGoals</Button>
       </Nav>
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   height: 100vh;
 `
 
-const Container = styled.section`
+const ScrollContainer = styled.section`
   overflow-y: scroll;
   padding: 10px;
 `

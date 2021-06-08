@@ -14,7 +14,7 @@ export default function DetailPage({ onNavigate, pageName }) {
     <Wrapper>
       <Header>{pageName}</Header>
       <Container>
-        <img src={judoImage} alt=""></img>
+        <img src={judoImage} alt="a Judo throw"></img>
       </Container>
       <Nav>
         <Button onClick={onNavigate}>back</Button>

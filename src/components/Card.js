@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 Card.propTypes = {
   techName: PropTypes.string,
-  onDetail: PropTypes.func,
+  onDetail: PropTypes.func.isRequired,
 }
 
 export default function Card({ techName, onDetail }) {

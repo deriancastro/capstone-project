@@ -10,7 +10,8 @@ describe('Goal', () => {
       <Goal
         goalText="Improve the performance of my left uchimata"
         goalNumber={1}
-        isChecked={noop}
+        isChecked={true}
+        onCheckGoal={noop}
       />
     )
 
@@ -23,18 +24,19 @@ describe('Goal', () => {
     expect(text).toBeInTheDocument()
   })
 
-  it('calls isChecked correctly', () => {
-    const isChecked = jest.fn()
+  it('calls onCheckGoal correctly', () => {
+    const onCheckGoal = jest.fn()
     render(
       <Goal
         goalText="Improve the performance of my left uchimata"
         goalNumber={1}
-        isChecked={isChecked}
+        isChecked={true}
+        onCheckGoal={onCheckGoal}
       />
     )
 
     const checkbox = screen.getByRole('checkbox')
     userEvent.click(checkbox)
-    expect(isChecked).toHaveBeenCalledTimes(1)
+    expect(onCheckGoal).toHaveBeenCalledTimes(1)
   })
 })
