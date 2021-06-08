@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 Card.propTypes = {
   techName: PropTypes.string,
-  onNavigate: PropTypes.func,
+  onDetail: PropTypes.func,
 }
 
-export default function Card({ techName, onNavigate }) {
+export default function Card({ techName, onDetail }) {
   return (
-    <Wrapper onClick={onNavigate} data-testid="card">
+    <Wrapper onClick={onDetail} data-testid="card">
       <Text>{techName}</Text>
     </Wrapper>
   )

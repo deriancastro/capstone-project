@@ -19,6 +19,7 @@ describe('TutorialPage', () => {
           'Yoko tomoe',
           'Kata guruma',
         ]}
+        onDetail={noop}
         onNavigate={noop}
       />
     )
@@ -31,18 +32,35 @@ describe('TutorialPage', () => {
     expect(cardList).toHaveLength(8)
   })
 
-  it('calls onNavigate correctly', () => {
-    const showDetailPage = jest.fn()
+  it('calls onDetail correctly', () => {
+    const onDetail = jest.fn()
     render(
       <TutorialPage
         pageName="TUTORIAL"
         techNamesList={['Uchimata']}
-        onNavigate={showDetailPage}
+        onDetail={onDetail}
+        onNavigate={noop}
       />
     )
 
     const card = screen.getByTestId('card')
     userEvent.click(card)
-    expect(showDetailPage).toHaveBeenCalledTimes(1)
+    expect(onDetail).toHaveBeenCalledTimes(1)
+  })
+
+  it('calls onNavigate correctly', () => {
+    const onNavigate = jest.fn()
+    render(
+      <TutorialPage
+        pageName="TUTORIAL"
+        techNamesList={['Uchimata']}
+        onDetail={noop}
+        onNavigate={onNavigate}
+      />
+    )
+
+    const button = screen.getByRole('button')
+    userEvent.click(button)
+    expect(onNavigate).toHaveBeenCalledTimes(1)
   })
 })

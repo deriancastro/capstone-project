@@ -19,11 +19,11 @@ describe('DetailPage', () => {
   })
 
   it('calls onNavigate correctly', () => {
-    const showTutorialPage = jest.fn()
-    render(<DetailPage pageName="Uchimata" onNavigate={showTutorialPage} />)
+    const onNavigate = jest.fn()
+    render(<DetailPage pageName="Uchimata" onNavigate={onNavigate} />)
 
     const button = screen.getByRole('button')
     userEvent.click(button)
-    expect(showTutorialPage).toHaveBeenCalledTimes(1)
+    expect(onNavigate).toHaveBeenCalledTimes(1)
   })
 })

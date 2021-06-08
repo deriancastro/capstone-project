@@ -22,8 +22,10 @@ export default function Goal({ goalText, goalNumber, isChecked }) {
 const Wrapper = styled.section`
   display: flex;
   gap: 10px;
-
-  background: papayawhip;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px #0006;
 `
 const ItemNumber = styled.span`
   font-weight: 600;

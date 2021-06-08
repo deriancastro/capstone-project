@@ -6,16 +6,16 @@ describe('Card', () => {
   const noop = () => {}
 
   it('renders a text with the name of the judo technique ', () => {
-    render(<Card techName="Uchimata" onClick={noop} toDetail={noop} />)
+    render(<Card techName="Uchimata" onDetail={noop} />)
     expect(screen.getByText('Uchimata')).toBeInTheDocument()
   })
 
-  it('calls onNavigate correctly', () => {
-    const onNavigate = jest.fn()
-    render(<Card onNavigate={onNavigate} />)
+  it('calls onDetail correctly', () => {
+    const onDetail = jest.fn()
+    render(<Card onDetail={onDetail} />)
 
     const card = screen.getByTestId('card')
     userEvent.click(card)
-    expect(onNavigate).toHaveBeenCalledTimes(1)
+    expect(onDetail).toHaveBeenCalledTimes(1)
   })
 })
