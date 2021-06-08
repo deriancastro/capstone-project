@@ -21,7 +21,6 @@ export default function Goal({ goalText, goalNumber, isChecked }) {
 
 const Wrapper = styled.section`
   display: flex;
-  gap: 10px;
   background: white;
   border-radius: 8px;
   padding: 10px;
@@ -29,11 +28,18 @@ const Wrapper = styled.section`
 `
 const ItemNumber = styled.span`
   font-weight: 600;
+  width: 3.5ch;
 `
 
 const CheckBox = styled.label`
-  display: flex;
+  display: grid;
+  width: 100%;
   gap: 10px;
+  grid-template-columns: 1fr 15px;
+
+  input {
+    justify-self: end;
+  }
 `
 const Text = styled.p`
   text-align: justify;
