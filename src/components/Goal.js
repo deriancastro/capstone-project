@@ -14,11 +14,7 @@ export default function Goal({ goalText, goalNumber, isChecked, onCheckGoal }) {
       <ItemNumber data-testid="itemNumber">{goalNumber}.</ItemNumber>
       <CheckBox>
         <Text>{goalText}</Text>
-        <input
-          onChange={onCheckGoal}
-          type="checkbox"
-          aria-checked={isChecked}
-        />
+        <input onChange={onCheckGoal} type="checkbox" checked={isChecked} />
       </CheckBox>
     </Wrapper>
   )
