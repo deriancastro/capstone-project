@@ -34,7 +34,7 @@ export default function GoalsPage({
         </List>
       </Container>
       <Nav>
-        <Button onClick={onNavigate}>Back</Button>
+        <Button onClick={onNavigate}>back</Button>
       </Nav>
     </Wrapper>
   )

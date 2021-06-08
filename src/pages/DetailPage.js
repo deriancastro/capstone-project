@@ -17,7 +17,7 @@ export default function DetailPage({ onNavigate, pageName }) {
         <img src={judoImage} alt=""></img>
       </Container>
       <Nav>
-        <Button onClick={onNavigate}>Back</Button>
+        <Button onClick={onNavigate}>back</Button>
       </Nav>
     </Wrapper>
   )
