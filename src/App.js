@@ -2,12 +2,12 @@ import { useState } from 'react'
 import TutorialPage from './pages/TutorialPage'
 import DetailPage from './pages/DetailPage'
 import GoalsPage from './pages/GoalsPage'
+import goalsData from './data/goalsData.json'
 
 export default function App() {
-  const goalsJSON = require('./data/goalsList.json')
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
-  const [goalsList, setGoalsList] = useState(goalsJSON)
+  const [goalsList, setGoalsList] = useState(goalsData)
 
   const techNamesList = [
     'Uchimata',
