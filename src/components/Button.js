@@ -18,4 +18,7 @@ const ButtonStyled = styled.button`
   border: none;
   padding: 12px;
   background: ${p => (p.isActive ? 'steelblue' : 'papayawhip')};
+  &.active {
+    background: steelblue;
+  }
 `
