@@ -4,10 +4,10 @@ import DetailPage from './pages/DetailPage'
 import GoalsPage from './pages/GoalsPage'
 
 export default function App() {
+  const goalsJSON = require('./data/goalsList.json')
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
-
-  const goalsList = require('./data/goalsList.json')
+  const [goalsList, setGoalsList] = useState(goalsJSON)
 
   const techNamesList = [
     'Uchimata',
@@ -39,7 +39,7 @@ export default function App() {
         <GoalsPage
           pageName="GOALS"
           goalsList={goalsList}
-          onCheckGoal={handleOnCheckGoal}
+          onCheckGoal={handleGoal}
           onNavigate={showTutorialPage}
         />
       )}
@@ -56,7 +56,12 @@ export default function App() {
   function showGoalsPage() {
     setCurrentPage('goalsPage')
   }
-  function handleOnCheckGoal() {
-    return console.log('The data will save in Localstorage')
+  function handleGoal(index) {
+    const goalToUpdate = goalsList[index]
+    setGoalsList([
+      ...goalsList.slice(0, index),
+      { ...goalToUpdate, isChecked: !goalToUpdate.isChecked },
+      ...goalsList.slice(index + 1),
+    ])
   }
 }

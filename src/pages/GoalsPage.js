@@ -23,7 +23,6 @@ export default function GoalsPage({
   onCheckGoal,
   onNavigate,
 }) {
-  console.log(goalsList)
   return (
     <Wrapper>
       <Header>{pageName}</Header>
@@ -34,8 +33,8 @@ export default function GoalsPage({
               <Goal
                 goalText={text}
                 goalNumber={index + 1}
-                isChecked={isChecked}
                 onCheckGoal={onCheckGoal}
+                isChecked={isChecked}
               />
             </li>
           ))}

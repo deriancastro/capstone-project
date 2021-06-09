@@ -4,13 +4,21 @@
     "id": "1",
     "isChecked": false
   },
-  { "text": "See the yoko tomoe tutorial", "id": "2", "isChecked": true },
+  {
+    "text": "See the yoko tomoe tutorial",
+    "id": "2",
+    "isChecked": false
+  },
   {
     "text": "Ask the trainer about the next competition",
     "id": "3",
     "isChecked": false
   },
-  { "text": "Check my weigth every 2 days", "id": "4", "isChecked": false },
+  {
+    "text": "Check my weigth every 2 days",
+    "id": "4",
+    "isChecked": false
+  },
   {
     "text": "Do the strength plan for the week",
     "id": "5",
@@ -21,30 +29,46 @@
     "id": "6",
     "isChecked": false
   },
-  { "text": "See the yoko tomoe tutorial", "id": "7", "isChecked": true },
+  {
+    "text": "See the yoko tomoe tutorial",
+    "id": "7",
+    "isChecked": false
+  },
   {
     "text": "Ask the trainer about the next competition",
     "id": "8",
     "isChecked": false
   },
-  { "text": "Check my weigth every 2 days", "id": "9", "isChecked": false },
+  {
+    "text": "Check my weigth every 2 days",
+    "id": "9",
+    "isChecked": false
+  },
   {
     "text": "Do the strength plan for the week",
     "id": "10",
-    "isChecked": true
+    "isChecked": false
   },
   {
     "text": "Improve the performance of my left uchimata",
     "id": "11",
     "isChecked": false
   },
-  { "text": "See the yoko tomoe tutorial", "id": "12", "isChecked": false },
+  {
+    "text": "See the yoko tomoe tutorial",
+    "id": "12",
+    "isChecked": false
+  },
   {
     "text": "Ask the trainer about the next competition",
     "id": "13",
     "isChecked": false
   },
-  { "text": "Check my weigth every 2 days", "id": "14", "isChecked": true },
+  {
+    "text": "Check my weigth every 2 days",
+    "id": "14",
+    "isChecked": false
+  },
   {
     "text": "Do the strength plan for the week",
     "id": "15",

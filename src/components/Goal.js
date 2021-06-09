@@ -4,20 +4,24 @@ import PropTypes from 'prop-types'
 Goal.propTypes = {
   goalText: PropTypes.string,
   goalNumber: PropTypes.number,
-  isChecked: PropTypes.bool,
   onCheckGoal: PropTypes.func,
+  isChecked: PropTypes.bool,
 }
 
-export default function Goal({ goalText, goalNumber, isChecked, onCheckGoal }) {
+export default function Goal({ goalText, goalNumber, onCheckGoal, isChecked }) {
   return (
     <Wrapper data-testid="goal">
       <ItemNumber data-testid="itemNumber">{goalNumber}.</ItemNumber>
       <CheckBox>
         <Text>{goalText}</Text>
-        <input onChange={onCheckGoal} type="checkbox" checked={isChecked} />
+        <input onChange={handleCheckGoal} type="checkbox" checked={isChecked} />
       </CheckBox>
     </Wrapper>
   )
+
+  function handleCheckGoal() {
+    onCheckGoal(goalNumber - 1)
+  }
 }
 
 const Wrapper = styled.section`
