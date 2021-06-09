@@ -1,4 +1,4 @@
-import GlobalStyle from '../src/GlobalStyle'
+import GlobalStyles from '../src/GlobalStyles'
 
 export const parameters = {
   layout: 'fullscreen',
@@ -12,5 +12,5 @@ export const parameters = {
 }
 
 export const decorators = [
-  Story => <><GlobalStyle/><Story/></>
+  Story => <><GlobalStyles/><Story/></>
 ]
