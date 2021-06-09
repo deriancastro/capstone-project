@@ -3,8 +3,10 @@ import userEvent from '@testing-library/user-event'
 import Button from './Button'
 
 describe('Button', () => {
+  const noop = () => {}
+
   it('contains a text', () => {
-    render(<Button onClick={jest.fn()}>Back</Button>)
+    render(<Button onClick={noop}>Back</Button>)
 
     const button = screen.getByRole('button', { name: 'Back' })
     expect(button).toBeInTheDocument()
@@ -20,12 +22,12 @@ describe('Button', () => {
   })
 
   it('changes with the prop isActive', () => {
-    const { rerender } = render(<Button onClick={jest.fn()}>Back</Button>)
+    const { rerender } = render(<Button onClick={noop}>Back</Button>)
     const button = screen.getByRole('button')
     const defaultStyle = getComputedStyle(button)
 
     rerender(
-      <Button isActive onClick={jest.fn()}>
+      <Button isActive onClick={noop}>
         Back
       </Button>
     )

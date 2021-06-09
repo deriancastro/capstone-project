@@ -1,20 +1,26 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
-import Card from '../components/Card'
+import Goal from '../components/Goal'
 import Button from '../components/Button'
 
-TutorialPage.propTypes = {
+GoalsPage.propTypes = {
   pageName: PropTypes.string,
-  techNamesList: PropTypes.array,
-  onDetail: PropTypes.func.isRequired,
+  goalsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      id: PropTypes.string,
+      isChecked: PropTypes.bool,
+    })
+  ),
+  onCheckGoal: PropTypes.func,
   onNavigate: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({
+export default function GoalsPage({
   pageName,
-  techNamesList,
-  onDetail,
+  goalsList,
+  onCheckGoal,
   onNavigate,
 }) {
   return (
@@ -22,15 +28,20 @@ export default function TutorialPage({
       <Header>{pageName}</Header>
       <ScrollContainer>
         <List>
-          {techNamesList.map(techName => (
-            <li key={techName}>
-              <Card techName={techName} onDetail={() => onDetail(techName)} />
+          {goalsList.map(({ text, id, isChecked }, index) => (
+            <li key={id}>
+              <Goal
+                goalText={text}
+                goalNumber={index + 1}
+                onCheckGoal={onCheckGoal}
+                isChecked={isChecked}
+              />
             </li>
           ))}
         </List>
       </ScrollContainer>
       <Nav>
-        <Button onClick={onNavigate}>toGoals</Button>
+        <Button onClick={onNavigate}>back</Button>
       </Nav>
     </Wrapper>
   )
@@ -42,7 +53,6 @@ const Wrapper = styled.div`
   gap: 3px;
   height: 100vh;
 `
-
 const ScrollContainer = styled.section`
   overflow-y: scroll;
   padding: 10px;

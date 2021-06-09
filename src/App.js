@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import TutorialPage from './pages/TutorialPage'
 import DetailPage from './pages/DetailPage'
+import GoalsPage from './pages/GoalsPage'
+import goalsData from './data/goalsData.json'
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
-
+  const [goalsList, setGoalsList] = useState(goalsData)
 
   const techNamesList = [
     'Uchimata',
@@ -24,24 +26,42 @@ export default function App() {
         <TutorialPage
           pageName="TUTORIAL"
           techNamesList={techNamesList}
-          toDetailPage={handleToDetailPage}
+          onDetail={showDetailPage}
+          onNavigate={showGoalsPage}
         />
       )}
 
       {currentPage === 'detailPage' && (
-        <DetailPage
-          pageName={currentTechName}
-          toTutorialPage={handleToTutorialPage}
+        <DetailPage pageName={currentTechName} onNavigate={showTutorialPage} />
+      )}
+
+      {currentPage === 'goalsPage' && (
+        <GoalsPage
+          pageName="GOALS"
+          goalsList={goalsList}
+          onCheckGoal={handleGoal}
+          onNavigate={showTutorialPage}
         />
       )}
     </div>
   )
 
-  function handleToDetailPage(techName) {
+  function showDetailPage(techName) {
     setCurrentPage('detailPage')
     setCurrentTechName(techName)
   }
-  function handleToTutorialPage() {
+  function showTutorialPage() {
     setCurrentPage('tutorialPage')
+  }
+  function showGoalsPage() {
+    setCurrentPage('goalsPage')
+  }
+  function handleGoal(index) {
+    const goalToUpdate = goalsList[index]
+    setGoalsList([
+      ...goalsList.slice(0, index),
+      { ...goalToUpdate, isChecked: !goalToUpdate.isChecked },
+      ...goalsList.slice(index + 1),
+    ])
   }
 }
