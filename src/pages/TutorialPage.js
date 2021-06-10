@@ -8,17 +8,9 @@ TutorialPage.propTypes = {
   pageName: PropTypes.string,
   techNamesList: PropTypes.array,
   onDetail: PropTypes.func.isRequired,
-  onNavigate: PropTypes.func.isRequired,
-  onNavigate2: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({
-  pageName,
-  techNamesList,
-  onDetail,
-  onNavigate,
-  onNavigate2,
-}) {
+export default function TutorialPage({ pageName, techNamesList, onDetail }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
@@ -31,19 +23,14 @@ export default function TutorialPage({
           ))}
         </List>
       </ScrollContainer>
-      <Nav>
-        <Button onClick={onNavigate}>toGoals</Button>
-        <Button onClick={onNavigate2}>toProfile</Button>
-      </Nav>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto 50px;
-  gap: 3px;
-  height: 100vh;
+  grid-template-rows: 60px auto;
+  height: 93vh;
 `
 
 const ScrollContainer = styled.section`
@@ -54,9 +41,4 @@ const List = styled.ul`
   display: grid;
   gap: 10px;
   list-style: none;
-`
-const Nav = styled.nav`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  box-shadow: 0 -3px 3px #0003;
 `

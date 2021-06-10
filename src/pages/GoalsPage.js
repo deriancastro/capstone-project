@@ -17,12 +17,7 @@ GoalsPage.propTypes = {
   onNavigate: PropTypes.func.isRequired,
 }
 
-export default function GoalsPage({
-  pageName,
-  goalsList,
-  onCheckGoal,
-  onNavigate,
-}) {
+export default function GoalsPage({ pageName, goalsList, onCheckGoal }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
@@ -40,18 +35,14 @@ export default function GoalsPage({
           ))}
         </List>
       </ScrollContainer>
-      <Nav>
-        <Button onClick={onNavigate}>back</Button>
-      </Nav>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto 50px;
-  gap: 3px;
-  height: 100vh;
+  grid-template-rows: 60px auto;
+  height: 93vh;
 `
 const ScrollContainer = styled.section`
   overflow-y: scroll;
@@ -61,8 +52,4 @@ const List = styled.ul`
   display: grid;
   gap: 10px;
   list-style: none;
-`
-const Nav = styled.nav`
-  display: grid;
-  box-shadow: 0 -3px 3px #0003;
 `

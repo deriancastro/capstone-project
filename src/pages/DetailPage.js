@@ -25,8 +25,7 @@ export default function DetailPage({ onNavigate, pageName }) {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto 50px;
-  gap: 3px;
+  grid-template-rows: 60px auto 56px;
   height: 100vh;
 `
 const Nav = styled.nav`

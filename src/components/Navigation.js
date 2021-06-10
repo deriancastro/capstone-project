@@ -12,16 +12,16 @@ Navigation.propTypes = {
 export default function Navigation({ pages }) {
   return (
     <Nav>
-      {pages.map(({ name, path, disabled }) => (
+      {pages.map(({ title, path, disabled }) => (
         <NavButton
           exact
           component={NavLink}
-          key={name}
+          key={title}
           to={path}
           disabled={disabled}
           color="steelblue"
         >
-          {name}
+          {title}
         </NavButton>
       ))}
     </Nav>
@@ -31,9 +31,14 @@ export default function Navigation({ pages }) {
 const Nav = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: 0 -3px 3px #0003;
 `
 
 const NavButton = styled(Button)`
   border-radius: 0;
   width: 100%;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
 `

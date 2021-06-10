@@ -35,9 +35,9 @@ const ImageContainer = styled.div`
   gap: 10px;
   justify-content: center;
 `
-const Image = styled.image`
+const Image = styled.img`
   border-radius: 50%;
-  border: solid 5px;
+
   height: 200px;
   width: 200px;
   justify-self: center;

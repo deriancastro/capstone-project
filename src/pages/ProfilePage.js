@@ -13,10 +13,9 @@ ProfilePage.propTypes = {
       text: PropTypes.node,
     })
   ),
-  onNavigate: PropTypes.func.isRequired,
 }
 
-export default function ProfilePage({ pageName, profileInfo, onNavigate }) {
+export default function ProfilePage({ pageName, profileInfo }) {
   console.log(profileInfo)
   return (
     <Wrapper>
@@ -28,22 +27,15 @@ export default function ProfilePage({ pageName, profileInfo, onNavigate }) {
           text={profileInfo[0].text}
         />
       </Container>
-      <Nav>
-        <Button onClick={onNavigate}>toGoals</Button>
-      </Nav>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto 50px;
-  gap: 3px;
-  height: 100vh;
+  grid-template-rows: 60px auto;
+  height: 93vh;
 `
-const Container = styled.div``
-
-const Nav = styled.nav`
-  display: grid;
-  box-shadow: 0 -3px 3px #0003;
+const Container = styled.div`
+  background: white;
 `

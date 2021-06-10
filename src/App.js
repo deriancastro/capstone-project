@@ -1,4 +1,7 @@
+import { Switch, Route, useHistory } from 'react-router-dom'
 import { useState } from 'react'
+import styled from 'styled-components/macro'
+import Navigation from './components/Navigation'
 import TutorialPage from './pages/TutorialPage'
 import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage'
@@ -7,9 +10,9 @@ import goalsData from './data/goalsData.json'
 import profileData from './data/profileData.json'
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('tutorialPage')
   const [currentTechName, setCurrentTechName] = useState('')
   const [goalsList, setGoalsList] = useState(goalsData)
+  const { push } = useHistory()
   const profileInfo = profileData
 
   const techNamesList = [
@@ -24,55 +27,63 @@ export default function App() {
   ]
 
   return (
-    <div>
-      {currentPage === 'tutorialPage' && (
-        <TutorialPage
-          pageName="TUTORIAL"
-          techNamesList={techNamesList}
-          onDetail={showDetailPage}
-          onNavigate={showGoalsPage}
-          onNavigate2={showProfilePage}
-        />
-      )}
-
-      {currentPage === 'detailPage' && (
-        <DetailPage pageName={currentTechName} onNavigate={showTutorialPage} />
-      )}
-
-      {currentPage === 'goalsPage' && (
-        <GoalsPage
-          pageName="GOALS"
-          goalsList={goalsList}
-          onCheckGoal={handleGoal}
-          onNavigate={showTutorialPage}
-        />
-      )}
-
-      {currentPage === 'profilePage' && (
-        <ProfilePage
-          pageName="PROFILE"
-          profileInfo={profileInfo}
-          onCheckGoal={handleGoal}
-          onNavigate={showTutorialPage}
-        />
-      )}
-    </div>
+    <AppGrid>
+      <Switch>
+        <Route exact path="/">
+          <ProfilePage pageName="PROFILE" profileInfo={profileInfo} />
+          <Navigation
+            pages={[
+              { title: 'profile', path: '/' },
+              { title: 'tutorial', path: '/tutorial' },
+              { title: 'goals', path: '/goals' },
+            ]}
+          />
+        </Route>
+        <Route path="/tutorial">
+          <TutorialPage
+            pageName="TUTORIAL"
+            techNamesList={techNamesList}
+            onDetail={showDetailPage}
+          />
+          <Navigation
+            pages={[
+              { title: 'profile', path: '/' },
+              { title: 'tutorial', path: '/tutorial' },
+              { title: 'goals', path: '/goals' },
+            ]}
+          />
+        </Route>
+        <Route path="/detail">
+          <DetailPage
+            pageName={currentTechName}
+            onNavigate={showTutorialPage}
+          />
+        </Route>
+        <Route path="/goals">
+          <GoalsPage
+            pageName="GOALS"
+            goalsList={goalsList}
+            onCheckGoal={handleGoal}
+          />
+          <Navigation
+            pages={[
+              { title: 'profile', path: '/' },
+              { title: 'tutorial', path: '/tutorial' },
+              { title: 'goals', path: '/goals' },
+            ]}
+          />
+        </Route>
+      </Switch>
+    </AppGrid>
   )
 
   function showDetailPage(techName) {
-    setCurrentPage('detailPage')
     setCurrentTechName(techName)
+    push('/detail')
   }
   function showTutorialPage() {
-    setCurrentPage('tutorialPage')
+    push('/tutorial')
   }
-  function showGoalsPage() {
-    setCurrentPage('goalsPage')
-  }
-  function showProfilePage() {
-    setCurrentPage('profilePage')
-  }
-
   function handleGoal(index) {
     const goalToUpdate = goalsList[index]
     setGoalsList([
@@ -82,3 +93,8 @@ export default function App() {
     ])
   }
 }
+
+const AppGrid = styled.div`
+  display: grid;
+  height: 100vh;
+`
