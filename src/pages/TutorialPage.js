@@ -9,6 +9,7 @@ TutorialPage.propTypes = {
   techNamesList: PropTypes.array,
   onDetail: PropTypes.func.isRequired,
   onNavigate: PropTypes.func.isRequired,
+  onNavigate2: PropTypes.func.isRequired,
 }
 
 export default function TutorialPage({
@@ -16,6 +17,7 @@ export default function TutorialPage({
   techNamesList,
   onDetail,
   onNavigate,
+  onNavigate2,
 }) {
   return (
     <Wrapper>
@@ -31,6 +33,7 @@ export default function TutorialPage({
       </ScrollContainer>
       <Nav>
         <Button onClick={onNavigate}>toGoals</Button>
+        <Button onClick={onNavigate2}>toProfile</Button>
       </Nav>
     </Wrapper>
   )
@@ -54,5 +57,6 @@ const List = styled.ul`
 `
 const Nav = styled.nav`
   display: grid;
+  grid-template-columns: 1fr 1fr;
   box-shadow: 0 -3px 3px #0003;
 `
