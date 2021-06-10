@@ -50,6 +50,6 @@ const ScrollContainer = styled.section`
 `
 const List = styled.ul`
   display: grid;
-  gap: 10px;
+  gap: 20px;
   list-style: none;
 `

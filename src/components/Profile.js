@@ -26,8 +26,7 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-rows: min-content;
   gap: 20px;
-  background: white;
-  padding: 10px;
+  padding: 20px 10px;
   height: 100%;
 `
 const ImageContainer = styled.div`
@@ -54,5 +53,5 @@ const AboutMe = styled.label`
   background: papayawhip;
 `
 const Text = styled.textarea`
-  background: #999;
+  background: #eee;
 `
