@@ -29,7 +29,7 @@ export default function TutorialPage({ pageName, techNamesList, onDetail }) {
 const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 60px auto;
-  height: 93vh;
+  height: calc(100vh - 60px);
 `
 
 const ScrollContainer = styled.section`

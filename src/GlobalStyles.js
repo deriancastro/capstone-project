@@ -11,6 +11,7 @@ export default createGlobalStyle`
    font-family: 'Roboto',sans-serif;
    font-size: 112.5%;
    line-height: 1.4;
+   letter-spacing: 0.02rem;
    background: #bfa27e;
  }
 `

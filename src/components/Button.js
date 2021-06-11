@@ -18,13 +18,14 @@ export default function Button({
 }
 
 const ButtonStyled = styled.button`
-  font-weight: 600;
-  font-size: large;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
   border: none;
   padding: 12px;
   cursor: pointer;
   color: ${p => p.color};
-  background: ${p => (p.isActive ? '#bf665e' : '#d3d3d3')};
+  background: ${p => (p.isActive ? '#bf665e' : '#777')};
   &.active {
     background: #bf665e;
     z-index: -10;

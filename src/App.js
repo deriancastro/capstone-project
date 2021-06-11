@@ -31,26 +31,12 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <ProfilePage pageName="PROFILE" profileInfo={profileInfo} />
-          <Navigation
-            pages={[
-              { title: 'profile', path: '/' },
-              { title: 'tutorial', path: '/tutorial' },
-              { title: 'goals', path: '/goals' },
-            ]}
-          />
         </Route>
         <Route path="/tutorial">
           <TutorialPage
             pageName="TUTORIAL"
             techNamesList={techNamesList}
             onDetail={showDetailPage}
-          />
-          <Navigation
-            pages={[
-              { title: 'profile', path: '/' },
-              { title: 'tutorial', path: '/tutorial' },
-              { title: 'goals', path: '/goals' },
-            ]}
           />
         </Route>
         <Route path="/detail">
@@ -65,15 +51,18 @@ export default function App() {
             goalsList={goalsList}
             onCheckGoal={handleGoal}
           />
-          <Navigation
-            pages={[
-              { title: 'profile', path: '/' },
-              { title: 'tutorial', path: '/tutorial' },
-              { title: 'goals', path: '/goals' },
-            ]}
-          />
         </Route>
       </Switch>
+
+      <Route path={['/', 'tutorial', 'goals']}>
+        <Navigation
+          pages={[
+            { title: 'profile', path: '/' },
+            { title: 'tutorial', path: '/tutorial' },
+            { title: 'goals', path: '/goals' },
+          ]}
+        />
+      </Route>
     </AppGrid>
   )
 
@@ -96,5 +85,6 @@ export default function App() {
 
 const AppGrid = styled.div`
   display: grid;
+  grid-template-rows: auto 56px;
   height: 100vh;
 `
