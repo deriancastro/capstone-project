@@ -2,7 +2,6 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Profile from '../components/Profile'
-import Button from '../components/Button'
 
 ProfilePage.propTypes = {
   pageName: PropTypes.string,
@@ -16,7 +15,6 @@ ProfilePage.propTypes = {
 }
 
 export default function ProfilePage({ pageName, profileInfo }) {
-  console.log(profileInfo)
   return (
     <Wrapper>
       <Header>{pageName}</Header>

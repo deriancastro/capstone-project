@@ -2,7 +2,6 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Goal from '../components/Goal'
-import Button from '../components/Button'
 
 GoalsPage.propTypes = {
   pageName: PropTypes.string,

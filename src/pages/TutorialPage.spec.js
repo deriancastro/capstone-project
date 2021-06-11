@@ -47,20 +47,4 @@ describe('TutorialPage', () => {
     userEvent.click(card)
     expect(onDetail).toHaveBeenCalledTimes(1)
   })
-
-  it('calls onNavigate correctly', () => {
-    const onNavigate = jest.fn()
-    render(
-      <TutorialPage
-        pageName="TUTORIAL"
-        techNamesList={['Uchimata']}
-        onDetail={noop}
-        onNavigate={onNavigate}
-      />
-    )
-
-    const button = screen.getByRole('button')
-    userEvent.click(button)
-    expect(onNavigate).toHaveBeenCalledTimes(1)
-  })
 })

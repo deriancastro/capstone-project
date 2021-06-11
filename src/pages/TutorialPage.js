@@ -2,7 +2,6 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Card from '../components/Card'
-import Button from '../components/Button'
 
 TutorialPage.propTypes = {
   pageName: PropTypes.string,

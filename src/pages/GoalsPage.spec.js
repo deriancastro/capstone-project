@@ -44,20 +44,4 @@ describe('GoalsPage', () => {
     userEvent.click(checkbox)
     expect(onCheckGoal).toHaveBeenCalledTimes(1)
   })
-
-  it('calls onNavigate correctly', () => {
-    const onNavigate = jest.fn()
-    render(
-      <GoalsPage
-        pageName="GOALS"
-        goalsList={[{ text: 'Improve the performance of my left uchimata' }]}
-        onCheckGoal={noop}
-        onNavigate={onNavigate}
-      />
-    )
-
-    const button = screen.getByRole('button')
-    userEvent.click(button)
-    expect(onNavigate).toHaveBeenCalledTimes(1)
-  })
 })

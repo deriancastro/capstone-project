@@ -9,14 +9,14 @@ Profile.propTypes = {
 
 export default function Profile({ image, name, text }) {
   return (
-    <Wrapper>
+    <Wrapper data-testid="profile">
       <ImageContainer>
-        <Image src={image} alt="" />
+        <Image src={image} alt="a Judo throw" />
         <Name>{name}</Name>
       </ImageContainer>
       <AboutMeContainer>
         <AboutMe>About me: </AboutMe>
-        <Text>{text}</Text>
+        <Text value={text}></Text>
       </AboutMeContainer>
     </Wrapper>
   )
