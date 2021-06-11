@@ -25,12 +25,12 @@ export default function Goal({ goalText, goalNumber, onCheckGoal, isChecked }) {
 }
 
 const Wrapper = styled.section`
-  /* position: relative; */
   display: flex;
   background: white;
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 4px 8px #0006;
+  background: white;
 `
 const ItemNumber = styled.span`
   font-weight: 600;
@@ -45,9 +45,6 @@ const CheckBox = styled.label`
 
   input {
     justify-self: end;
-    /* position: absolute;
-    /* -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, 70%); */
   }
 `
 const Text = styled.p`

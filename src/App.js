@@ -97,5 +97,4 @@ export default function App() {
 const AppGrid = styled.div`
   display: grid;
   height: 100vh;
-  padding: 0 10px;
 `

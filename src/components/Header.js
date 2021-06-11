@@ -10,8 +10,9 @@ export default function Header({ children }) {
 }
 
 const Title = styled.h2`
-  background: papayawhip;
+  background: #bf665e;
+  color: white;
   padding: 10px;
-  box-shadow: 0 3px 3px #0003;
   text-align: center;
+  margin-bottom: 3px;
 `

@@ -28,6 +28,7 @@ const Wrapper = styled.section`
   gap: 20px;
   padding: 20px 10px;
   height: 100%;
+  background: #bfa27e;
 `
 const ImageContainer = styled.div`
   display: grid;
@@ -36,13 +37,15 @@ const ImageContainer = styled.div`
 `
 const Image = styled.img`
   border-radius: 50%;
-
+  border: solid #8c7558 10px;
   height: 200px;
   width: 200px;
   justify-self: center;
 `
 const Name = styled.p`
   text-align: center;
+  color: white;
+  font-style: italic;
 `
 const AboutMeContainer = styled.div`
   display: grid;
@@ -50,8 +53,10 @@ const AboutMeContainer = styled.div`
 `
 
 const AboutMe = styled.label`
-  background: papayawhip;
+  color: white;
+  font-weight: bold;
 `
+
 const Text = styled.textarea`
   background: #eee;
 `

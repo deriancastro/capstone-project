@@ -19,7 +19,6 @@ export default function Navigation({ pages }) {
           key={title}
           to={path}
           disabled={disabled}
-          color="steelblue"
         >
           {title}
         </NavButton>
@@ -31,14 +30,14 @@ export default function Navigation({ pages }) {
 const Nav = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  box-shadow: 0 -3px 3px #0003;
 `
 
 const NavButton = styled(Button)`
   border-radius: 0;
   width: 100%;
-  color: black;
+  color: white;
   text-align: center;
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 5px 5px 10px rgba(13, 13, 13, 0.2);
 `

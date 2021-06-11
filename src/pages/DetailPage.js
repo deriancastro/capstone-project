@@ -17,7 +17,9 @@ export default function DetailPage({ onNavigate, pageName }) {
         <img src={judoImage} alt="a Judo throw"></img>
       </Container>
       <Nav>
-        <Button onClick={onNavigate}>back</Button>
+        <DetailButton onClick={onNavigate} color="white">
+          back
+        </DetailButton>
       </Nav>
     </Wrapper>
   )
@@ -40,4 +42,7 @@ const Container = styled.section`
   img {
     border-radius: 20px;
   }
+`
+const DetailButton = styled(Button)`
+  background: #bf665e;
 `

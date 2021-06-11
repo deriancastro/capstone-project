@@ -19,7 +19,7 @@ const Wrapper = styled.section`
   align-content: center;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px #0006;
+  box-shadow: 0 4px 4px #0006;
   background: white;
 `
 const Text = styled.h3`

@@ -23,9 +23,11 @@ const ButtonStyled = styled.button`
   border: none;
   padding: 12px;
   cursor: pointer;
-  background: ${p => (p.isActive ? 'steelblue' : 'papayawhip')};
+  color: ${p => p.color};
+  background: ${p => (p.isActive ? '#bf665e' : '#d3d3d3')};
   &.active {
-    background: steelblue;
+    background: #bf665e;
+    z-index: -10;
   }
   &[disabled] {
     opacity: 0.6;
