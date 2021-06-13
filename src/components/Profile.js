@@ -59,4 +59,6 @@ const AboutMe = styled.label`
 
 const Text = styled.textarea`
   background: #eee;
+  padding: 20px 10px;
+  border-radius: 8px;
 `

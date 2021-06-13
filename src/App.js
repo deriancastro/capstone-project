@@ -54,7 +54,7 @@ export default function App() {
         </Route>
       </Switch>
 
-      <Route path={['/', 'tutorial', 'goals']}>
+      <Route exact path={['/', '/tutorial', '/goals']}>
         <Navigation
           pages={[
             { title: 'profile', path: '/' },
