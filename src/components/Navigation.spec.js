@@ -8,9 +8,9 @@ describe('Navigation', () => {
       <MemoryRouter>
         <Navigation
           pages={[
-            { title: 'Home', path: '/' },
-            { title: 'Goals', path: '/goals' },
-            { title: 'Tutorial', path: '/tutorial' },
+            { title: 'profile', path: '/' },
+            { title: 'tutorial', path: '/tutorial' },
+            { title: 'goals', path: '/goals' },
           ]}
         />
       </MemoryRouter>
@@ -18,5 +18,8 @@ describe('Navigation', () => {
 
     const navButtonList = screen.getAllByRole('link')
     expect(navButtonList).toHaveLength(3)
+    expect(navButtonList[0]).toHaveTextContent('profile')
+    expect(navButtonList[1]).toHaveTextContent('tutorial')
+    expect(navButtonList[2]).toHaveTextContent('goals')
   })
 })

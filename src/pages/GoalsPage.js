@@ -13,7 +13,6 @@ GoalsPage.propTypes = {
     })
   ),
   onCheckGoal: PropTypes.func,
-  onNavigate: PropTypes.func.isRequired,
 }
 
 export default function GoalsPage({ pageName, goalsList, onCheckGoal }) {

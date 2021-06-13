@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 Profile.propTypes = {
   image: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   text: PropTypes.node,
 }
 
@@ -16,7 +16,7 @@ export default function Profile({ image, name, text }) {
       </ImageContainer>
       <AboutMeContainer>
         <AboutMe>About me: </AboutMe>
-        <Text value={text}></Text>
+        <Text defaultValue={text}></Text>
       </AboutMeContainer>
     </Wrapper>
   )
@@ -33,7 +33,7 @@ const Wrapper = styled.section`
 const ImageContainer = styled.div`
   display: grid;
   gap: 10px;
-  justify-content: center;
+  justify-items: center;
 `
 const Image = styled.img`
   border-radius: 50%;

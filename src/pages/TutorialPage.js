@@ -5,17 +5,17 @@ import Card from '../components/Card'
 
 TutorialPage.propTypes = {
   pageName: PropTypes.string,
-  techNamesList: PropTypes.array,
+  techniqueList: PropTypes.array,
   onDetail: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({ pageName, techNamesList, onDetail }) {
+export default function TutorialPage({ pageName, techniqueList, onDetail }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
       <ScrollContainer>
         <List>
-          {techNamesList.map(techName => (
+          {techniqueList.map(techName => (
             <li key={techName}>
               <Card techName={techName} onDetail={() => onDetail(techName)} />
             </li>

@@ -20,8 +20,6 @@ describe('Profile', () => {
     expect(name).toBeInTheDocument()
 
     const text = screen.getByRole('textbox')
-    expect(text).toHaveTextContent(
-      'hey! watch out because I´m an uchimata machine'
-    )
+    expect(text).toHaveValue('hey! watch out because I´m an uchimata machine')
   })
 })

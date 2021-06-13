@@ -10,12 +10,12 @@ import goalsData from './data/goalsData.json'
 import profileData from './data/profileData.json'
 
 export default function App() {
-  const [currentTechName, setCurrentTechName] = useState('')
+  const [currentTechnique, setCurrentTechnique] = useState('')
   const [goalsList, setGoalsList] = useState(goalsData)
   const { push } = useHistory()
   const profileInfo = profileData
 
-  const techNamesList = [
+  const techniqueList = [
     'Uchimata',
     'Harai goshi',
     'Seoi nage',
@@ -35,13 +35,13 @@ export default function App() {
         <Route path="/tutorial">
           <TutorialPage
             pageName="TUTORIAL"
-            techNamesList={techNamesList}
+            techniqueList={techniqueList}
             onDetail={showDetailPage}
           />
         </Route>
         <Route path="/detail">
           <DetailPage
-            pageName={currentTechName}
+            pageName={currentTechnique}
             onNavigate={showTutorialPage}
           />
         </Route>
@@ -67,7 +67,7 @@ export default function App() {
   )
 
   function showDetailPage(techName) {
-    setCurrentTechName(techName)
+    setCurrentTechnique(techName)
     push('/detail')
   }
   function showTutorialPage() {

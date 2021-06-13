@@ -9,7 +9,7 @@ describe('TutorialPage', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techNamesList={[
+        techniqueList={[
           'Uchimata',
           'Harai goshi',
           'Seoi nage',
@@ -37,7 +37,7 @@ describe('TutorialPage', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techNamesList={['Uchimata']}
+        techniqueList={['Uchimata']}
         onDetail={onDetail}
         onNavigate={noop}
       />
