@@ -8,23 +8,25 @@ import ProfilePage from './pages/ProfilePage'
 import GoalsPage from './pages/GoalsPage'
 import goalsData from './data/goalsData.json'
 import profileData from './data/profileData.json'
+import techniqueData from './data/techniqueData.json'
 
 export default function App() {
-  const [currentTechnique, setCurrentTechnique] = useState('')
+  const [currentTechnique, setCurrentTechnique] = useState({})
   const [goalsList, setGoalsList] = useState(goalsData)
   const { push } = useHistory()
   const profileInfo = profileData
+  const techniqueList = techniqueData
 
-  const techniqueList = [
-    'Uchimata',
-    'Harai goshi',
-    'Seoi nage',
-    'Ko uchi gari',
-    'O soto gari',
-    'Kubi nage',
-    'Yoko tomoe',
-    'Kata guruma',
-  ]
+  // const techniqueList = [
+  //   'Uchimata',
+  //   'Harai goshi',
+  //   'Seoi nage',
+  //   'Ko uchi gari',
+  //   'O soto gari',
+  //   'Kubi nage',
+  //   'Yoko tomoe',
+  //   'Kata guruma',
+  // ]
 
   return (
     <AppGrid>
@@ -41,7 +43,7 @@ export default function App() {
         </Route>
         <Route path="/detail">
           <DetailPage
-            pageName={currentTechnique}
+            currentTechnique={currentTechnique}
             onNavigate={showTutorialPage}
           />
         </Route>
@@ -66,8 +68,8 @@ export default function App() {
     </AppGrid>
   )
 
-  function showDetailPage(techName) {
-    setCurrentTechnique(techName)
+  function showDetailPage({ techName, url }) {
+    setCurrentTechnique({ techName, url })
     push('/detail')
   }
   function showTutorialPage() {

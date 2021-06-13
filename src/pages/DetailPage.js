@@ -1,20 +1,21 @@
-import styled from 'styled-components/macro'
+import styled, { isStyledComponent } from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import ReactPlayer from 'react-player/youtube'
 import Header from '../components/Header'
 import Button from '../components/Button'
-import judoImage from '../img/judo.jpg'
 
 DetailPage.propTypes = {
-  pageName: PropTypes.string,
+  currentTechnique: PropTypes.object,
   onNavigate: PropTypes.func.isRequired,
 }
 
-export default function DetailPage({ onNavigate, pageName }) {
+export default function DetailPage({ onNavigate, currentTechnique }) {
+  const { techName, url } = currentTechnique
   return (
     <Wrapper>
-      <Header>{pageName}</Header>
+      <Header>{techName}</Header>
       <Container>
-        <img src={judoImage} alt="a Judo throw"></img>
+        <ReactPlayer url={url} width="100%" height="90%" />
       </Container>
       <Nav>
         <DetailButton onClick={onNavigate} color="white">
@@ -36,13 +37,10 @@ const Nav = styled.nav`
 `
 const Container = styled.section`
   display: grid;
-  justify-content: center;
   align-items: center;
-
-  img {
-    border-radius: 20px;
-  }
+  padding: 10px;
 `
+
 const DetailButton = styled(Button)`
   background: #bf665e;
 `

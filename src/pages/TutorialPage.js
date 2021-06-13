@@ -5,7 +5,13 @@ import Card from '../components/Card'
 
 TutorialPage.propTypes = {
   pageName: PropTypes.string,
-  techniqueList: PropTypes.array,
+  techniqueList: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      id: PropTypes.string,
+      url: PropTypes.string,
+    })
+  ),
   onDetail: PropTypes.func.isRequired,
 }
 
@@ -15,9 +21,9 @@ export default function TutorialPage({ pageName, techniqueList, onDetail }) {
       <Header>{pageName}</Header>
       <ScrollContainer>
         <List>
-          {techniqueList.map(techName => (
-            <li key={techName}>
-              <Card techName={techName} onDetail={() => onDetail(techName)} />
+          {techniqueList.map(({ name, id, url }) => (
+            <li key={id}>
+              <Card techName={name} url={url} onDetail={onDetail} />
             </li>
           ))}
         </List>

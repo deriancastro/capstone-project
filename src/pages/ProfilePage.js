@@ -18,13 +18,11 @@ export default function ProfilePage({ pageName, profileInfo }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
-      <Container>
-        <Profile
-          image={profileInfo[0].image}
-          name={profileInfo[0].name}
-          text={profileInfo[0].text}
-        />
-      </Container>
+      <Profile
+        image={profileInfo[0].image}
+        name={profileInfo[0].name}
+        text={profileInfo[0].text}
+      />
     </Wrapper>
   )
 }
@@ -33,7 +31,4 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 60px auto;
   height: calc(100vh - 60px);
-`
-const Container = styled.div`
-  background: white;
 `

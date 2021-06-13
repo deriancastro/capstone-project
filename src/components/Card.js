@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 
 Card.propTypes = {
   techName: PropTypes.string,
+  url: PropTypes.string,
   onDetail: PropTypes.func.isRequired,
 }
 
-export default function Card({ techName, onDetail }) {
+export default function Card({ techName, onDetail, url }) {
   return (
-    <Wrapper onClick={onDetail} data-testid="card">
+    <Wrapper onClick={handleOnDetail} url={url} data-testid="card">
       <Text>{techName}</Text>
     </Wrapper>
   )
+  function handleOnDetail() {
+    onDetail({ techName, url })
+  }
 }
 
 const Wrapper = styled.section`
