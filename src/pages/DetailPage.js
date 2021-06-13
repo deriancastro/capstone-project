@@ -17,7 +17,9 @@ export default function DetailPage({ onNavigate, pageName }) {
         <img src={judoImage} alt="a Judo throw"></img>
       </Container>
       <Nav>
-        <Button onClick={onNavigate}>back</Button>
+        <DetailButton onClick={onNavigate} color="white">
+          back
+        </DetailButton>
       </Nav>
     </Wrapper>
   )
@@ -25,8 +27,7 @@ export default function DetailPage({ onNavigate, pageName }) {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto 50px;
-  gap: 3px;
+  grid-template-rows: 60px auto 60px;
   height: 100vh;
 `
 const Nav = styled.nav`
@@ -41,4 +42,7 @@ const Container = styled.section`
   img {
     border-radius: 20px;
   }
+`
+const DetailButton = styled(Button)`
+  background: #bf665e;
 `

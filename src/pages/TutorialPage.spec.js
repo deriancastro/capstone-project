@@ -9,7 +9,7 @@ describe('TutorialPage', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techNamesList={[
+        techniqueList={[
           'Uchimata',
           'Harai goshi',
           'Seoi nage',
@@ -37,7 +37,7 @@ describe('TutorialPage', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techNamesList={['Uchimata']}
+        techniqueList={['Uchimata']}
         onDetail={onDetail}
         onNavigate={noop}
       />
@@ -46,21 +46,5 @@ describe('TutorialPage', () => {
     const card = screen.getByTestId('card')
     userEvent.click(card)
     expect(onDetail).toHaveBeenCalledTimes(1)
-  })
-
-  it('calls onNavigate correctly', () => {
-    const onNavigate = jest.fn()
-    render(
-      <TutorialPage
-        pageName="TUTORIAL"
-        techNamesList={['Uchimata']}
-        onDetail={noop}
-        onNavigate={onNavigate}
-      />
-    )
-
-    const button = screen.getByRole('button')
-    userEvent.click(button)
-    expect(onNavigate).toHaveBeenCalledTimes(1)
   })
 })
