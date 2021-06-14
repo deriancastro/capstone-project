@@ -30,7 +30,7 @@ const Wrapper = styled.section`
   height: calc(100vh - 120px);
   background: #bfa27e;
 
-  @media (min-width: 400px) {
+  @media (min-width: 600px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-content: center;
@@ -48,7 +48,7 @@ const Image = styled.img`
   width: 200px;
   justify-self: center;
 
-  @media (min-width: 400px) {
+  @media (min-width: 600px) {
     height: 190px;
     width: 190px;
   }

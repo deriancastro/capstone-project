@@ -1,4 +1,4 @@
-import styled, { isStyledComponent } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import ReactPlayer from 'react-player/youtube'
 import Header from '../components/Header'
