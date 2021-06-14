@@ -24,11 +24,17 @@ export default function Profile({ image, name, text }) {
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-rows: min-content;
+  grid-template-rows: 1fr 1fr;
   gap: 20px;
   padding: 20px 10px;
-  height: 100%;
+  height: calc(100vh - 120px);
   background: #bfa27e;
+
+  @media (min-width: 400px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+  }
 `
 const ImageContainer = styled.div`
   display: grid;
@@ -41,6 +47,11 @@ const Image = styled.img`
   height: 200px;
   width: 200px;
   justify-self: center;
+
+  @media (min-width: 400px) {
+    height: 190px;
+    width: 190px;
+  }
 `
 const Name = styled.p`
   text-align: center;
@@ -59,4 +70,6 @@ const AboutMe = styled.label`
 
 const Text = styled.textarea`
   background: #eee;
+  padding: 20px 10px;
+  border-radius: 8px;
 `
