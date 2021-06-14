@@ -24,11 +24,16 @@ export default function Profile({ image, name, text }) {
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-rows: min-content;
+  grid-template-rows: 1fr 1fr;
   gap: 20px;
   padding: 20px 10px;
-  height: 100%;
+  height: calc(100vh - 120px);
   background: #bfa27e;
+
+  @media (min-width: 400px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `
 const ImageContainer = styled.div`
   display: grid;

@@ -17,17 +17,6 @@ export default function App() {
   const profileInfo = profileData
   const techniqueList = techniqueData
 
-  // const techniqueList = [
-  //   'Uchimata',
-  //   'Harai goshi',
-  //   'Seoi nage',
-  //   'Ko uchi gari',
-  //   'O soto gari',
-  //   'Kubi nage',
-  //   'Yoko tomoe',
-  //   'Kata guruma',
-  // ]
-
   return (
     <AppGrid>
       <Switch>
@@ -87,6 +76,6 @@ export default function App() {
 
 const AppGrid = styled.div`
   display: grid;
-  grid-template-rows: auto 56px;
+  grid-template-rows: auto 60px;
   height: 100vh;
 `
