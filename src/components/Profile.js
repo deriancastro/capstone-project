@@ -33,6 +33,7 @@ const Wrapper = styled.section`
   @media (min-width: 400px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-content: center;
   }
 `
 const ImageContainer = styled.div`
@@ -46,6 +47,11 @@ const Image = styled.img`
   height: 200px;
   width: 200px;
   justify-self: center;
+
+  @media (min-width: 400px) {
+    height: 190px;
+    width: 190px;
+  }
 `
 const Name = styled.p`
   text-align: center;
