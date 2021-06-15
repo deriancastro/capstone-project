@@ -30,6 +30,7 @@ export default function Navigation({ pages }) {
 const Nav = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  box-shadow: 0 -3px 3px #0003;
 `
 
 const NavButton = styled(Button)`

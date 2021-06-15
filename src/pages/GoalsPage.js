@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
+import GoalsForm from '../components/GoalsForm'
 import Goal from '../components/Goal'
 
 GoalsPage.propTypes = {
@@ -13,12 +14,19 @@ GoalsPage.propTypes = {
     })
   ),
   onCheckGoal: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
 }
 
-export default function GoalsPage({ pageName, goalsList, onCheckGoal }) {
+export default function GoalsPage({
+  pageName,
+  goalsList,
+  onCheckGoal,
+  onSubmit,
+}) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
+      <GoalsForm onSubmit={onSubmit} />
       <ScrollContainer>
         <List>
           {goalsList.map(({ text, id, isChecked }, index) => (
@@ -39,7 +47,7 @@ export default function GoalsPage({ pageName, goalsList, onCheckGoal }) {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto;
+  grid-template-rows: 60px 90px auto;
   height: calc(100vh - 60px);
 `
 const ScrollContainer = styled.section`

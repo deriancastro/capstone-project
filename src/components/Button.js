@@ -31,7 +31,7 @@ const ButtonStyled = styled.button`
     z-index: -10;
   }
   &[disabled] {
-    opacity: 0.6;
+    opacity: 0.4;
     pointer-events: none;
   }
 `

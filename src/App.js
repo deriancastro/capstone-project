@@ -6,13 +6,13 @@ import TutorialPage from './pages/TutorialPage'
 import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage'
 import GoalsPage from './pages/GoalsPage'
-import goalsData from './data/goalsData.json'
+// import goalsData from './data/goalsData.json'
 import profileData from './data/profileData.json'
 import techniqueData from './data/techniqueData.json'
 
 export default function App() {
   const [currentTechnique, setCurrentTechnique] = useState({})
-  const [goalsList, setGoalsList] = useState(goalsData)
+  const [goalsList, setGoalsList] = useState([])
   const { push } = useHistory()
   const profileInfo = profileData
   const techniqueList = techniqueData
@@ -41,6 +41,7 @@ export default function App() {
             pageName="GOALS"
             goalsList={goalsList}
             onCheckGoal={handleGoal}
+            onSubmit={handleNewGoal}
           />
         </Route>
       </Switch>
@@ -61,9 +62,11 @@ export default function App() {
     setCurrentTechnique({ techName, url })
     push('/detail')
   }
+
   function showTutorialPage() {
     push('/tutorial')
   }
+
   function handleGoal(index) {
     const goalToUpdate = goalsList[index]
     setGoalsList([
@@ -71,6 +74,10 @@ export default function App() {
       { ...goalToUpdate, isChecked: !goalToUpdate.isChecked },
       ...goalsList.slice(index + 1),
     ])
+  }
+
+  function handleNewGoal(newGoal) {
+    setGoalsList([newGoal, ...goalsList])
   }
 }
 
