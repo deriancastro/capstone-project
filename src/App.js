@@ -1,5 +1,6 @@
 import { Switch, Route, useHistory } from 'react-router-dom'
 import { useState } from 'react'
+import useLocalStorage from './sort/useLocalStorage'
 import styled from 'styled-components/macro'
 import Navigation from './components/Navigation'
 import TutorialPage from './pages/TutorialPage'
@@ -10,7 +11,7 @@ import profileData from './data/profileData.json'
 import techniqueData from './data/techniqueData.json'
 
 export default function App() {
-  const [goalsList, setGoalsList] = useState([])
+  const [goalsList, setGoalsList] = useLocalStorage('goals', [])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const profileInfo = profileData
