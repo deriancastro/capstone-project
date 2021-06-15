@@ -47,7 +47,7 @@ export default function GoalsPage({
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px 90px auto;
+  grid-template-rows: 60px 105px auto;
   height: calc(100vh - 60px);
 `
 const ScrollContainer = styled.section`

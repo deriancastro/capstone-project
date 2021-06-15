@@ -12,10 +12,10 @@ export default function Goal({ goalText, goalNumber, onCheckGoal, isChecked }) {
   return (
     <Wrapper data-testid="goal">
       <ItemNumber data-testid="itemNumber">{goalNumber}.</ItemNumber>
-      <CheckBox>
+      <Label>
         <Text>{goalText}</Text>
         <input onChange={handleCheckGoal} type="checkbox" checked={isChecked} />
-      </CheckBox>
+      </Label>
     </Wrapper>
   )
 
@@ -37,7 +37,7 @@ const ItemNumber = styled.span`
   width: 3.5ch;
 `
 
-const CheckBox = styled.label`
+const Label = styled.label`
   display: grid;
   width: 100%;
   gap: 10px;

@@ -14,5 +14,4 @@ const Title = styled.h2`
   color: white;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 3px 3px #0003;
 `

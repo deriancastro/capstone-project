@@ -62,6 +62,7 @@ const Label = styled.label`
   input {
     width: 100%;
     border-radius: 8px;
+    padding: 8px;
   }
 `
 
