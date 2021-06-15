@@ -6,13 +6,12 @@ import TutorialPage from './pages/TutorialPage'
 import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage'
 import GoalsPage from './pages/GoalsPage'
-// import goalsData from './data/goalsData.json'
 import profileData from './data/profileData.json'
 import techniqueData from './data/techniqueData.json'
 
 export default function App() {
-  const [currentTechnique, setCurrentTechnique] = useState({})
   const [goalsList, setGoalsList] = useState([])
+  const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const profileInfo = profileData
   const techniqueList = techniqueData
