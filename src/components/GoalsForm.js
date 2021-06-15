@@ -67,6 +67,7 @@ const Label = styled.label`
 `
 
 const GoalButton = styled(Button)`
+  padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
   background: green;

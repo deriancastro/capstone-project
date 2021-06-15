@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import GoalsForm from '../components/GoalsForm'
 import Goal from '../components/Goal'
+import DeleteButton from '../components/DeleteButton'
 
 GoalsPage.propTypes = {
   pageName: PropTypes.string,
@@ -15,6 +16,7 @@ GoalsPage.propTypes = {
   ),
   onCheckGoal: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func,
 }
 
 export default function GoalsPage({
@@ -22,6 +24,7 @@ export default function GoalsPage({
   goalsList,
   onCheckGoal,
   onSubmit,
+  deleteGoal,
 }) {
   return (
     <Wrapper>
@@ -30,14 +33,15 @@ export default function GoalsPage({
       <ScrollContainer>
         <List>
           {goalsList.map(({ text, id, isChecked }, index) => (
-            <li key={id}>
+            <ListItem key={id}>
+              <DeleteButton deleteGoal={deleteGoal} index={index} />
               <Goal
                 goalText={text}
                 goalNumber={index + 1}
                 onCheckGoal={onCheckGoal}
                 isChecked={isChecked}
               />
-            </li>
+            </ListItem>
           ))}
         </List>
       </ScrollContainer>
@@ -58,4 +62,10 @@ const List = styled.ul`
   display: grid;
   gap: 20px;
   list-style: none;
+`
+const ListItem = styled.li`
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  gap: 10px;
 `

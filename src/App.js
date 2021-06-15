@@ -42,6 +42,7 @@ export default function App() {
             goalsList={goalsList}
             onCheckGoal={handleGoal}
             onSubmit={handleNewGoal}
+            deleteGoal={handleDeleteGoal}
           />
         </Route>
       </Switch>
@@ -78,6 +79,11 @@ export default function App() {
 
   function handleNewGoal(newGoal) {
     setGoalsList([newGoal, ...goalsList])
+  }
+
+  function handleDeleteGoal(index) {
+    const goalToDelete = goalsList[index]
+    setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
   }
 }
 
