@@ -20,7 +20,6 @@ describe('TutorialPage', () => {
           'Kata guruma',
         ]}
         onDetail={noop}
-        onNavigate={noop}
       />
     )
 
@@ -39,7 +38,6 @@ describe('TutorialPage', () => {
         pageName="TUTORIAL"
         techniqueList={['Uchimata']}
         onDetail={onDetail}
-        onNavigate={noop}
       />
     )
 
