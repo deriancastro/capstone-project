@@ -15,7 +15,14 @@ export default function DetailPage({ onNavigate, currentTechnique }) {
     <Wrapper>
       <Header>{techName}</Header>
       <Container>
-        <ReactPlayer url={url} width="100%" height="90%" />
+        <ReactPlayer
+          url={url}
+          width="100%"
+          height="90%"
+          config={{
+            youtube: { playerVars: { controls: true, showinfo: 1 } },
+          }}
+        />
       </Container>
       <Nav>
         <DetailButton onClick={onNavigate} color="white">
@@ -35,7 +42,7 @@ const Nav = styled.nav`
   display: grid;
   box-shadow: 0 -3px 3px #0003;
 `
-const Container = styled.section`
+const Container = styled.div`
   display: grid;
   align-items: center;
   padding: 10px;

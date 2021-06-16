@@ -47,7 +47,6 @@ export default function GoalsForm({ onSubmit }) {
 
 const Form = styled.form`
   padding: 20px 10px;
-
   display: grid;
   grid-template-columns: auto min-content;
   height: min-content;

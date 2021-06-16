@@ -82,7 +82,6 @@ export default function App() {
   }
 
   function handleDeleteGoal(index) {
-    const goalToDelete = goalsList[index]
     setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
   }
 }
