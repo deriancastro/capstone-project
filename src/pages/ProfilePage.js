@@ -12,14 +12,17 @@ ProfilePage.propTypes = {
       text: PropTypes.node,
     })
   ),
+  image: PropTypes.string,
+  upload: PropTypes.func.isRequired,
 }
 
-export default function ProfilePage({ pageName, profileInfo }) {
+export default function ProfilePage({ pageName, profileInfo, image, upload }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
       <Profile
-        image={profileInfo[0].image}
+        image={image}
+        upload={upload}
         name={profileInfo[0].name}
         text={profileInfo[0].text}
       />

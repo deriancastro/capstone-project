@@ -1,6 +1,7 @@
 import { Switch, Route, useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import useLocalStorage from './sort/useLocalStorage'
+import axios from 'axios'
 import styled from 'styled-components/macro'
 import Navigation from './components/Navigation'
 import TutorialPage from './pages/TutorialPage'
@@ -10,7 +11,11 @@ import GoalsPage from './pages/GoalsPage'
 import profileData from './data/profileData.json'
 import techniqueData from './data/techniqueData.json'
 
+const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
+const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
+
 export default function App() {
+  const [image, setImage] = useState('')
   const [goalsList, setGoalsList] = useLocalStorage('goals', [])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
@@ -21,7 +26,12 @@ export default function App() {
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <ProfilePage pageName="PROFILE" profileInfo={profileInfo} />
+          <ProfilePage
+            pageName="PROFILE"
+            image={image}
+            upload={upload}
+            profileInfo={profileInfo}
+          />
         </Route>
         <Route path="/tutorial">
           <TutorialPage
@@ -83,6 +93,27 @@ export default function App() {
 
   function handleDeleteGoal(index) {
     setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
+  }
+
+  function upload(event) {
+    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`
+
+    const formData = new FormData()
+    formData.append('file', event.target.files[0])
+    formData.append('upload_preset', PRESET)
+
+    axios
+      .post(url, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      })
+      .then(onImageSave)
+      .catch(err => console.error(err))
+  }
+
+  function onImageSave(response) {
+    setImage(response.data.url)
   }
 }
 

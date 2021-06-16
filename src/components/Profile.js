@@ -3,15 +3,20 @@ import PropTypes from 'prop-types'
 
 Profile.propTypes = {
   image: PropTypes.string,
+  upload: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   text: PropTypes.node,
 }
 
-export default function Profile({ image, name, text }) {
+export default function Profile({ image, name, text, upload }) {
   return (
     <Wrapper data-testid="profile">
       <ImageContainer>
-        <Image src={image} alt="a Judo throw" />
+        {image ? (
+          <Image src={image} alt="" />
+        ) : (
+          <input type="file" name="file" onChange={upload} />
+        )}
         <Name>{name}</Name>
       </ImageContainer>
       <AboutMeContainer>
