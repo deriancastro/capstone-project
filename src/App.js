@@ -1,6 +1,6 @@
 import { Switch, Route, useHistory } from 'react-router-dom'
 import { useState } from 'react'
-import useLocalStorage from './sort/useLocalStorage'
+import useLocalStorage from './lib/useLocalStorage'
 import axios from 'axios'
 import styled from 'styled-components/macro'
 import Navigation from './components/Navigation'
