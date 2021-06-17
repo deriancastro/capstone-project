@@ -26,11 +26,16 @@ export default function ProfileForm({ onSubmit, image, upload }) {
       </Label>
       <Label>
         about you:
+        <small> - optional</small>
         <input
           name="aboutYou"
           type="textarea"
           placeholder="what do you want others to know about you?"
         />
+      </Label>
+      <Label>
+        your photo:
+        <small> - optional</small>
       </Label>
       <ImageContainer>
         {image ? (
