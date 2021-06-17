@@ -3,25 +3,20 @@ import PropTypes from 'prop-types'
 
 Profile.propTypes = {
   image: PropTypes.string,
-  upload: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  text: PropTypes.node,
+  fullName: PropTypes.string.isRequired,
+  aboutYou: PropTypes.node,
 }
 
-export default function Profile({ image, name, text, upload }) {
+export default function Profile({ image, fullName, aboutYou }) {
   return (
     <Wrapper data-testid="profile">
       <ImageContainer>
-        {image ? (
-          <Image src={image} alt="" />
-        ) : (
-          <input type="file" name="file" onChange={upload} />
-        )}
-        <Name>{name}</Name>
+        <Image src={image} alt="" />
+        <Name>{fullName}</Name>
       </ImageContainer>
       <AboutMeContainer>
         <AboutMe>About me: </AboutMe>
-        <Text defaultValue={text}></Text>
+        <Text>{aboutYou}</Text>
       </AboutMeContainer>
     </Wrapper>
   )
@@ -34,6 +29,7 @@ const Wrapper = styled.section`
   padding: 20px 10px;
   height: calc(100vh - 120px);
   background: #bfa27e;
+  position: relative;
 
   @media (min-width: 600px) {
     display: grid;
@@ -73,8 +69,9 @@ const AboutMe = styled.label`
   font-weight: bold;
 `
 
-const Text = styled.textarea`
-  background: #eee;
-  padding: 20px 10px;
+const Text = styled.div`
+  padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 4px #0006;
+  background: white;
 `

@@ -4,11 +4,11 @@ import useLocalStorage from './lib/useLocalStorage'
 import axios from 'axios'
 import styled from 'styled-components/macro'
 import Navigation from './components/Navigation'
+import HomePage from './pages/HomePage'
 import TutorialPage from './pages/TutorialPage'
 import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage'
 import GoalsPage from './pages/GoalsPage'
-import profileData from './data/profileData.json'
 import techniqueData from './data/techniqueData.json'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -16,21 +16,28 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
 export default function App() {
   const [image, setImage] = useState('')
+  const [profile, setProfile] = useLocalStorage('profile', [])
   const [goalsList, setGoalsList] = useLocalStorage('goals', [])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
-  const profileInfo = profileData
   const techniqueList = techniqueData
-
+  console.log(profile)
   return (
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <ProfilePage
-            pageName="PROFILE"
+          <HomePage
+            onSubmit={handleSubmit}
             image={image}
             upload={upload}
-            profileInfo={profileInfo}
+            signIn={handleSignIn}
+          ></HomePage>
+        </Route>
+        <Route path="/profile">
+          <ProfilePage
+            pageName="PROFILE"
+            profileInfo={profile}
+            logOut={handleLogOut}
           />
         </Route>
         <Route path="/tutorial">
@@ -57,10 +64,10 @@ export default function App() {
         </Route>
       </Switch>
 
-      <Route exact path={['/', '/tutorial', '/goals']}>
+      <Route exact path={['/profile', '/tutorial', '/goals']}>
         <Navigation
           pages={[
-            { title: 'profile', path: '/' },
+            { title: 'profile', path: '/profile' },
             { title: 'tutorial', path: '/tutorial' },
             { title: 'goals', path: '/goals' },
           ]}
@@ -68,6 +75,14 @@ export default function App() {
       </Route>
     </AppGrid>
   )
+
+  function handleSignIn() {
+    push('/profile')
+  }
+
+  function handleSubmit(newProfile) {
+    setProfile({ ...newProfile, ...profile })
+  }
 
   function showDetailPage({ techName, url }) {
     setCurrentTechnique({ techName, url })
@@ -114,6 +129,11 @@ export default function App() {
 
   function onImageSave(response) {
     setImage(response.data.url)
+    setProfile({ ...profile, image: response.data.url })
+  }
+
+  function handleLogOut() {
+    push('/')
   }
 }
 

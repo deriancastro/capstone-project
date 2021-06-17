@@ -8,9 +8,10 @@ ProfileForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   image: PropTypes.string,
   upload: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
 }
 
-export default function ProfileForm({ onSubmit, image, upload }) {
+export default function ProfileForm({ onSubmit, image, upload, signIn }) {
   const [isActive, setIsActive] = useState(true)
 
   return (
@@ -52,16 +53,15 @@ export default function ProfileForm({ onSubmit, image, upload }) {
     const form = event.target
     const fullName = form.elements.fullName.value
     const aboutYou = form.elements.aboutYou.value
-    const image = form.elements.file.value
 
     const newProfile = {
       id: uuidv4(),
       fullName: fullName,
       aboutYou: aboutYou,
-      image: image,
     }
 
     onSubmit(newProfile)
+    signIn()
     form.reset()
     event.target.elements.fullName.focus()
     setIsActive(true)

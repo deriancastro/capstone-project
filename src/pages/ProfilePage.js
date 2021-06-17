@@ -1,31 +1,28 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
+import LogOutButton from '../components/LogOutButton'
 import Profile from '../components/Profile'
 
 ProfilePage.propTypes = {
   pageName: PropTypes.string,
   profileInfo: PropTypes.arrayOf(
     PropTypes.shape({
+      fullName: PropTypes.string,
+      aboutYou: PropTypes.string,
       image: PropTypes.string,
-      name: PropTypes.string,
-      text: PropTypes.node,
+      logOut: PropTypes.func.isRequired,
     })
   ),
-  image: PropTypes.string,
-  upload: PropTypes.func.isRequired,
 }
 
-export default function ProfilePage({ pageName, profileInfo, image, upload }) {
+export default function ProfilePage({ pageName, profileInfo, logOut }) {
+  const { fullName, aboutYou, image } = profileInfo
   return (
     <Wrapper>
       <Header>{pageName}</Header>
-      <Profile
-        image={image}
-        upload={upload}
-        name={profileInfo[0].name}
-        text={profileInfo[0].text}
-      />
+      <LogOutButton logOut={logOut} />
+      <Profile image={image} fullName={fullName} aboutYou={aboutYou} />
     </Wrapper>
   )
 }
