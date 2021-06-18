@@ -57,6 +57,7 @@ const Form = styled.form`
 const Label = styled.label`
   color: white;
   font-weight: bold;
+  padding: 0 5px;
 
   input {
     width: 100%;

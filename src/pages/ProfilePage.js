@@ -6,14 +6,15 @@ import Profile from '../components/Profile'
 
 ProfilePage.propTypes = {
   pageName: PropTypes.string,
-  profileInfo: PropTypes.arrayOf(
+  profileInfo: PropTypes.objectOf(
     PropTypes.shape({
+      id: PropTypes.string,
       fullName: PropTypes.string,
       aboutYou: PropTypes.string,
       image: PropTypes.string,
-      logOut: PropTypes.func.isRequired,
     })
   ),
+  logOut: PropTypes.func.isRequired,
 }
 
 export default function ProfilePage({ pageName, profileInfo, logOut }) {

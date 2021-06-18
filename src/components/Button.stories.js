@@ -19,3 +19,10 @@ ActiveButton.args = {
   children: 'Back',
   isActive: true,
 }
+
+export const DesabledButton = Template.bind({})
+ActiveButton.args = {
+  children: 'Back',
+  isActive: true,
+  desabled: true,
+}
