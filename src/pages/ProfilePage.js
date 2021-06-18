@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
-import LogOutButton from '../components/LogOutButton'
+import LogOutButton from '../components/LogoutButton'
 import Profile from '../components/Profile'
 
 ProfilePage.propTypes = {

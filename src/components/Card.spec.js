@@ -3,11 +3,15 @@ import userEvent from '@testing-library/user-event'
 import Card from './Card'
 
 describe('Card', () => {
+  const techName = 'uchimata'
+  const url = 'https://youtu.be/hNV9Oh2B_Kc'
   const noop = () => {}
 
   it('renders a text with the name of the judo technique ', () => {
-    render(<Card techName="Uchimata" onDetail={noop} />)
-    expect(screen.getByText('Uchimata')).toBeInTheDocument()
+    render(<Card techName={techName} url={url} onDetail={noop} />)
+
+    const card = screen.getByTestId('card')
+    expect(card).toHaveTextContent('uchimata')
   })
 
   it('calls onDetail correctly', () => {

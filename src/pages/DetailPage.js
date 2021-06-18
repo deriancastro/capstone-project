@@ -5,7 +5,12 @@ import Header from '../components/Header'
 import Button from '../components/Button'
 
 DetailPage.propTypes = {
-  currentTechnique: PropTypes.object,
+  currentTechnique: PropTypes.objectOf(
+    PropTypes.shape({
+      techName: PropTypes.string,
+      url: PropTypes.string,
+    })
+  ),
   onNavigate: PropTypes.func.isRequired,
 }
 
@@ -14,7 +19,7 @@ export default function DetailPage({ onNavigate, currentTechnique }) {
   return (
     <Wrapper>
       <Header>{techName}</Header>
-      <Container>
+      <Container data-testid="video">
         <ReactPlayer
           url={url}
           width="100%"

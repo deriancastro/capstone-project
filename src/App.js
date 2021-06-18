@@ -16,13 +16,12 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
 export default function App() {
   const [image, setImage] = useState('')
-  // const [currentProfile, setCurrentProfile] = useState({})
   const [profile, setProfile] = useLocalStorage('profile', {})
   const [goalsList, setGoalsList] = useLocalStorage('goals', [])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
-  // console.log(currentProfile)
+
   console.log(profile)
   return (
     <AppGrid>

@@ -1,24 +1,17 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import techniqueData from '../data/techniqueData.json'
 import TutorialPage from './TutorialPage'
 
 describe('TutorialPage', () => {
   const noop = () => {}
+  const techniqueList = techniqueData
 
   it('renders 1 heading and 8 cards', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techniqueList={[
-          'Uchimata',
-          'Harai goshi',
-          'Seoi nage',
-          'Ko uchi gari',
-          'O soto gari',
-          'Kubi nage',
-          'Yoko tomoe',
-          'Kata guruma',
-        ]}
+        techniqueList={techniqueList}
         onDetail={noop}
       />
     )

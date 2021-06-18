@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { ReactComponent as LogOut } from '../assets/logout.svg'
 
-LogOutButton.propTypes = {
+LogoutButton.propTypes = {
   logOut: PropTypes.func.isRequired,
 }
 
-export default function LogOutButton({ logOut }) {
+export default function LogoutButton({ logOut }) {
   return (
     <Button onClick={logOut}>
       <SVG />

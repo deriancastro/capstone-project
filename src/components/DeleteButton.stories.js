@@ -1,12 +1,11 @@
+import DeleteButton from './DeleteButton'
 
-  import DeleteButton from './DeleteButton'
-  export default {
-      title: 'DeleteButton',
-      component: DeleteButton
-  }
-    
-  const Template = args => <DeleteButton {...args} />
-    
-  export const Default = Template.bind({})
-  Default.args = {}
-        
+export default {
+  title: 'DeleteButton',
+  component: DeleteButton,
+}
+
+const Template = args => <DeleteButton {...args} />
+
+export const DefaultDeleteButton = Template.bind({})
+DefaultDeleteButton.args = {}

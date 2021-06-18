@@ -1,10 +1,10 @@
-import LogOutButton from './LogOutButton'
+import LogoutButton from './LogoutButton'
 export default {
-  title: 'LogOutButton',
-  component: LogOutButton,
+  title: 'LogoutButton',
+  component: LogoutButton,
 }
 
-const Template = args => <LogOutButton {...args} />
+const Template = args => <LogoutButton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
