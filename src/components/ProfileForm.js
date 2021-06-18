@@ -22,7 +22,7 @@ export default function ProfileForm({ onSubmit, image, upload, signIn }) {
       role="form"
     >
       <Label>
-        your full name:
+        full name:
         <input name="fullName" type="text" placeholder="e.g John Doe" />
       </Label>
       <Label>
@@ -35,7 +35,7 @@ export default function ProfileForm({ onSubmit, image, upload, signIn }) {
         />
       </Label>
       <Label>
-        your photo:
+        photo:
         <small> - optional</small>
       </Label>
       <ImageContainer>
@@ -83,6 +83,7 @@ const Form = styled.form`
 const Label = styled.label`
   color: white;
   font-weight: bold;
+  padding: 0 5px;
 
   input {
     width: 100%;

@@ -20,11 +20,15 @@ const Button = styled.button`
   height: 1.5rem;
   border: none;
   position: absolute;
-  right: 10px;
-  top: 70px;
-  z-index: 2;
+  right: 340px;
+  top: 10px;
+
+  @media (min-width: 600px) {
+    right: 620px;
+    top: 10px;
+  }
 `
 const SVG = styled(LogOut)`
-  fill: red;
-  width: 1.5rem;
+  fill: #bfa27e;
+  width: 2rem;
 `

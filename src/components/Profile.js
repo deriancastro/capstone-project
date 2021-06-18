@@ -15,7 +15,7 @@ export default function Profile({ image, fullName, aboutYou }) {
         <Name>{fullName}</Name>
       </ImageContainer>
       <AboutMeContainer>
-        <AboutMe>About me: </AboutMe>
+        <Label>About me: </Label>
         <Text>{aboutYou}</Text>
       </AboutMeContainer>
     </Wrapper>
@@ -24,6 +24,7 @@ export default function Profile({ image, fullName, aboutYou }) {
 
 const Wrapper = styled.section`
   display: grid;
+  justify-items: center;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
   padding: 20px 10px;
@@ -35,6 +36,7 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-content: center;
+    padding: 20px;
   }
 `
 const ImageContainer = styled.div`
@@ -47,7 +49,6 @@ const Image = styled.img`
   border: solid #8c7558 10px;
   height: 200px;
   width: 200px;
-  justify-self: center;
 
   @media (min-width: 600px) {
     height: 190px;
@@ -64,9 +65,10 @@ const AboutMeContainer = styled.div`
   grid-template-rows: min-content;
 `
 
-const AboutMe = styled.label`
+const Label = styled.label`
   color: white;
   font-weight: bold;
+  padding: 0 5px;
 `
 
 const Text = styled.div`
