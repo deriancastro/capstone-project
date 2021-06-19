@@ -6,5 +6,5 @@ export default {
 
 const Template = args => <LogoutButton {...args} />
 
-export const Default = Template.bind({})
-Default.args = {}
+export const DefaultLogoutButton = Template.bind({})
+DefaultLogoutButton.args = {}

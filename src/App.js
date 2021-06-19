@@ -21,7 +21,7 @@ export default function App() {
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
-  console.log(currentTechnique)
+
   console.log(profile)
   return (
     <AppGrid>

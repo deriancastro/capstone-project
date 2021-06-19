@@ -73,6 +73,7 @@ const Label = styled.label`
 
 const Text = styled.div`
   padding: 20px;
+  width: 355px;
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
   background: white;

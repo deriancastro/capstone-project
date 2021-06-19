@@ -8,4 +8,6 @@ export default {
 const Template = args => <DeleteButton {...args} />
 
 export const DefaultDeleteButton = Template.bind({})
-DefaultDeleteButton.args = {}
+DefaultDeleteButton.args = {
+  index: 1,
+}
