@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 Profile.propTypes = {
   image: PropTypes.string,
   fullName: PropTypes.string.isRequired,
-  aboutYou: PropTypes.node,
+  aboutYou: PropTypes.string.isRequired,
 }
 
 export default function Profile({ image, fullName, aboutYou }) {
@@ -12,12 +12,12 @@ export default function Profile({ image, fullName, aboutYou }) {
     <Wrapper data-testid="profile">
       <ImageContainer>
         <Image src={image} alt="" />
-        <Name>{fullName}</Name>
+        <Name data-testid="name">{fullName}</Name>
       </ImageContainer>
-      <AboutMeContainer>
+      <AboutYouContainer>
         <Label>About me: </Label>
-        <Text>{aboutYou}</Text>
-      </AboutMeContainer>
+        <Text data-testid="aboutYou">{aboutYou}</Text>
+      </AboutYouContainer>
     </Wrapper>
   )
 }
@@ -60,7 +60,7 @@ const Name = styled.p`
   color: white;
   font-style: italic;
 `
-const AboutMeContainer = styled.div`
+const AboutYouContainer = styled.div`
   display: grid;
   grid-template-rows: min-content;
 `

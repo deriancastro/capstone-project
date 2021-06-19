@@ -14,7 +14,7 @@ export default function Card({ techName, onDetail, url }) {
     </Wrapper>
   )
   function handleOnDetail() {
-    onDetail({ techName, url })
+    onDetail({ currentTechname: techName, currentUrl: url })
   }
 }
 

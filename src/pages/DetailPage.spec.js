@@ -5,8 +5,8 @@ import DetailPage from './DetailPage'
 describe('DetailPage', () => {
   const noop = () => {}
   const currentTechnique = {
-    techName: 'uchimata',
-    url: 'https://youtu.be/hNV9Oh2B_Kc',
+    currentTechName: 'uchimata',
+    currentUrl: 'https://youtu.be/hNV9Oh2B_Kc',
   }
 
   it('renders: 1 header, 1 video and 1 button', () => {
@@ -24,7 +24,9 @@ describe('DetailPage', () => {
 
   it('calls onNavigate correctly', () => {
     const onNavigate = jest.fn()
-    render(<DetailPage pageName="Uchimata" onNavigate={onNavigate} />)
+    render(
+      <DetailPage currentTechnique={currentTechnique} onNavigate={onNavigate} />
+    )
 
     const button = screen.getByRole('button')
     userEvent.click(button)

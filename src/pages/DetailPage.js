@@ -7,21 +7,21 @@ import Button from '../components/Button'
 DetailPage.propTypes = {
   currentTechnique: PropTypes.objectOf(
     PropTypes.shape({
-      techName: PropTypes.string,
-      url: PropTypes.string,
+      currentTechname: PropTypes.string,
+      currentUrl: PropTypes.string,
     })
   ),
   onNavigate: PropTypes.func.isRequired,
 }
 
 export default function DetailPage({ onNavigate, currentTechnique }) {
-  const { techName, url } = currentTechnique
+  const { currentTechname, currentUrl } = currentTechnique
   return (
     <Wrapper>
-      <Header>{techName}</Header>
+      <Header>{currentTechname}</Header>
       <Container data-testid="video">
         <ReactPlayer
-          url={url}
+          url={currentUrl}
           width="100%"
           height="90%"
           config={{

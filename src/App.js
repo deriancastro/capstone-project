@@ -21,7 +21,7 @@ export default function App() {
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
-
+  console.log(currentTechnique)
   console.log(profile)
   return (
     <AppGrid>
@@ -85,8 +85,8 @@ export default function App() {
     setProfile({ ...newProfile, ...profile })
   }
 
-  function showDetailPage({ techName, url }) {
-    setCurrentTechnique({ techName, url })
+  function showDetailPage({ currentTechname, currentUrl }) {
+    setCurrentTechnique({ currentTechname, currentUrl })
     push('/detail')
   }
 

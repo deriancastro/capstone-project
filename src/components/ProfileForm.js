@@ -27,7 +27,6 @@ export default function ProfileForm({ onSubmit, image, upload, signIn }) {
       </Label>
       <Label>
         about you:
-        <small> - optional</small>
         <input
           name="aboutYou"
           type="textarea"
@@ -42,7 +41,12 @@ export default function ProfileForm({ onSubmit, image, upload, signIn }) {
         {image ? (
           <Image src={image} alt="" />
         ) : (
-          <input type="file" name="file" onChange={upload} />
+          <input
+            type="file"
+            name="file"
+            onChange={upload}
+            data-testid="inputImage"
+          />
         )}
       </ImageContainer>
       <SingUpButton disabled={isActive}>sign up</SingUpButton>
@@ -70,7 +74,8 @@ export default function ProfileForm({ onSubmit, image, upload, signIn }) {
   function validateForm(event) {
     const form = event.target.parentElement.parentElement
     const inputFullName = form.elements.fullName.value.trim()
-    setIsActive(inputFullName ? false : true)
+    const inputAboutYou = form.elements.aboutYou.value.trim()
+    setIsActive(inputFullName && inputAboutYou ? false : true)
   }
 }
 
