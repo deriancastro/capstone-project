@@ -35,8 +35,9 @@ describe('Goal', () => {
       />
     )
 
-    const checkbox = screen.getByRole('checkbox')
+    const checkbox = screen.getByTestId('input-checkbox')
     userEvent.click(checkbox)
+    expect(checkbox).toBeChecked()
     expect(onCheckGoal).toHaveBeenCalledTimes(1)
   })
 })

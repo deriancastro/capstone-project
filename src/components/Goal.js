@@ -14,7 +14,12 @@ export default function Goal({ goalText, goalNumber, onCheckGoal, isChecked }) {
       <ItemNumber data-testid="itemNumber">{goalNumber}.</ItemNumber>
       <Label>
         <Text>{goalText}</Text>
-        <input onChange={handleCheckGoal} type="checkbox" checked={isChecked} />
+        <input
+          onChange={handleCheckGoal}
+          type="checkbox"
+          checked={isChecked}
+          data-testid="input-checkbox"
+        />
       </Label>
     </Wrapper>
   )

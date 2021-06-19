@@ -10,11 +10,23 @@ describe('GoalsPage', () => {
       <GoalsPage
         pageName="GOALS"
         goalsList={[
-          { text: 'Improve the performance of my left uchimata', id: '1' },
-          { text: 'See the yoko tomoe tutorial', id: '2' },
-          { text: 'Ask the trainer about the next competition', id: '3' },
-          { text: 'Check my weigth every 2 days', id: '4' },
-          { text: 'Do the strength plan for the week', id: '5' },
+          {
+            text: 'Improve the performance of my left uchimata',
+            id: '1',
+            isChecked: false,
+          },
+          { text: 'See the yoko tomoe tutorial', id: '2', isChecked: false },
+          {
+            text: 'Ask the trainer about the next competition',
+            id: '3',
+            isChecked: false,
+          },
+          { text: 'Check my weigth every 2 days', id: '4', isChecked: false },
+          {
+            text: 'Do the strength plan for the week',
+            id: '5',
+            isChecked: false,
+          },
         ]}
         onCheckGoal={noop}
         onNavigate={noop}
@@ -34,7 +46,13 @@ describe('GoalsPage', () => {
     render(
       <GoalsPage
         pageName="GOALS"
-        goalsList={[{ text: 'Improve the performance of my left uchimata' }]}
+        goalsList={[
+          {
+            text: 'Improve the performance of my left uchimata',
+            id: '1',
+            isChecked: false,
+          },
+        ]}
         onCheckGoal={onCheckGoal}
         onNavigate={noop}
       />
