@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
-import LogOutButton from '../components/LogoutButton'
+import LogoutButton from '../components/LogoutButton'
 import Profile from '../components/Profile'
 
 ProfilePage.propTypes = {
@@ -22,7 +22,7 @@ export default function ProfilePage({ pageName, profileInfo, logOut }) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
-      <LogOutButton logOut={logOut} />
+      <LogoutButton logOut={logOut} />
       <Profile image={image} fullName={fullName} aboutYou={aboutYou} />
     </Wrapper>
   )
