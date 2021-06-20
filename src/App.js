@@ -22,7 +22,6 @@ export default function App() {
   const { push } = useHistory()
   const techniqueList = techniqueData
 
-  console.log(profile)
   return (
     <AppGrid>
       <Switch>
