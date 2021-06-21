@@ -1,7 +1,9 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
+import GoalsForm from '../components/GoalsForm'
 import Goal from '../components/Goal'
+import DeleteButton from '../components/DeleteButton'
 
 GoalsPage.propTypes = {
   pageName: PropTypes.string,
@@ -12,24 +14,34 @@ GoalsPage.propTypes = {
       isChecked: PropTypes.bool,
     })
   ),
-  onCheckGoal: PropTypes.func,
+  onCheckGoal: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func.isRequired,
 }
 
-export default function GoalsPage({ pageName, goalsList, onCheckGoal }) {
+export default function GoalsPage({
+  pageName,
+  goalsList,
+  onCheckGoal,
+  onSubmit,
+  deleteGoal,
+}) {
   return (
     <Wrapper>
       <Header>{pageName}</Header>
+      <GoalsForm onSubmit={onSubmit} />
       <ScrollContainer>
         <List>
           {goalsList.map(({ text, id, isChecked }, index) => (
-            <li key={id}>
+            <ListItem key={id}>
+              <DeleteButton deleteGoal={deleteGoal} index={index} />
               <Goal
                 goalText={text}
                 goalNumber={index + 1}
                 onCheckGoal={onCheckGoal}
                 isChecked={isChecked}
               />
-            </li>
+            </ListItem>
           ))}
         </List>
       </ScrollContainer>
@@ -39,7 +51,7 @@ export default function GoalsPage({ pageName, goalsList, onCheckGoal }) {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px auto;
+  grid-template-rows: 60px 101px auto;
   height: calc(100vh - 60px);
 `
 const ScrollContainer = styled.section`
@@ -50,4 +62,10 @@ const List = styled.ul`
   display: grid;
   gap: 20px;
   list-style: none;
+`
+const ListItem = styled.li`
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  gap: 10px;
 `

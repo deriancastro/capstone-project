@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import * as React from 'react'
 import styled from 'styled-components/macro'
 
 Button.propTypes = {
@@ -31,7 +30,7 @@ const ButtonStyled = styled.button`
     z-index: -10;
   }
   &[disabled] {
-    opacity: 0.6;
+    opacity: 0.4;
     pointer-events: none;
   }
 `

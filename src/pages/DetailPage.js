@@ -1,20 +1,33 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import ReactPlayer from 'react-player/youtube'
 import Header from '../components/Header'
 import Button from '../components/Button'
-import judoImage from '../img/judo.jpg'
 
 DetailPage.propTypes = {
-  pageName: PropTypes.string,
+  currentTechnique: PropTypes.objectOf(
+    PropTypes.shape({
+      currentTechname: PropTypes.string,
+      currentUrl: PropTypes.string,
+    })
+  ),
   onNavigate: PropTypes.func.isRequired,
 }
 
-export default function DetailPage({ onNavigate, pageName }) {
+export default function DetailPage({ onNavigate, currentTechnique }) {
+  const { currentTechname, currentUrl } = currentTechnique
   return (
     <Wrapper>
-      <Header>{pageName}</Header>
-      <Container>
-        <img src={judoImage} alt="a Judo throw"></img>
+      <Header>{currentTechname}</Header>
+      <Container data-testid="video">
+        <ReactPlayer
+          url={currentUrl}
+          width="100%"
+          height="90%"
+          config={{
+            youtube: { playerVars: { controls: true, showinfo: 1 } },
+          }}
+        />
       </Container>
       <Nav>
         <DetailButton onClick={onNavigate} color="white">
@@ -34,15 +47,12 @@ const Nav = styled.nav`
   display: grid;
   box-shadow: 0 -3px 3px #0003;
 `
-const Container = styled.section`
+const Container = styled.div`
   display: grid;
-  justify-content: center;
   align-items: center;
-
-  img {
-    border-radius: 20px;
-  }
+  padding: 10px;
 `
+
 const DetailButton = styled(Button)`
   background: #bf665e;
 `

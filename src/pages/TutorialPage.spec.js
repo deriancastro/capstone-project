@@ -1,26 +1,18 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import techniqueData from '../data/techniqueData.json'
 import TutorialPage from './TutorialPage'
 
 describe('TutorialPage', () => {
   const noop = () => {}
+  const techniqueList = techniqueData
 
-  it('renders 1 heading and 8 cards', () => {
+  it('renders multiple cards and a heading', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techniqueList={[
-          'Uchimata',
-          'Harai goshi',
-          'Seoi nage',
-          'Ko uchi gari',
-          'O soto gari',
-          'Kubi nage',
-          'Yoko tomoe',
-          'Kata guruma',
-        ]}
+        techniqueList={techniqueList}
         onDetail={noop}
-        onNavigate={noop}
       />
     )
 
@@ -29,7 +21,7 @@ describe('TutorialPage', () => {
     expect(heading).toHaveTextContent('TUTORIAL')
 
     const cardList = screen.getAllByTestId('card')
-    expect(cardList).toHaveLength(8)
+    expect(cardList.length).toBeGreaterThan(7)
   })
 
   it('calls onDetail correctly', () => {
@@ -37,9 +29,14 @@ describe('TutorialPage', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techniqueList={['Uchimata']}
+        techniqueList={[
+          {
+            name: 'De ashi barai - Ko soto gari',
+            id: '1',
+            url: 'https://youtu.be/hNV9Oh2B_Kc',
+          },
+        ]}
         onDetail={onDetail}
-        onNavigate={noop}
       />
     )
 

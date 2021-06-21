@@ -1,25 +1,24 @@
 import { render, screen } from '@testing-library/react'
-import profileData from '../data/profileData.json'
 import Profile from './Profile'
 
 describe('Profile', () => {
+  const fullName = 'Derian Castro'
+  const aboutYou = 'Hey! watch out because I´m an uchimata machine'
+  const image =
+    'http://res.cloudinary.com/did6rcsck/image/upload/v1624119325/derian_mzskoz.jpg'
+
   it('renders user´s photo, name and text', () => {
-    const profileInfo = profileData
-    render(
-      <Profile
-        image={profileInfo[0].image}
-        name={profileInfo[0].name}
-        text={profileInfo[0].text}
-      />
+    render(<Profile image={image} fullName={fullName} aboutYou={aboutYou} />)
+
+    const Userimage = screen.getByRole('img')
+    expect(Userimage).toBeInTheDocument()
+
+    const userFullName = screen.getByTestId('name')
+    expect(userFullName).toHaveTextContent('Derian Castro')
+
+    const UserAboutYou = screen.getByTestId('aboutYou')
+    expect(UserAboutYou).toHaveTextContent(
+      'Hey! watch out because I´m an uchimata machine'
     )
-
-    const image = screen.getByRole('img')
-    expect(image).toBeInTheDocument()
-
-    const name = screen.getByText('Derian Castro')
-    expect(name).toBeInTheDocument()
-
-    const text = screen.getByRole('textbox')
-    expect(text).toHaveValue('hey! watch out because I´m an uchimata machine')
   })
 })

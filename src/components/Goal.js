@@ -12,10 +12,15 @@ export default function Goal({ goalText, goalNumber, onCheckGoal, isChecked }) {
   return (
     <Wrapper data-testid="goal">
       <ItemNumber data-testid="itemNumber">{goalNumber}.</ItemNumber>
-      <CheckBox>
+      <Label>
         <Text>{goalText}</Text>
-        <input onChange={handleCheckGoal} type="checkbox" checked={isChecked} />
-      </CheckBox>
+        <input
+          onChange={handleCheckGoal}
+          type="checkbox"
+          checked={isChecked}
+          data-testid="input-checkbox"
+        />
+      </Label>
     </Wrapper>
   )
 
@@ -29,7 +34,7 @@ const Wrapper = styled.section`
   background: white;
   border-radius: 8px;
   padding: 10px;
-  box-shadow: 0 4px 8px #0006;
+  box-shadow: 0 4px 4px #0006;
   background: white;
 `
 const ItemNumber = styled.span`
@@ -37,7 +42,7 @@ const ItemNumber = styled.span`
   width: 3.5ch;
 `
 
-const CheckBox = styled.label`
+const Label = styled.label`
   display: grid;
   width: 100%;
   gap: 10px;

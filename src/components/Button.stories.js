@@ -1,4 +1,4 @@
-import React from 'react'
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min'
 import Button from './Button'
 
 export default {
@@ -11,7 +11,6 @@ const Template = args => <Button {...args} />
 export const DefaultButton = Template.bind({})
 DefaultButton.args = {
   children: 'Back',
-  isActive: false,
 }
 
 export const ActiveButton = Template.bind({})

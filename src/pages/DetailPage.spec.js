@@ -4,15 +4,19 @@ import DetailPage from './DetailPage'
 
 describe('DetailPage', () => {
   const noop = () => {}
+  const currentTechnique = {
+    currentTechName: 'uchimata',
+    currentUrl: 'https://youtu.be/hNV9Oh2B_Kc',
+  }
 
-  it('renders: 1 header, 1 image and 1 button', () => {
-    render(<DetailPage pageName="Uchimata" onNavigate={noop} />)
+  it('renders: 1 header, 1 video and 1 button', () => {
+    render(<DetailPage currentTechnique={currentTechnique} onNavigate={noop} />)
 
     const heading = screen.getByRole('heading')
     expect(heading).toBeInTheDocument()
 
-    const image = screen.getByRole('img')
-    expect(image).toBeInTheDocument()
+    const video = screen.getByTestId('video')
+    expect(video).toBeInTheDocument()
 
     const button = screen.getByRole('button')
     expect(button).toBeInTheDocument()
@@ -20,7 +24,9 @@ describe('DetailPage', () => {
 
   it('calls onNavigate correctly', () => {
     const onNavigate = jest.fn()
-    render(<DetailPage pageName="Uchimata" onNavigate={onNavigate} />)
+    render(
+      <DetailPage currentTechnique={currentTechnique} onNavigate={onNavigate} />
+    )
 
     const button = screen.getByRole('button')
     userEvent.click(button)
