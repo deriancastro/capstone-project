@@ -14,9 +14,9 @@ GoalsPage.propTypes = {
       isChecked: PropTypes.bool,
     })
   ),
-  onCheckGoal: PropTypes.func,
+  onCheckGoal: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  deleteGoal: PropTypes.func,
+  deleteGoal: PropTypes.func.isRequired,
 }
 
 export default function GoalsPage({

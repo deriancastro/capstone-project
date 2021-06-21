@@ -7,7 +7,7 @@ describe('TutorialPage', () => {
   const noop = () => {}
   const techniqueList = techniqueData
 
-  it('renders 1 heading and 8 cards', () => {
+  it('renders multiple cards and a heading', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
@@ -21,7 +21,7 @@ describe('TutorialPage', () => {
     expect(heading).toHaveTextContent('TUTORIAL')
 
     const cardList = screen.getAllByTestId('card')
-    expect(cardList).toHaveLength(8)
+    expect(cardList.length).toBeGreaterThan(7)
   })
 
   it('calls onDetail correctly', () => {
@@ -29,7 +29,13 @@ describe('TutorialPage', () => {
     render(
       <TutorialPage
         pageName="TUTORIAL"
-        techniqueList={['Uchimata']}
+        techniqueList={[
+          {
+            name: 'De ashi barai - Ko soto gari',
+            id: '1',
+            url: 'https://youtu.be/hNV9Oh2B_Kc',
+          },
+        ]}
         onDetail={onDetail}
       />
     )

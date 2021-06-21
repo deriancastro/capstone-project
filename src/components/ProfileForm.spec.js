@@ -88,7 +88,6 @@ describe('ProfileForm', () => {
     expect(TestSingIn).toHaveBeenCalled()
   })
 
-  //Note: here I don't understand why handleSubmit and signIn are called once (this is the only way to pass the test) if the fields are empty
   it('does not call handleSubmit and signIn when full name and about you fields are empty', () => {
     const handleSubmit = jest.fn()
     const singIn = jest.fn()
@@ -102,9 +101,9 @@ describe('ProfileForm', () => {
     const singUpButton = screen.getByRole('button', { name: 'sign up' })
     expect(singUpButton).toBeDisabled()
 
-    fireEvent.submit(form)
+    fireEvent.click(singUpButton)
 
-    expect(handleSubmit).toHaveBeenCalledTimes(1)
-    expect(singIn).toHaveBeenCalledTimes(1)
+    expect(handleSubmit).toHaveBeenCalledTimes(0)
+    expect(singIn).toHaveBeenCalledTimes(0)
   })
 })

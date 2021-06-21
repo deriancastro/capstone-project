@@ -1,6 +1,9 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import GoalsPage from './GoalsPage'
+jest.mock('uuid', () => ({
+  v4: () => '123',
+}))
 
 describe('GoalsPage', () => {
   const noop = () => {}
@@ -29,7 +32,8 @@ describe('GoalsPage', () => {
           },
         ]}
         onCheckGoal={noop}
-        onNavigate={noop}
+        onSubmit={noop}
+        deleteGoal={noop}
       />
     )
 
@@ -49,17 +53,64 @@ describe('GoalsPage', () => {
         goalsList={[
           {
             text: 'Improve the performance of my left uchimata',
-            id: '1',
+            id: '123',
             isChecked: false,
           },
         ]}
         onCheckGoal={onCheckGoal}
-        onNavigate={noop}
+        onSubmit={noop}
+        deleteGoal={noop}
       />
     )
 
     const checkbox = screen.getByRole('checkbox')
     userEvent.click(checkbox)
     expect(onCheckGoal).toHaveBeenCalledTimes(1)
+  })
+
+  it('calls onSubmit correctly', () => {
+    const onSubmit = jest.fn()
+    render(
+      <GoalsPage
+        pageName="GOALS"
+        goalsList={[
+          {
+            text: 'Improve the performance of my left uchimata',
+            id: '123',
+            isChecked: false,
+          },
+        ]}
+        onCheckGoal={noop}
+        onSubmit={onSubmit}
+        deleteGoal={noop}
+      />
+    )
+
+    const form = screen.getByRole('form')
+    fireEvent.submit(form)
+    expect(onSubmit).toHaveBeenCalledTimes(1)
+  })
+
+  it('calls deleteGoal correctly', () => {
+    const deleteGoal = jest.fn()
+    render(
+      <GoalsPage
+        pageName="GOALS"
+        goalsList={[
+          {
+            text: 'Improve the performance of my left uchimata',
+            id: '123',
+            isChecked: false,
+          },
+        ]}
+        onCheckGoal={noop}
+        onSubmit={noop}
+        deleteGoal={deleteGoal}
+      />
+    )
+
+    const deleteButton = screen.getByRole('button', { name: 'delete.svg' })
+    userEvent.click(deleteButton)
+    expect(deleteGoal).toHaveBeenCalledTimes(1)
   })
 })

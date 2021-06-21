@@ -54,7 +54,6 @@ describe('GoalsForm', () => {
     })
   })
 
-  //Note: here I don't understand why handleSubmit is called once (this is the only way to pass the test) if the field are empty
   it('does not call handleSubmit when inputGoal is empty', () => {
     const handleSubmit = jest.fn()
 
@@ -65,8 +64,8 @@ describe('GoalsForm', () => {
     const createButton = screen.getByRole('button', { name: 'create' })
     expect(createButton).toBeDisabled()
 
-    fireEvent.submit(form)
+    fireEvent.click(createButton)
 
-    expect(handleSubmit).toHaveBeenCalledTimes(1)
+    expect(handleSubmit).toHaveBeenCalledTimes(0)
   })
 })
