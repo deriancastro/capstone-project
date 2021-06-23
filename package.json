@@ -1,18 +1,16 @@
 {
   "name": "capstone-project",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "create-user": "node create-user.js 'Test User' 99 'test@testuser.com'",
-    "build:create-user": "npm run shebang:create-user && npm run chmod:create-user",
-    "shebang:create-user": "echo '#!/usr/bin/env node' > bin/create-user && cat create-user.js >> bin/create-user",
-    "chmod:create-user": "chmod +x bin/create-user",
-    "read-users": "node read-users.js",
-    "build:read-users": "npm run shebang:read-users && npm run chmod:read-users",
-    "shebang:read-users": "echo '#!/usr/bin/env node' > bin/read-users && cat read-users.js >> bin/read-users",
-    "chmod:read-users": "chmod +x bin/read-users",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm-run-all --parallel dev:client dev:server",
+    "dev:client": "cd client && npm start",
+    "dev:server": "nodemon server.js",
+    "test": "cd client && npm test",
+    "storybook": "cd client && npm run storybook",
+    "build": "cd client && npm run build",
+    "postinstall": "cd client && npm install",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +23,8 @@
   },
   "homepage": "https://github.com/deriancastro/capstone-project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.14",
@@ -33,7 +33,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5"
   },
   "description": ""
 }

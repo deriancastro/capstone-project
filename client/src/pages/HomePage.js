@@ -9,16 +9,11 @@ HomePage.propTypes = {
   signIn: PropTypes.func.isRequired,
 }
 //Note: For the moment, this page gives its props to the Profile Form.
-export default function HomePage({ onSubmit, image, upload, signIn }) {
+export default function HomePage({ onSubmit }) {
   return (
     <Wrapper>
       <div></div>
-      <ProfileForm
-        onSubmit={onSubmit}
-        image={image}
-        upload={upload}
-        signIn={signIn}
-      />
+      <ProfileForm onSubmit={onSubmit} />
     </Wrapper>
   )
 }

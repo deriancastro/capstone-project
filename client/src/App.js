@@ -1,7 +1,6 @@
-import { Switch, Route, useHistory } from 'react-router-dom'
-import { useState } from 'react'
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import useLocalStorage from './lib/useLocalStorage'
-import axios from 'axios'
 import styled from 'styled-components/macro'
 import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
@@ -10,28 +9,39 @@ import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage'
 import GoalsPage from './pages/GoalsPage'
 import techniqueData from './data/techniqueData.json'
-
-const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
-const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
+import postUser from './services/postUser'
+import postGoal from './services/postGoal'
 
 export default function App() {
-  const [image, setImage] = useState('')
-  const [profile, setProfile] = useLocalStorage('profile', {})
-  const [goalsList, setGoalsList] = useLocalStorage('goals', [])
+  const [profile, setProfile] = useState({})
+  const [userId, setUserId] = useLocalStorage('userId', null)
+  const [goalsList, setGoalsList] = useState([])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
+
+  useEffect(() => {
+    userId &&
+      fetch('/api/users/' + userId)
+        .then(res => res.json())
+        .then(profile => setProfile(profile))
+        .catch(error => console.log(error))
+  }, [userId])
+
+  useEffect(() => {
+    userId &&
+      fetch('/api/goals/' + userId)
+        .then(res => res.json())
+        .then(goalsList => setGoalsList(goalsList))
+        .catch(error => console.log(error))
+  }, [userId])
 
   return (
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <HomePage
-            onSubmit={handleSubmit}
-            image={image}
-            upload={upload}
-            signIn={handleSignIn}
-          ></HomePage>
+          <HomePage onSubmit={handleSubmit}></HomePage>
+          {!!userId && <Redirect to="/profile" />}
         </Route>
         <Route path="/profile">
           <ProfilePage
@@ -65,7 +75,6 @@ export default function App() {
       </Switch>
 
       <Route exact path={['/profile', '/tutorial', '/goals']}>
-
         <Navigation
           pages={[
             { title: 'profile', path: '/profile' },
@@ -77,12 +86,14 @@ export default function App() {
     </AppGrid>
   )
 
-  function handleSignIn() {
-    push('/profile')
-  }
-
   function handleSubmit(newProfile) {
-    setProfile({ ...newProfile, ...profile })
+    postUser(newProfile)
+      .then(user => {
+        setProfile(user)
+        setUserId(user._id)
+        push('/profile')
+      })
+      .catch(error => console.error(error))
   }
 
   function showDetailPage({ currentTechname, currentUrl }) {
@@ -104,36 +115,19 @@ export default function App() {
   }
 
   function handleNewGoal(newGoal) {
-    setGoalsList([newGoal, ...goalsList])
+    postGoal({ ...newGoal, author: userId }).then(goal => {
+      setGoalsList([goal, ...goalsList])
+    })
   }
 
   function handleDeleteGoal(index) {
     setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
   }
 
-  function upload(event) {
-    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`
-
-    const formData = new FormData()
-    formData.append('file', event.target.files[0])
-    formData.append('upload_preset', PRESET)
-
-    axios
-      .post(url, formData, {
-        headers: {
-          'Content-type': 'multipart/form-data',
-        },
-      })
-      .then(onImageSave)
-      .catch(err => console.error(err))
-  }
-
-  function onImageSave(response) {
-    setImage(response.data.url)
-    setProfile({ ...profile, image: response.data.url })
-  }
-
   function handleLogOut() {
+    setUserId(null)
+    setGoalsList([])
+    setProfile(null)
     push('/')
   }
 }

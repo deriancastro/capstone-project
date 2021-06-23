@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro'
-import { v4 as uuidv4 } from 'uuid'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
@@ -30,7 +29,7 @@ export default function GoalsForm({ onSubmit }) {
     const form = event.target
     const text = form.elements.text.value
 
-    const newGoal = { text: text, id: uuidv4(), isChecked: false }
+    const newGoal = { text: text, isChecked: false }
 
     onSubmit(newGoal)
     form.reset()
