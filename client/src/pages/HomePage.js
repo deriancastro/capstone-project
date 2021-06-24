@@ -1,18 +1,17 @@
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import LoginForm from '../components/LoginForm'
 import ProfileForm from '../components/ProfileForm'
 
 HomePage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  image: PropTypes.string,
-  upload: PropTypes.func.isRequired,
-  signIn: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
 }
 //Note: For the moment, this page gives its props to the Profile Form.
-export default function HomePage({ onSubmit }) {
+export default function HomePage({ onSubmit, onLogin }) {
   return (
     <Wrapper>
-      <div></div>
+      <LoginForm onLogin={onLogin} />
       <ProfileForm onSubmit={onSubmit} />
     </Wrapper>
   )

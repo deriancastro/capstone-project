@@ -11,6 +11,7 @@ import GoalsPage from './pages/GoalsPage'
 import techniqueData from './data/techniqueData.json'
 import postUser from './services/postUser'
 import postGoal from './services/postGoal'
+import getUser from './services/getUser'
 
 export default function App() {
   const [profile, setProfile] = useState({})
@@ -19,6 +20,9 @@ export default function App() {
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
+
+  console.log(profile)
+  console.log(userId)
 
   useEffect(() => {
     userId &&
@@ -40,7 +44,7 @@ export default function App() {
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <HomePage onSubmit={handleSubmit}></HomePage>
+          <HomePage onSubmit={handleSubmit} onLogin={handleOnLogin}></HomePage>
           {!!userId && <Redirect to="/profile" />}
         </Route>
         <Route path="/profile">
@@ -96,6 +100,23 @@ export default function App() {
       .catch(error => console.error(error))
   }
 
+  function handleOnLogin(logProfile) {
+    getUser(logProfile)
+      .then(user => {
+        setProfile(user)
+        setUserId(user._id)
+        push('/profile')
+      })
+      .catch(error => console.error(error))
+  }
+
+  function handleLogOut() {
+    setUserId(null)
+    setGoalsList([])
+    setProfile(null)
+    push('/')
+  }
+
   function showDetailPage({ currentTechname, currentUrl }) {
     setCurrentTechnique({ currentTechname, currentUrl })
     push('/detail')
@@ -122,13 +143,6 @@ export default function App() {
 
   function handleDeleteGoal(index) {
     setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
-  }
-
-  function handleLogOut() {
-    setUserId(null)
-    setGoalsList([])
-    setProfile(null)
-    push('/')
   }
 }
 

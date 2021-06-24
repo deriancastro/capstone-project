@@ -28,6 +28,7 @@ export default function ProfileForm({ onSubmit }) {
           name="fullName"
           type="text"
           placeholder="e.g John Doe"
+          autoComplete="off"
           required
         />
       </Label>
@@ -38,6 +39,7 @@ export default function ProfileForm({ onSubmit }) {
           type="text"
           placeholder="e.g johndoe@web.de"
           pattern="^(.+)@(.+)$"
+          autoComplete="off"
           required
         />
       </Label>
@@ -47,7 +49,8 @@ export default function ProfileForm({ onSubmit }) {
           name="password"
           type="password"
           placeholder="minimum of 4 characters"
-          minlength="4"
+          minLength="4"
+          autoComplete="off"
           required
         />
       </Label>
@@ -57,6 +60,7 @@ export default function ProfileForm({ onSubmit }) {
           name="aboutYou"
           type="textarea"
           placeholder="what do you want others to know about you?"
+          autoComplete="off"
           required
         />
       </Label>
