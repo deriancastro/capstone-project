@@ -26,8 +26,8 @@ PATCH {{baseUrl}}/api/goals/{{validGoalId}}
 Content-Type: application/json
 
 {
-  "isChecked":false,
-  "text": "a",
+  "isChecked":true,
+  "text": "annnnn",
    "author": "{{validUserId}}"
 }
 

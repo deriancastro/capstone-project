@@ -1,6 +1,6 @@
 export default function patchGoal(id, goal) {
-  console.log(goal)
-  return fetch('/api/goals/' + id, {
+  console.log('------------------------', id, goal)
+  return fetch(`/api/goals/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'aplication/json',

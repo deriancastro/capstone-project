@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const goalSchema = {
-  text: { type: String, required: true },
-  isChecked: { type: Boolean, required: true },
+  text: { type: String },
+  isChecked: { type: Boolean },
   author: { type: mongoose.SchemaTypes.ObjectId, ref: 'User' },
 }
 

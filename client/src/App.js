@@ -23,8 +23,6 @@ export default function App() {
   const { push } = useHistory()
   const techniqueList = techniqueData
 
-  console.log(goalsList)
-
   useEffect(() => {
     userId &&
       fetch('/api/users/' + userId)
@@ -136,21 +134,23 @@ export default function App() {
       ...goalToUpdate,
       isChecked: !goalToUpdate.isChecked,
     }
-    console.log(goalIdToUpdate)
+
     console.log(updatedGoal)
 
-    setGoalsList([
-      ...goalsList.slice(0, index),
-      { ...goalToUpdate, isChecked: !goalToUpdate.isChecked },
-      ...goalsList.slice(index + 1),
-    ])
-
-    patchGoal(goalIdToUpdate, updatedGoal).finally(() => {
-      fetch('/api/goals/' + userId)
-        .then(res => res.json())
-        .then(goalsList => setGoalsList(goalsList))
-        .catch(error => console.log(error))
-    })
+    patchGoal(goalIdToUpdate, updatedGoal)
+      .then(data => console.log(data))
+      .catch(error => console.log(error))
+    // .finally(() => {
+    //   fetch('/api/goals/' + userId)
+    //     .then(res => res.json())
+    //     .then(goalsList => setGoalsList(goalsList))
+    //     .catch(error => console.log(error))
+    // })
+    // setGoalsList([
+    //   ...goalsList.slice(0, index),
+    //   { updatedGoal },
+    //   ...goalsList.slice(index + 1),
+    // ])
   }
 
   function handleNewGoal(newGoal) {
