@@ -33,9 +33,5 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: min-content auto;
   justify-items: center;
-
-  span {
-    margin: 0;
-    padding: 0;
-  }
+  width: 100vw;
 `

@@ -139,9 +139,10 @@ export default function ProfileForm({ onSubmit }) {
 }
 
 const Form = styled.form`
-  padding: 20px 10px;
   display: grid;
   height: min-content;
+  width: 100vw;
+  padding: 10px;
   gap: 10px;
 `
 const Label = styled.label`

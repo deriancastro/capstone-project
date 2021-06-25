@@ -70,6 +70,8 @@ export default function LoginForm({ onLogin }) {
 const Form = styled.form`
   display: grid;
   height: min-content;
+  width: 100vw;
+  padding: 10px;
   gap: 10px;
 `
 const Label = styled.label`
