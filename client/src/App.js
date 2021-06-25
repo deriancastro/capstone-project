@@ -12,17 +12,18 @@ import techniqueData from './data/techniqueData.json'
 import postUser from './services/postUser'
 import postGoal from './services/postGoal'
 import getUser from './services/getUser'
+import deleteGoal from './services/deleteGoal'
+import patchGoal from './services/patchGoal'
 
 export default function App() {
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useLocalStorage('profile', {})
   const [userId, setUserId] = useLocalStorage('userId', null)
   const [goalsList, setGoalsList] = useState([])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
 
-  console.log(profile)
-  console.log(userId)
+  console.log(goalsList)
 
   useEffect(() => {
     userId &&
@@ -71,7 +72,7 @@ export default function App() {
           <GoalsPage
             pageName="GOALS"
             goalsList={goalsList}
-            onCheckGoal={handleGoal}
+            onCheckGoal={handleCheckedGoal}
             onSubmit={handleNewGoal}
             deleteGoal={handleDeleteGoal}
           />
@@ -103,8 +104,9 @@ export default function App() {
   function handleOnLogin(logProfile) {
     getUser(logProfile)
       .then(user => {
-        setProfile(user)
-        setUserId(user._id)
+        setProfile(...user)
+        const logUser = [...user]
+        setUserId(logUser[0]._id)
         push('/profile')
       })
       .catch(error => console.error(error))
@@ -126,8 +128,18 @@ export default function App() {
     push('/tutorial')
   }
 
-  function handleGoal(index) {
+  function handleCheckedGoal(index) {
     const goalToUpdate = goalsList[index]
+    const goalIdToUpdate = goalToUpdate._id
+
+    const updatedGoal = {
+      ...goalToUpdate,
+      isChecked: !goalToUpdate.isChecked,
+    }
+    console.log(goalIdToUpdate)
+    console.log(updatedGoal)
+
+    patchGoal(goalIdToUpdate, updatedGoal)
     setGoalsList([
       ...goalsList.slice(0, index),
       { ...goalToUpdate, isChecked: !goalToUpdate.isChecked },
@@ -142,6 +154,9 @@ export default function App() {
   }
 
   function handleDeleteGoal(index) {
+    const goalToDelete = goalsList[index]
+    const goalIdToDelete = goalToDelete._id
+    deleteGoal(goalIdToDelete)
     setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
   }
 }

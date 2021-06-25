@@ -23,7 +23,8 @@ router.post('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   const { id } = req.params
-  res.json(await Goal.findByIdAndUpdate(id, req.body, { new: true }))
+  const { updatedGoal } = req.body
+  res.json(await Goal.findByIdAndUpdate(id, updatedGoal, { new: true }))
 })
 
 router.delete('/:id', async (req, res, next) => {

@@ -3,7 +3,9 @@ const router = express.Router()
 const User = require('../models/User')
 
 router.get('/', async (req, res, next) => {
-  res.json(await User.find().select('_id fullName image'))
+  res.json(
+    await User.find().select('_id fullName email password aboutYou image')
+  )
 })
 
 router.get('/login/:email/:password', async (req, res, next) => {
