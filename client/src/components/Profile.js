@@ -27,7 +27,6 @@ const Wrapper = styled.section`
   justify-items: center;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
-  padding: 20px 10px;
   height: calc(100vh - 120px);
   background: #bfa27e;
   position: relative;
@@ -36,7 +35,6 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-content: center;
-    padding: 20px;
   }
 `
 const ImageContainer = styled.div`

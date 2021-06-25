@@ -2,14 +2,11 @@
 ### (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 @baseUrl = http://localhost:4000
-@validGoalId = 60d2200d270fd52c3c975fe4
-@validUserId = 60d2176516c0b92be4df5874
+@validGoalId = 60d598492329763702e682a5
+@validUserId = 60d3474b5ba21119570a31d0
 
 ### GET all goals
 GET {{baseUrl}}/api/goals
-
-### GET a single goal
-GET {{baseUrl}}/api/goals/{{validGoalId}}
 
 ### GET a not existing goal (404)
 GET {{baseUrl}}/api/goals/2000
@@ -20,7 +17,7 @@ Content-Type: application/json
 
 {
   "text": "new goal test",
-  "isChecked": false,
+  "isChecked": true,
   "author": "{{validUserId}}"
 }
 
@@ -29,7 +26,9 @@ PATCH {{baseUrl}}/api/goals/{{validGoalId}}
 Content-Type: application/json
 
 {
-  "text": "goal test 3 updating"
+  "isChecked":false,
+  "text": "a",
+   "author": "{{validUserId}}"
 }
 
 ### DELETE a single goal

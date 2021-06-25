@@ -139,12 +139,18 @@ export default function App() {
     console.log(goalIdToUpdate)
     console.log(updatedGoal)
 
-    patchGoal(goalIdToUpdate, updatedGoal)
     setGoalsList([
       ...goalsList.slice(0, index),
       { ...goalToUpdate, isChecked: !goalToUpdate.isChecked },
       ...goalsList.slice(index + 1),
     ])
+
+    patchGoal(goalIdToUpdate, updatedGoal).finally(() => {
+      fetch('/api/goals/' + userId)
+        .then(res => res.json())
+        .then(goalsList => setGoalsList(goalsList))
+        .catch(error => console.log(error))
+    })
   }
 
   function handleNewGoal(newGoal) {

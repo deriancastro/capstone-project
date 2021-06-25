@@ -68,7 +68,6 @@ export default function LoginForm({ onLogin }) {
 }
 
 const Form = styled.form`
-  padding: 20px 10px;
   display: grid;
   height: min-content;
   gap: 10px;
