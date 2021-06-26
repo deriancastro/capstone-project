@@ -6,7 +6,6 @@ describe('ProfilePage', () => {
   const noop = () => {}
 
   const profileInfo = {
-    id: '9ddee695-7f00-4c73-9e6e-06ee3af87399',
     fullName: 'Derian Castro',
     aboutYou: 'Hey! watch out because I´m an uchimata machine',
     image:

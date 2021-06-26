@@ -14,7 +14,7 @@ export default function LoginForm({ onLogin }) {
     <Form
       onSubmit={handleSubmit}
       onChange={validateForm}
-      aria-label="registration form"
+      aria-label="log in form"
       role="form"
     >
       <Label>

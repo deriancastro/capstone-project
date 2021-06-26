@@ -52,13 +52,14 @@ export default function ProfileForm({ onSubmit }) {
           minLength="4"
           autoComplete="off"
           required
+          data-testid="password"
         />
       </Label>
       <Label>
         about you:
         <input
           name="aboutYou"
-          type="textarea"
+          type="text"
           placeholder="what do you want others to know about you?"
           autoComplete="off"
           required
@@ -70,7 +71,7 @@ export default function ProfileForm({ onSubmit }) {
       </Label>
       <ImageContainer>
         {image ? (
-          <Image src={image} alt="" />
+          <Image src={image} alt="your photo" />
         ) : (
           <input
             type="file"

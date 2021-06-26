@@ -1,9 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import GoalsForm from './GoalsForm'
-jest.mock('uuid', () => ({
-  v4: () => '123',
-}))
 
 describe('GoalsForm', () => {
   const noop = () => {}
@@ -30,7 +27,6 @@ describe('GoalsForm', () => {
     userEvent.click(createButton)
 
     expect(handleSubmit).toHaveBeenLastCalledWith({
-      id: '123',
       text: 'I will be the best in 81kg',
       isChecked: false,
     })
@@ -48,7 +44,6 @@ describe('GoalsForm', () => {
     fireEvent.submit(form)
 
     expect(handleSubmit).toHaveBeenLastCalledWith({
-      id: '123',
       text: 'I will be the best in 81kg',
       isChecked: false,
     })

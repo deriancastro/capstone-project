@@ -16,13 +16,23 @@ export default function HomePage({ onSubmit, onLogin }) {
       {!entryForm && (
         <Wrapper>
           <LoginForm onLogin={onLogin} />
-          <span onClick={() => setEntryForm(!entryForm)}>or sing up</span>
+          <span
+            onClick={() => setEntryForm(!entryForm)}
+            data-testid="modusForm"
+          >
+            or sing up
+          </span>
         </Wrapper>
       )}
       {entryForm && (
         <Wrapper>
           <ProfileForm onSubmit={onSubmit} />
-          <span onClick={() => setEntryForm(!entryForm)}>or sign in</span>
+          <span
+            onClick={() => setEntryForm(!entryForm)}
+            data-testid="modusForm"
+          >
+            or sign in
+          </span>
         </Wrapper>
       )}
     </>
