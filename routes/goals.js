@@ -21,11 +21,37 @@ router.post('/', async (req, res, next) => {
   res.status(201).json(await Goal.create(req.body))
 })
 
+// router.put('/:id', async (req, res, next) => {
+//   const { id } = req.params
+//   const goal = req.body
+//   const updatedGoal = {
+//     ...goal,
+//     isChecked: !goal.isChecked,
+//   }
+//   console.log(id, updatedGoal)
+//   res.status(200).json(await Goal.updateOne({ id }, { $set: updatedGoal }))
+// })
 router.patch('/:id', async (req, res, next) => {
   const { id } = req.params
-  const updatedGoal = req.body
-  console.log(req.body, id)
-  res.json(await Goal.findByIdAndUpdate(id, updatedGoal, { new: true }))
+  const goalToUpdate = req.body
+  const updatedGoal = {
+    isChecked: !goalToUpdate.isChecked,
+  }
+  console.log(id, updatedGoal)
+  res.json(
+    await Goal.findByIdAndUpdate(
+      id,
+      { $set: updatedGoal },
+      { new: true, useFindAndModify: false },
+      function (err, docs) {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log('Updated Goal : ', docs)
+        }
+      }
+    )
+  )
 })
 
 router.delete('/:id', async (req, res, next) => {

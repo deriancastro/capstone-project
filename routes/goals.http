@@ -2,7 +2,7 @@
 ### (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 @baseUrl = http://localhost:4000
-@validGoalId = 60d598492329763702e682a5
+@validGoalId = 60d71be9432aae498085027b
 @validUserId = 60d3474b5ba21119570a31d0
 
 ### GET all goals
@@ -26,7 +26,7 @@ PATCH {{baseUrl}}/api/goals/{{validGoalId}}
 Content-Type: application/json
 
 {
-  "isChecked":true,
+  "isChecked": false,
   "text": "annnnn",
    "author": "{{validUserId}}"
 }
