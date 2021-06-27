@@ -39,7 +39,7 @@ export default function LoginForm({ onLogin }) {
           required
         />
       </Label>
-      <SingInButton disabled={isActive}>sign in</SingInButton>
+      <SingInButton disabled={isActive}>log in</SingInButton>
     </Form>
   )
   function handleSubmit(event) {

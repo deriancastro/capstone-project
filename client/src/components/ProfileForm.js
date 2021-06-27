@@ -81,7 +81,7 @@ export default function ProfileForm({ onSubmit }) {
           />
         )}
       </ImageContainer>
-      <SingUpButton disabled={isActive}>sign up</SingUpButton>
+      <SingUpButton disabled={isActive}>registrate</SingUpButton>
     </Form>
   )
   function handleSubmit(event) {

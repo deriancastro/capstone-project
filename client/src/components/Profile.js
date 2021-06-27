@@ -15,7 +15,7 @@ export default function Profile({ image, fullName, aboutYou }) {
         <Name data-testid="name">{fullName}</Name>
       </ImageContainer>
       <AboutYouContainer>
-        <Label>About me: </Label>
+        <Label>about me: </Label>
         <Text data-testid="aboutYou">{aboutYou}</Text>
       </AboutYouContainer>
     </Wrapper>

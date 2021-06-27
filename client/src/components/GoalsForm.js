@@ -17,7 +17,7 @@ export default function GoalsForm({ onSubmit }) {
       role="form"
     >
       <Label>
-        Add goal:
+        add goal:
         <input name="text" type="text" placeholder="write a goal" />
       </Label>
       <GoalButton disabled={isActive}>create</GoalButton>

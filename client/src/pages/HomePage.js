@@ -20,7 +20,7 @@ export default function HomePage({ onSubmit, onLogin }) {
             onClick={() => setEntryForm(!entryForm)}
             data-testid="modusForm"
           >
-            or sing up
+            or registrate
           </span>
         </Wrapper>
       )}
@@ -31,7 +31,7 @@ export default function HomePage({ onSubmit, onLogin }) {
             onClick={() => setEntryForm(!entryForm)}
             data-testid="modusForm"
           >
-            or sign in
+            or log in
           </span>
         </Wrapper>
       )}
