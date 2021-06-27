@@ -3,8 +3,7 @@ import HomePage from './HomePage'
 import userEvent from '@testing-library/user-event'
 
 describe('HomePage', () => {
-  //Note: For the moment, this page gives its props to the Profile Form.
-  it('renders a Profile Form', () => {
+  it('renders a log in Form or a Profile Form', () => {
     const noop = () => {}
 
     render(<HomePage onSubmit={noop} onLogin={noop} />)

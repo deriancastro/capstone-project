@@ -22,7 +22,7 @@ export default function App() {
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
-  console.log(goalsList)
+
   useEffect(() => {
     userId &&
       fetch('/api/users/' + userId)
@@ -130,11 +130,7 @@ export default function App() {
     const goalToUpdate = goalsList[index]
     const goalIdToUpdate = goalToUpdate._id
 
-    console.log(goalIdToUpdate, goalToUpdate)
-
-    //Upate MongoDB
     patchGoal(goalIdToUpdate, goalToUpdate)
-      .then(data => console.log(data))
       .catch(error => console.log(error))
       .finally(() => {
         fetch('/api/goals/' + userId)
@@ -142,17 +138,6 @@ export default function App() {
           .then(goalsList => setGoalsList(goalsList))
           .catch(error => console.log(error))
       })
-
-    // // //Update State-Local
-
-    // setGoalsList([
-    //   ...goalsList.slice(0, index),
-    //   {
-    //     ...goalToUpdate,
-    //     isChecked: !goalToUpdate.isChecked,
-    //   },
-    //   ...goalsList.slice(index + 1),
-    // ])
   }
 
   function handleNewGoal(newGoal) {
@@ -164,8 +149,12 @@ export default function App() {
   function handleDeleteGoal(index) {
     const goalToDelete = goalsList[index]
     const goalIdToDelete = goalToDelete._id
-    deleteGoal(goalIdToDelete)
-    setGoalsList([...goalsList.slice(0, index), ...goalsList.slice(index + 1)])
+    deleteGoal(goalIdToDelete).then(
+      setGoalsList([
+        ...goalsList.slice(0, index),
+        ...goalsList.slice(index + 1),
+      ])
+    )
   }
 }
 

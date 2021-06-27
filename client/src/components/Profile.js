@@ -30,6 +30,7 @@ const Wrapper = styled.section`
   height: calc(100vh - 120px);
   background: #bfa27e;
   position: relative;
+  padding: 10px;
 
   @media (min-width: 600px) {
     display: grid;
@@ -75,4 +76,5 @@ const Text = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
   background: white;
+  overflow: auto;
 `
