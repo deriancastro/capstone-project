@@ -8,8 +8,10 @@ ProfilePage.propTypes = {
   pageName: PropTypes.string,
   profileInfo: PropTypes.objectOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      _id: PropTypes.string,
       fullName: PropTypes.string,
+      email: PropTypes.string,
+      password: PropTypes.string,
       aboutYou: PropTypes.string,
       image: PropTypes.string,
     })

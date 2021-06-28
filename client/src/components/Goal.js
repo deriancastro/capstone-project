@@ -36,6 +36,8 @@ const Wrapper = styled.section`
   padding: 10px;
   box-shadow: 0 4px 4px #0006;
   background: white;
+  width: 321px;
+  overflow: auto;
 `
 const ItemNumber = styled.span`
   font-weight: 600;

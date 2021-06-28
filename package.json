@@ -1,65 +1,41 @@
 {
   "name": "capstone-project",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.13.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
-    "cloudinary-react": "^1.7.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-player": "^2.9.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.0",
-    "uuid": "^8.3.2",
-    "web-vitals": "^1.1.2"
-  },
+  "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "dev": "npm-run-all --parallel dev:client dev:server",
+    "dev:client": "cd client && npm start",
+    "dev:server": "nodemon server.js",
+    "test": "cd client && npm test",
+    "storybook": "cd client && npm run storybook",
+    "build": "cd client && npm run build",
+    "postinstall": "cd client && npm install",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deriancastro/capstone-project.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "Derian Castro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deriancastro/capstone-project/issues"
+  },
+  "homepage": "https://github.com/deriancastro/capstone-project#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "heroku": "^7.54.1",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.12.14",
+    "morgan": "^1.10.0",
+    "prop-types": "^15.7.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/node-logger": "^6.2.9",
-    "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.2.9"
-  }
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5"
+  },
+  "description": ""
 }

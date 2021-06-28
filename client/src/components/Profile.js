@@ -15,7 +15,7 @@ export default function Profile({ image, fullName, aboutYou }) {
         <Name data-testid="name">{fullName}</Name>
       </ImageContainer>
       <AboutYouContainer>
-        <Label>About me: </Label>
+        <Label>about me: </Label>
         <Text data-testid="aboutYou">{aboutYou}</Text>
       </AboutYouContainer>
     </Wrapper>
@@ -27,16 +27,15 @@ const Wrapper = styled.section`
   justify-items: center;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
-  padding: 20px 10px;
   height: calc(100vh - 120px);
   background: #bfa27e;
   position: relative;
+  padding: 10px;
 
   @media (min-width: 600px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-content: center;
-    padding: 20px;
   }
 `
 const ImageContainer = styled.div`
@@ -65,7 +64,7 @@ const AboutYouContainer = styled.div`
   grid-template-rows: min-content;
 `
 
-const Label = styled.label`
+const Label = styled.p`
   color: white;
   font-weight: bold;
   padding: 0 5px;
@@ -77,4 +76,5 @@ const Text = styled.div`
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
   background: white;
+  overflow: auto;
 `

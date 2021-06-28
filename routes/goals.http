@@ -1,0 +1,35 @@
+### Install the VSCode extension "REST Client"
+### (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+
+@baseUrl = http://localhost:4000
+@validGoalId = 60d71be9432aae498085027b
+@validUserId = 60d3474b5ba21119570a31d0
+
+### GET all goals
+GET {{baseUrl}}/api/goals
+
+### GET a not existing goal (404)
+GET {{baseUrl}}/api/goals/2000
+
+### POST a new goal
+POST http://localhost:4000/api/goals
+Content-Type: application/json
+
+{
+  "text": "new goal test",
+  "isChecked": true,
+  "author": "{{validUserId}}"
+}
+
+### PATCH a single goal
+PATCH {{baseUrl}}/api/goals/{{validGoalId}}
+Content-Type: application/json
+
+{
+  "isChecked": false,
+  "text": "annnnn",
+   "author": "{{validUserId}}"
+}
+
+### DELETE a single goal
+DELETE {{baseUrl}}/api/goals/{{validGoalId}}
