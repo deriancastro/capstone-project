@@ -1,9 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const KEY = process.env.API_KEY
 
 mongoose
   .connect(
-    'mongodb+srv://admin:Judomaster181@cluster0.f3eh5.mongodb.net/capstone-project?retryWrites=true&w=majority',
+    `mongodb+srv://admin:Judomaster181@cluster0.f3eh5.mongodb.net/capstone-project?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

@@ -4,6 +4,5 @@ export default function deleteGoal(id) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: undefined,
   }).then(res => res.json())
 }

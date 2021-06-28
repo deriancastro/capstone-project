@@ -11,8 +11,8 @@ describe('HomePage', () => {
     const loginForm = screen.getByRole('form', { name: 'log in form' })
     expect(loginForm).toBeInTheDocument()
 
-    const modusForm = screen.getByTestId('modusForm', { name: 'or sing up' })
-    userEvent.click(modusForm)
+    const linkButton = screen.getByRole('button', { name: 'or register' })
+    userEvent.click(linkButton)
 
     const profileForm = screen.getByRole('form', { name: 'registration form' })
     expect(profileForm).toBeInTheDocument()

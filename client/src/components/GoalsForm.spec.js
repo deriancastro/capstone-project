@@ -8,7 +8,7 @@ describe('GoalsForm', () => {
   it('renders a input field and a button', () => {
     render(<GoalsForm onSubmit={noop} />)
 
-    const goalInput = screen.getByRole('textbox', { name: 'Add goal:' })
+    const goalInput = screen.getByRole('textbox', { name: 'add goal:' })
     expect(goalInput).toBeInTheDocument()
 
     const createButton = screen.getByRole('button', { name: 'create' })
@@ -20,7 +20,7 @@ describe('GoalsForm', () => {
 
     render(<GoalsForm onSubmit={handleSubmit} />)
 
-    const inputGoal = screen.getByRole('textbox', { name: 'Add goal:' })
+    const inputGoal = screen.getByRole('textbox', { name: 'add goal:' })
     userEvent.type(inputGoal, 'I will be the best in 81kg')
 
     const createButton = screen.getByRole('button', { name: 'create' })
@@ -37,7 +37,7 @@ describe('GoalsForm', () => {
 
     render(<GoalsForm onSubmit={handleSubmit} />)
 
-    const inputGoal = screen.getByRole('textbox', { name: 'Add goal:' })
+    const inputGoal = screen.getByRole('textbox', { name: 'add goal:' })
     userEvent.type(inputGoal, 'I will be the best in 81kg')
 
     const form = screen.getByRole('form')

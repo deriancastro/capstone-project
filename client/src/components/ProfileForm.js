@@ -81,7 +81,7 @@ export default function ProfileForm({ onSubmit }) {
           />
         )}
       </ImageContainer>
-      <SingUpButton disabled={isActive}>registrate</SingUpButton>
+      <SingUpButton disabled={isActive}>register</SingUpButton>
     </Form>
   )
   function handleSubmit(event) {
@@ -130,12 +130,8 @@ export default function ProfileForm({ onSubmit }) {
           'Content-type': 'multipart/form-data',
         },
       })
-      .then(onImageSave)
+      .then(res => setImage(res.data.url))
       .catch(err => console.error(err))
-  }
-
-  function onImageSave(response) {
-    setImage(response.data.url)
   }
 }
 

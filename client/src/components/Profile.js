@@ -64,7 +64,7 @@ const AboutYouContainer = styled.div`
   grid-template-rows: min-content;
 `
 
-const Label = styled.label`
+const Label = styled.p`
   color: white;
   font-weight: bold;
   padding: 0 5px;

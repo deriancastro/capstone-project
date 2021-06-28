@@ -10,29 +10,29 @@ HomePage.propTypes = {
 }
 
 export default function HomePage({ onSubmit, onLogin }) {
-  const [entryForm, setEntryForm] = useState(false)
+  const [isRegistered, setisRegIstered] = useState(false)
   return (
     <>
-      {!entryForm && (
+      {!isRegistered && (
         <Wrapper>
           <LoginForm onLogin={onLogin} />
-          <span
-            onClick={() => setEntryForm(!entryForm)}
+          <LinkButton
+            onClick={() => setisRegIstered(!isRegistered)}
             data-testid="modusForm"
           >
-            or registrate
-          </span>
+            or register
+          </LinkButton>
         </Wrapper>
       )}
-      {entryForm && (
+      {isRegistered && (
         <Wrapper>
           <ProfileForm onSubmit={onSubmit} />
-          <span
-            onClick={() => setEntryForm(!entryForm)}
+          <LinkButton
+            onClick={() => setisRegIstered(!isRegistered)}
             data-testid="modusForm"
           >
             or log in
-          </span>
+          </LinkButton>
         </Wrapper>
       )}
     </>
@@ -41,7 +41,11 @@ export default function HomePage({ onSubmit, onLogin }) {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: min-content auto;
+  grid-template-rows: min-content min-content;
   justify-items: center;
   width: 100vw;
+`
+const LinkButton = styled.button`
+  border: none;
+  background: #bfa27e;
 `
