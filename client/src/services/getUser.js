@@ -1,6 +1,5 @@
-export default function getUser(user) {
-  const { email, password } = user
-  return fetch('/api/users/login/' + email + '/' + password, {
+export default function getUser(id) {
+  return fetch('/api/users/login/' + id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

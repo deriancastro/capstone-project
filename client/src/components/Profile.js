@@ -33,7 +33,7 @@ export default function Profile({ image, fullName, aboutYou, onEdit }) {
 
       {isEdited && (
         <WrapperEdit>
-          <EditForm onEdit={onEdit} />
+          <EditForm onEdit={onEdit} setIsEdited={setIsEdited} />
           <CancelButton onClick={() => setIsEdited(!isEdited)}>
             cancel
           </CancelButton>
@@ -71,6 +71,12 @@ const WrapperEdit = styled.section`
   border-radius: 8px;
   width: 355px;
   box-shadow: 0 4px 4px #0006;
+
+  @media (min-width: 600px) {
+    width: 647px;
+    right: 10px;
+    top: 10px;
+  }
 `
 
 const ImageContainer = styled.div`

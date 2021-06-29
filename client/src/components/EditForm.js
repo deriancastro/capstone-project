@@ -9,9 +9,10 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
 EditForm.propTypes = {
   onEdit: PropTypes.func.isRequired,
+  setIsEdited: PropTypes.bool,
 }
 
-export default function EditForm({ onEdit }) {
+export default function EditForm({ onEdit, setIsEdited }) {
   const [isActive, setIsActive] = useState(true)
   const [image, setImage] = useState('')
 
@@ -42,10 +43,11 @@ export default function EditForm({ onEdit }) {
           required
         />
       </Label>
-      <Label>
+
+      <Text>
         photo:
         <small> - optional</small>
-      </Label>
+      </Text>
       <ImageContainer>
         {image ? (
           <Image src={image} alt="your photo" />
@@ -58,6 +60,7 @@ export default function EditForm({ onEdit }) {
           />
         )}
       </ImageContainer>
+
       <EditButton disabled={isActive}>save</EditButton>
     </Form>
   )
@@ -77,6 +80,7 @@ export default function EditForm({ onEdit }) {
     form.reset()
     event.target.elements.fullName.focus()
     setIsActive(true)
+    setIsEdited(false)
   }
 
   function validateForm(event) {
@@ -108,7 +112,12 @@ const Form = styled.form`
   display: grid;
   height: min-content;
   gap: 10px;
+
+  @media (min-width: 600px) {
+    display: grid;
+  }
 `
+
 const Label = styled.label`
   color: white;
   font-weight: bold;
@@ -120,10 +129,22 @@ const Label = styled.label`
     padding: 8px;
   }
 `
+
+const Text = styled.p`
+  color: white;
+  font-weight: bold;
+  padding: 0 5px;
+`
+
 const ImageContainer = styled.div`
   display: grid;
   gap: 10px;
   justify-items: center;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 2/3;
+    grid-template-rows: 2/3;
+  }
 `
 const Image = styled.img`
   border-radius: 50%;

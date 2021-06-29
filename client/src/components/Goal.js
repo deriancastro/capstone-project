@@ -38,6 +38,10 @@ const Wrapper = styled.section`
   background: white;
   width: 321px;
   overflow: auto;
+
+  @media (min-width: 600px) {
+    width: 613px;
+  }
 `
 const ItemNumber = styled.span`
   font-weight: 600;

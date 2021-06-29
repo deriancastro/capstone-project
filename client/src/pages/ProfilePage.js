@@ -17,15 +17,21 @@ ProfilePage.propTypes = {
     })
   ),
   logOut: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
 }
 
-export default function ProfilePage({ pageName, profileInfo, logOut }) {
+export default function ProfilePage({ pageName, profileInfo, logOut, onEdit }) {
   const { fullName, aboutYou, image } = profileInfo
   return (
     <Wrapper>
       <Header>{pageName}</Header>
       <LogoutButton logOut={logOut} />
-      <Profile image={image} fullName={fullName} aboutYou={aboutYou} />
+      <Profile
+        image={image}
+        fullName={fullName}
+        aboutYou={aboutYou}
+        onEdit={onEdit}
+      />
     </Wrapper>
   )
 }

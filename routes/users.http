@@ -2,7 +2,7 @@
 ### (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 @baseUrl = http://localhost:4000
-@validUserId = 60d4eace04036c2fb4748252
+@validUserId = 60d3474b5ba21119570a31d0
 
 ### GET all users
 GET {{baseUrl}}/api/users
@@ -30,7 +30,9 @@ PATCH {{baseUrl}}/api/users/{{validUserId}}
 Content-Type: application/json
 
 {
-  "aboutYou": "I am updating"
+   "fullName": "deriano",
+   "aboutYou": "I am updating again",
+   "image": "http://res.cloudinary.com/did6rcsck/image/upload/v1624372461/IMG_0203_trlmaw.png"
 }
 
 ### DELETE a user
