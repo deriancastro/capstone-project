@@ -24,9 +24,9 @@ const ButtonStyled = styled.button`
   padding: 12px;
   cursor: pointer;
   color: ${p => p.color};
-  background: ${p => (p.isActive ? '#bf665e' : '#777')};
+  background: var(--color-secondary-background);
   &.active {
-    background: #bf665e;
+    color: var(--color-active-text);
     z-index: -10;
   }
   &[disabled] {

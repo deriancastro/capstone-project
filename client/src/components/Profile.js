@@ -49,7 +49,7 @@ const Wrapper = styled.section`
   grid-template-rows: 1fr 1fr;
   gap: 20px;
   height: calc(100vh - 120px);
-  background: #bfa27e;
+  background: var(--color-primary-background);
   position: relative;
   padding: 10px;
 
@@ -86,7 +86,7 @@ const ImageContainer = styled.div`
 `
 const Image = styled.img`
   border-radius: 50%;
-  border: solid #8c7558 10px;
+  border: solid var(--color-active-background) 10px;
   height: 200px;
   width: 200px;
 
@@ -97,7 +97,7 @@ const Image = styled.img`
 `
 const Name = styled.p`
   text-align: center;
-  color: white;
+  color: var(--color-primary);
   font-style: italic;
 `
 const AboutYouContainer = styled.div`
@@ -111,7 +111,7 @@ const WrapperText = styled.div`
 `
 
 const Text = styled.p`
-  color: white;
+  color: var(--color-primary);
   font-weight: bold;
   padding: 0 5px;
 `
@@ -121,9 +121,8 @@ const TextBox = styled.div`
   width: 355px;
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
-  background: white;
+  background: var(--color-secondary);
   overflow: auto;
-  grid-template-columns: 1/3;
 `
 const CancelButton = styled(Button)`
   padding: 8px;

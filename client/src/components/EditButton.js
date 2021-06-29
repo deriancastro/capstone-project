@@ -16,11 +16,11 @@ export default function EditButton({ onClick }) {
 
 const Button = styled.button`
   background: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   border: none;
 `
 const SVG = styled(Edit)`
-  stroke: orange;
-  width: 1.5rem;
+  stroke: var(--color-active-background);
+  width: 2rem;
 `

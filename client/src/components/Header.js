@@ -10,8 +10,8 @@ export default function Header({ children }) {
 }
 
 const Title = styled.h2`
-  background: #bf665e;
-  color: white;
+  background: #333;
+  color: var(--color-active-text);
   padding: 10px;
   text-align: center;
 `

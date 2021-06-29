@@ -31,7 +31,7 @@ export default function HomePage({ onSubmit, onLogin }) {
             onClick={() => setisRegIstered(!isRegistered)}
             data-testid="modusForm"
           >
-            or log in
+            or login
           </LinkButton>
         </Wrapper>
       )}
@@ -47,5 +47,6 @@ const Wrapper = styled.div`
 `
 const LinkButton = styled.button`
   border: none;
-  background: #bfa27e;
+  background: var(--color-primary-background);
+  color: var(--color-active-text);
 `

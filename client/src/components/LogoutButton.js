@@ -29,6 +29,6 @@ const Button = styled.button`
   }
 `
 const SVG = styled(LogOut)`
-  fill: #bfa27e;
+  fill: var(--color-danger);
   width: 2rem;
 `
