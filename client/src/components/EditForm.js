@@ -3,6 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
 import axios from 'axios'
+import camera from '../assets/camera.png'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
@@ -52,12 +53,17 @@ export default function EditForm({ onEdit, setIsEdited }) {
         {image ? (
           <Image src={image} alt="your photo" />
         ) : (
-          <input
-            type="file"
-            name="file"
-            onChange={upload}
-            data-testid="inputImage"
-          />
+          <>
+            <WrapperInput>
+              <CameraIcon src={camera} alt="a camera icon" />
+              <InputImage
+                type="file"
+                name="file"
+                onChange={upload}
+                data-testid="inputImage"
+              />
+            </WrapperInput>
+          </>
         )}
       </ImageContainer>
 
@@ -146,6 +152,15 @@ const ImageContainer = styled.div`
     grid-template-rows: 2/3;
   }
 `
+const WrapperInput = styled.div`
+  border-radius: 50%;
+  border: solid #8c7558 10px;
+  height: 200px;
+  width: 200px;
+  justify-self: center;
+  position: relative;
+`
+
 const Image = styled.img`
   border-radius: 50%;
   border: solid #8c7558 10px;
@@ -157,6 +172,19 @@ const Image = styled.img`
     height: 190px;
     width: 190px;
   }
+`
+
+const CameraIcon = styled.img`
+  position: absolute;
+  top: 40px;
+  right: 40px;
+`
+
+const InputImage = styled.input`
+  opacity: 0;
+  height: 180px;
+  width: 180px;
+  justify-self: center;
 `
 
 const EditButton = styled(Button)`

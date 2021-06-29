@@ -3,6 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
 import axios from 'axios'
+import camera from '../assets/camera.png'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
@@ -65,20 +66,25 @@ export default function ProfileForm({ onSubmit }) {
           required
         />
       </Label>
-      <Label>
+      <Text>
         photo:
         <small> - optional</small>
-      </Label>
+      </Text>
       <ImageContainer>
         {image ? (
           <Image src={image} alt="your photo" />
         ) : (
-          <input
-            type="file"
-            name="file"
-            onChange={upload}
-            data-testid="inputImage"
-          />
+          <>
+            <WrapperInput>
+              <CameraIcon src={camera} alt="a camera icon" />
+              <InputImage
+                type="file"
+                name="file"
+                onChange={upload}
+                data-testid="inputImage"
+              />
+            </WrapperInput>
+          </>
         )}
       </ImageContainer>
       <SingUpButton disabled={isActive}>register</SingUpButton>
@@ -107,11 +113,13 @@ export default function ProfileForm({ onSubmit }) {
   }
 
   function validateForm(event) {
+    console.log(event)
     const form = event.target.parentElement.parentElement
     const inputFullName = form.elements.fullName.value.trim()
     const inputEmail = form.elements.email.value.trim()
     const inputPassword = form.elements.password.value.trim()
     const inputAboutYou = form.elements.aboutYou.value.trim()
+
     setIsActive(
       !inputFullName || !inputAboutYou || !inputEmail || !inputPassword
     )
@@ -153,23 +161,47 @@ const Label = styled.label`
     padding: 8px;
   }
 `
+
+const Text = styled.p`
+  color: white;
+  font-weight: bold;
+  padding: 0 5px;
+`
+
 const ImageContainer = styled.div`
   display: grid;
   gap: 10px;
   justify-items: center;
 `
+const WrapperInput = styled.div`
+  border-radius: 50%;
+  border: solid #8c7558 10px;
+  height: 200px;
+  width: 200px;
+  justify-self: center;
+  position: relative;
+`
+
 const Image = styled.img`
   border-radius: 50%;
   border: solid #8c7558 10px;
   height: 200px;
   width: 200px;
   justify-self: center;
-
-  @media (min-width: 600px) {
-    height: 190px;
-    width: 190px;
-  }
 `
+const CameraIcon = styled.img`
+  position: absolute;
+  top: 40px;
+  right: 40px;
+`
+
+const InputImage = styled.input`
+  opacity: 0;
+  height: 180px;
+  width: 180px;
+  justify-self: center;
+`
+
 const SingUpButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;

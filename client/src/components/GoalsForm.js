@@ -18,7 +18,12 @@ export default function GoalsForm({ onSubmit }) {
     >
       <Label>
         add goal:
-        <input name="text" type="text" placeholder="write a goal" />
+        <input
+          name="text"
+          type="text"
+          placeholder="write a goal"
+          autoComplete="off"
+        />
       </Label>
       <GoalButton disabled={isActive}>create</GoalButton>
     </Form>
@@ -45,9 +50,8 @@ export default function GoalsForm({ onSubmit }) {
 }
 
 const Form = styled.form`
-  padding: 20px 10px;
+  padding: 10px;
   display: grid;
-  grid-template-columns: auto min-content;
   height: min-content;
   gap: 10px;
   box-shadow: 0 3px 3px #0003;
