@@ -1,24 +1,45 @@
+import { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import EditForm from './EditForm'
+import Button from './Button'
+import EditButton from './EditButton'
 
 Profile.propTypes = {
   image: PropTypes.string,
   fullName: PropTypes.string.isRequired,
   aboutYou: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
 }
 
-export default function Profile({ image, fullName, aboutYou }) {
+export default function Profile({ image, fullName, aboutYou, onEdit }) {
+  const [isEdited, setIsEdited] = useState(false)
+
   return (
-    <Wrapper data-testid="profile">
-      <ImageContainer>
-        <Image src={image} alt="" />
-        <Name data-testid="name">{fullName}</Name>
-      </ImageContainer>
-      <AboutYouContainer>
-        <Label>about me: </Label>
-        <Text data-testid="aboutYou">{aboutYou}</Text>
-      </AboutYouContainer>
-    </Wrapper>
+    <>
+      <Wrapper data-testid="profile">
+        <ImageContainer>
+          <Image src={image} alt="" />
+          <Name data-testid="name">{fullName}</Name>
+        </ImageContainer>
+        <AboutYouContainer>
+          <WrapperText>
+            <Text>about me: </Text>
+            <EditButton onClick={() => setIsEdited(!isEdited)} />
+          </WrapperText>
+          <TextBox data-testid="aboutYou">{aboutYou}</TextBox>
+        </AboutYouContainer>
+      </Wrapper>
+
+      {isEdited && (
+        <WrapperEdit>
+          <EditForm onEdit={onEdit} />
+          <CancelButton onClick={() => setIsEdited(!isEdited)}>
+            cancel
+          </CancelButton>
+        </WrapperEdit>
+      )}
+    </>
   )
 }
 
@@ -38,6 +59,20 @@ const Wrapper = styled.section`
     align-content: center;
   }
 `
+
+const WrapperEdit = styled.section`
+  display: grid;
+  gap: 10px;
+  position: absolute;
+  right: 10px;
+  top: 70px;
+  background: #bfa27e;
+  padding: 10px;
+  border-radius: 8px;
+  width: 355px;
+  box-shadow: 0 4px 4px #0006;
+`
+
 const ImageContainer = styled.div`
   display: grid;
   gap: 10px;
@@ -61,20 +96,33 @@ const Name = styled.p`
 `
 const AboutYouContainer = styled.div`
   display: grid;
-  grid-template-rows: min-content;
+  grid-template-rows: auto 1fr;
+`
+const WrapperText = styled.div`
+  display: flex;
+  height: min-content;
+  justify-content: space-between;
 `
 
-const Label = styled.p`
+const Text = styled.p`
   color: white;
   font-weight: bold;
   padding: 0 5px;
 `
 
-const Text = styled.div`
+const TextBox = styled.div`
   padding: 20px;
   width: 355px;
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
   background: white;
   overflow: auto;
+  grid-template-columns: 1/3;
+`
+const CancelButton = styled(Button)`
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: red;
+  color: white;
 `
