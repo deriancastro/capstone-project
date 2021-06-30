@@ -118,6 +118,7 @@ const Form = styled.form`
   display: grid;
   height: min-content;
   gap: 10px;
+  background: var(--color-primary-background);
 
   @media (min-width: 600px) {
     display: grid;
@@ -125,7 +126,7 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
-  color: white;
+  color: var(--color-primary);
   font-weight: bold;
   padding: 0 5px;
 
@@ -133,6 +134,7 @@ const Label = styled.label`
     width: 100%;
     border-radius: 8px;
     padding: 8px;
+    background: var(--color-secondary);
   }
 `
 
@@ -140,6 +142,7 @@ const Text = styled.p`
   color: white;
   font-weight: bold;
   padding: 0 5px;
+  color: var(--color-primary);
 `
 
 const ImageContainer = styled.div`
@@ -154,7 +157,7 @@ const ImageContainer = styled.div`
 `
 const WrapperInput = styled.div`
   border-radius: 50%;
-  border: solid #8c7558 10px;
+  border: solid var(--color-active-background) 10px;
   height: 200px;
   width: 200px;
   justify-self: center;
@@ -163,7 +166,7 @@ const WrapperInput = styled.div`
 
 const Image = styled.img`
   border-radius: 50%;
-  border: solid #8c7558 10px;
+  border: solid var(--color-active-background) 10px;
   height: 200px;
   width: 200px;
   justify-self: center;
@@ -191,6 +194,10 @@ const EditButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
-  background: green;
-  color: white;
+  font-weight: 700;
+  background: var(--color-active-background);
+  color: var(--color-active);
+  margin-top: 16px;
+  width: 80%;
+  justify-self: center;
 `

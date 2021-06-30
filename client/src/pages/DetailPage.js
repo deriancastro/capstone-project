@@ -54,5 +54,6 @@ const Container = styled.div`
 `
 
 const DetailButton = styled(Button)`
-  background: #bf665e;
+  background: var(--color-secondary-background);
+  color: var(--color-active-text);
 `

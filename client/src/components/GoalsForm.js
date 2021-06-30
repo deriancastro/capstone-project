@@ -58,7 +58,7 @@ const Form = styled.form`
 `
 
 const Label = styled.label`
-  color: white;
+  color: var(--color-primary);
   font-weight: bold;
   padding: 0 5px;
 
@@ -66,6 +66,7 @@ const Label = styled.label`
     width: 100%;
     border-radius: 8px;
     padding: 8px;
+    background: var(--color-secondary);
   }
 `
 
@@ -73,6 +74,9 @@ const GoalButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
-  background: green;
-  color: white;
+  font-weight: 700;
+  background: var(--color-active-background);
+  color: var(--color-active);
+  width: 80%;
+  justify-self: center;
 `

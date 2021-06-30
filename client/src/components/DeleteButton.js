@@ -26,6 +26,6 @@ const Button = styled.button`
   border: none;
 `
 const SVG = styled(Delete)`
-  fill: red;
+  fill: var(--color-danger);
   width: 1.5rem;
 `

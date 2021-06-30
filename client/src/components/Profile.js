@@ -67,10 +67,11 @@ const WrapperEdit = styled.section`
   right: 10px;
   top: 70px;
   background: #bfa27e;
-  padding: 10px;
+  padding: 22px 10px;
   border-radius: 8px;
   width: 355px;
   box-shadow: 0 4px 4px #0006;
+  background: var(--color-primary-background);
 
   @media (min-width: 600px) {
     width: 647px;
@@ -128,6 +129,9 @@ const CancelButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
-  background: red;
-  color: white;
+  font-weight: 700;
+  background: var(--color-danger);
+  color: var(--color-primary-text);
+  width: 80%;
+  justify-self: center;
 `

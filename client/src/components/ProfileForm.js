@@ -176,7 +176,7 @@ const ImageContainer = styled.div`
 `
 const WrapperInput = styled.div`
   border-radius: 50%;
-  border: solid var(--color-active) 10px;
+  border: solid var(--color-active-background) 10px;
   height: 200px;
   width: 200px;
   justify-self: center;
@@ -185,7 +185,7 @@ const WrapperInput = styled.div`
 
 const Image = styled.img`
   border-radius: 50%;
-  border: solid var(--color-active) 10px;
+  border: solid var(--color-active-background) 10px;
   height: 200px;
   width: 200px;
   justify-self: center;

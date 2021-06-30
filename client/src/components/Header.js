@@ -14,4 +14,5 @@ const Title = styled.h2`
   color: var(--color-active-text);
   padding: 10px;
   text-align: center;
+  letter-spacing: 0.2rem;
 `

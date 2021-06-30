@@ -23,14 +23,14 @@ const ButtonStyled = styled.button`
   border: none;
   padding: 12px;
   cursor: pointer;
-  color: ${p => p.color};
+  color: var(--color-primary-text);
   background: var(--color-secondary-background);
   &.active {
     color: var(--color-active-text);
     z-index: -10;
   }
   &[disabled] {
-    opacity: 0.4;
+    opacity: 0.6;
     pointer-events: none;
   }
 `
