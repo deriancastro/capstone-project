@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-const { REACT_APP_API_KEY, PORT = 4000 } = process.env
+const { REACT_APP_API_KEY } = process.env
 
 mongoose
   .connect(
@@ -10,7 +10,6 @@ mongoose
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
     }
   )
   .then(() => console.log('Connected to MongoDB (capstone-project)'))
@@ -24,17 +23,12 @@ app.use('/', express.json())
 app.use('/api/users', require('./routes/users'))
 app.use('/api/goals', require('./routes/goals'))
 
-app.use(express.static(path.resolve(__dirname, 'client/build')))
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
-})
-
 // catch all (404)
 app.use((req, res) => res.sendStatus(404))
 
 // error route
 app.use(require('./routes/error'))
 
-app.listen(PORT, () => {
-  console.log(`Server started at http://localhost:${PORT}`)
+app.listen(4000, () => {
+  console.log(`Server started at http://localhost:4000`)
 })
