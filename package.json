@@ -9,8 +9,13 @@
     "test": "cd client && npm test",
     "storybook": "cd client && npm run storybook",
     "build": "cd client && npm run build",
-    "postinstall": "cd client && npm install",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build",
+    "server": "nodemon server.js",
     "start": "node server.js"
+  },
+  "engines": {
+    "node": "14.16.1"
   },
   "repository": {
     "type": "git",
