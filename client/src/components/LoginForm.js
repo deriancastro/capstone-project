@@ -22,7 +22,7 @@ export default function LoginForm({ onLogin }) {
         <input
           name="email"
           type="text"
-          placeholder="e.g johndoe@web.de"
+          placeholder="your email"
           pattern="^(.+)@(.+)$"
           autoComplete="off"
           required
@@ -33,7 +33,7 @@ export default function LoginForm({ onLogin }) {
         <input
           name="password"
           type="password"
-          placeholder="minimum of 4 characters"
+          placeholder="your password"
           minLength="4"
           autoComplete="off"
           required

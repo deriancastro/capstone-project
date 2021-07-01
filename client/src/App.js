@@ -58,7 +58,7 @@ export default function App() {
         </Route>
         <Route path="/tutorial">
           <TutorialPage
-            pageName="TUTORIAL"
+            pageName="JUTORIAL"
             techniqueList={techniqueList}
             onDetail={showDetailPage}
           />
@@ -84,7 +84,7 @@ export default function App() {
         <Navigation
           pages={[
             { title: 'profile', path: '/profile' },
-            { title: 'tutorial', path: '/tutorial' },
+            { title: 'jutorial', path: '/tutorial' },
             { title: 'goals', path: '/goals' },
           ]}
         />

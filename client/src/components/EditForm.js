@@ -22,7 +22,6 @@ export default function EditForm({ onEdit, setIsEdited }) {
       onSubmit={handleSubmit}
       onChange={validateForm}
       aria-label="edit form"
-      role="form"
     >
       <Label>
         full name:
@@ -90,7 +89,7 @@ export default function EditForm({ onEdit, setIsEdited }) {
   }
 
   function validateForm(event) {
-    const form = event.target.parentElement.parentElement
+    const form = event.target.closest('form')
     const inputFullName = form.elements.fullName.value.trim()
     const inputAboutYou = form.elements.aboutYou.value.trim()
     setIsActive(!inputFullName || !inputAboutYou)

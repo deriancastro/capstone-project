@@ -21,7 +21,6 @@ export default function ProfileForm({ onSubmit }) {
       onSubmit={handleSubmit}
       onChange={validateForm}
       aria-label="registration form"
-      role="form"
     >
       <Label>
         full name:
@@ -114,7 +113,7 @@ export default function ProfileForm({ onSubmit }) {
 
   function validateForm(event) {
     console.log(event)
-    const form = event.target.parentElement.parentElement
+    const form = event.target.closest('form')
     const inputFullName = form.elements.fullName.value.trim()
     const inputEmail = form.elements.email.value.trim()
     const inputPassword = form.elements.password.value.trim()
