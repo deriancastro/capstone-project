@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/deriancastro/capstone-project#readme",
   "dependencies": {
+    "@heroku-cli/plugin-buildpacks": "^7.54.0",
     "@heroku/buildpack-registry": "^1.0.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
