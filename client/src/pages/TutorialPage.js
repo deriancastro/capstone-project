@@ -2,7 +2,7 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Card from '../components/Card'
-import uchimata from '../assets/uchimata1.png'
+import uchimata from '../assets/uchimata2.png'
 
 TutorialPage.propTypes = {
   pageName: PropTypes.string,
