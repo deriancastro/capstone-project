@@ -8,17 +8,15 @@ describe('DeleteButton', () => {
   it('renders a button with an svg inside it', () => {
     render(<DeleteButton deleteGoal={noop} />)
 
-    const deleteButton = screen.getByRole('button')
-    expect(deleteButton).toContainHTML(
-      '<svg class="DeleteButton__SVG-sc-19e4le7-1 jFedtd">delete.svg</svg>'
-    )
+    const deleteButton = screen.getByRole('button', { name: 'delete.svg' })
+    expect(deleteButton).toBeInTheDocument()
   })
 
   it('calls deleteGoal correctly', () => {
     const deleteGoal = jest.fn()
     render(<DeleteButton deleteGoal={deleteGoal} />)
 
-    const deleteButton = screen.getByRole('button')
+    const deleteButton = screen.getByRole('button', { name: 'delete.svg' })
     userEvent.click(deleteButton)
     expect(deleteGoal).toHaveBeenCalledTimes(1)
   })

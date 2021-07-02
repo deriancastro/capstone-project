@@ -13,7 +13,7 @@ export default function GoalsForm({ onSubmit }) {
     <Form
       onSubmit={handleSubmit}
       onChange={validateForm}
-      aria-label="create a goal"
+      aria-label="goals form"
       role="form"
     >
       <Label>

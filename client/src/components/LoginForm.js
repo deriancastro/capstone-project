@@ -14,7 +14,7 @@ export default function LoginForm({ onLogin }) {
     <Form
       onSubmit={handleSubmit}
       onChange={validateForm}
-      aria-label="log in form"
+      aria-label="login form"
       role="form"
     >
       <Label>
@@ -37,6 +37,7 @@ export default function LoginForm({ onLogin }) {
           minLength="4"
           autoComplete="off"
           required
+          data-testid="password"
         />
       </Label>
       <SingInButton disabled={isActive}>login</SingInButton>

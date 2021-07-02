@@ -66,7 +66,7 @@ export default function EditForm({ onEdit, setIsEdited }) {
         )}
       </ImageContainer>
 
-      <EditButton disabled={isActive}>save</EditButton>
+      <SaveButton disabled={isActive}>save</SaveButton>
     </Form>
   )
   function handleSubmit(event) {
@@ -189,7 +189,7 @@ const InputImage = styled.input`
   justify-self: center;
 `
 
-const EditButton = styled(Button)`
+const SaveButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
