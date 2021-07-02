@@ -2,13 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-const { REACT_APP_API_KEY, PORT = 4000 } = process.env
+const { API_KEY, PORT = 4000 } = process.env
 
 const path = require('path')
 
 mongoose
   .connect(
-    `mongodb+srv://admin:${REACT_APP_API_KEY}@cluster0.f3eh5.mongodb.net/capstone-project?retryWrites=true&w=majority`,
+    `mongodb+srv://admin:${API_KEY}@cluster0.f3eh5.mongodb.net/capstone-project?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -27,6 +27,7 @@ app.use('/api/users', require('./routes/users'))
 app.use('/api/goals', require('./routes/goals'))
 
 app.use(express.static(path.resolve(__dirname, 'client/build')))
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
 })

@@ -11,7 +11,6 @@
     "build": "cd client && npm run build",
     "postinstall": "cd client && npm install",
     "install-client": "cd client && npm install",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build",
     "server": "nodemon server.js",
     "start": "node server.js"
   },
@@ -29,11 +28,9 @@
   },
   "homepage": "https://github.com/deriancastro/capstone-project#readme",
   "dependencies": {
-    "@heroku/buildpack-registry": "^1.0.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "heroku": "^7.54.1",
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.14",
     "morgan": "^1.10.0",
