@@ -11,6 +11,7 @@ export default createGlobalStyle`
   --color-active:#193C40; //dunke grün
   --color-active-background:#F29F05; //orange
   --color-active-text:#F28705; //orange
+  --color-valid:#9EDABA;
   --color-danger:#f75010; 
 }
 

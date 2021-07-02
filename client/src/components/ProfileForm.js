@@ -27,6 +27,8 @@ export default function ProfileForm({ onSubmit }) {
         <input
           name="fullName"
           type="text"
+          minLength="1"
+          maxLength="40"
           placeholder="e.g John Doe"
           autoComplete="off"
           required
@@ -38,7 +40,7 @@ export default function ProfileForm({ onSubmit }) {
           name="email"
           type="text"
           placeholder="e.g johndoe@web.de"
-          pattern="^(.+)@(.+)$"
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
           autoComplete="off"
           required
         />
@@ -159,6 +161,10 @@ const Label = styled.label`
     border-radius: 8px;
     padding: 8px;
     background: var(--color-secondary);
+
+    :valid {
+      background: var(--color-valid);
+    }
   }
 `
 
