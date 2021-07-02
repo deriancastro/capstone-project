@@ -2,19 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-const { API_KEY, PORT = 4000 } = process.env
+const { MONGO_URL, PORT = 4000 } = process.env
 
 const path = require('path')
 
 mongoose
-  .connect(
-    `mongodb+srv://admin:${API_KEY}@cluster0.f3eh5.mongodb.net/capstone-project?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log('Connected to MongoDB (capstone-project)'))
   .catch(console.error)
 
