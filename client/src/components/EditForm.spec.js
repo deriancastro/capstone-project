@@ -5,9 +5,21 @@ import EditForm from './EditForm'
 describe('EditForm', () => {
   const noop = () => {}
   const onEdit = jest.fn()
+  const imageToEdit =
+    'https://res.cloudinary.com/did6rcsck/image/upload/v1625336818/derian-action_vysrkf.jpg'
+  const aboutYouToEdit = 'I am being updated'
+  const fullNameToEdit = 'Derian Castro Giraldo'
 
   it('renders 3 imput fields and 1 button', () => {
-    render(<EditForm onEdit={noop} setIsEdited={noop} />)
+    render(
+      <EditForm
+        onEdit={noop}
+        imageToEdit={imageToEdit}
+        aboutYouToEdit={aboutYouToEdit}
+        fullNameToEdit={fullNameToEdit}
+        setIsEdited={noop}
+      />
+    )
 
     const fullNameInput = screen.getByRole('textbox', { name: 'full name:' })
     expect(fullNameInput).toBeInTheDocument()
@@ -22,8 +34,16 @@ describe('EditForm', () => {
     expect(saveButton).toBeInTheDocument()
   })
 
-  it('calls onEdit correctly by click on  saveButton, when full name and about you fields are not empty - The image is optional(image was not uploaded)', () => {
-    render(<EditForm onEdit={onEdit} setIsEdited={noop} />)
+  it(' calls onEdit correctly by click on saveButton when at least one of the input fields has been edited (the default values are those of the current profile)', () => {
+    render(
+      <EditForm
+        onEdit={onEdit}
+        imageToEdit={imageToEdit}
+        aboutYouToEdit={aboutYouToEdit}
+        fullNameToEdit={fullNameToEdit}
+        setIsEdited={noop}
+      />
+    )
 
     const fullNameInput = screen.getByRole('textbox', { name: 'full name:' })
     userEvent.type(fullNameInput, 'Derian Castro')
@@ -35,14 +55,23 @@ describe('EditForm', () => {
     userEvent.click(saveButton)
 
     expect(onEdit).toHaveBeenCalledWith({
-      fullName: 'Derian Castro',
-      aboutYou: 'I am a coder',
-      image: '',
+      aboutYou: 'I am being updatedI am a coder',
+      fullName: 'Derian Castro GiraldoDerian Castro',
+      image:
+        'https://res.cloudinary.com/did6rcsck/image/upload/v1625336818/derian-action_vysrkf.jpg',
     })
   })
 
-  it('calls onEdit correctly by -enter-, when full name and about you fields are not empty - The image is optional(image was not uploaded)', () => {
-    render(<EditForm onEdit={onEdit} setIsEdited={noop} />)
+  it(' calls onEdit correctly by -enter- when at least one of the input fields has been edited (the default values are those of the current profile)', () => {
+    render(
+      <EditForm
+        onEdit={onEdit}
+        imageToEdit={imageToEdit}
+        aboutYouToEdit={aboutYouToEdit}
+        fullNameToEdit={fullNameToEdit}
+        setIsEdited={noop}
+      />
+    )
 
     const fullNameInput = screen.getByRole('textbox', { name: 'full name:' })
     userEvent.type(fullNameInput, 'Derian Castro')
@@ -54,14 +83,23 @@ describe('EditForm', () => {
     fireEvent.submit(editForm)
 
     expect(onEdit).toHaveBeenCalledWith({
-      fullName: 'Derian Castro',
-      aboutYou: 'I am a coder',
-      image: '',
+      aboutYou: 'I am being updatedI am a coder',
+      fullName: 'Derian Castro GiraldoDerian Castro',
+      image:
+        'https://res.cloudinary.com/did6rcsck/image/upload/v1625336818/derian-action_vysrkf.jpg',
     })
   })
 
-  it('does not call handleSubmit when one of the inputs is empty with the exception of the imageInput - The image is optional(image was not uploaded)', () => {
-    render(<EditForm onEdit={onEdit} />)
+  it('does not call handleSubmit when at least one of the input fields has not been edited (the default values are those of the current profile)', () => {
+    render(
+      <EditForm
+        onEdit={onEdit}
+        imageToEdit={imageToEdit}
+        aboutYouToEdit={aboutYouToEdit}
+        fullNameToEdit={fullNameToEdit}
+        setIsEdited={noop}
+      />
+    )
 
     const saveButton = screen.getByRole('button', { name: 'save' })
     expect(saveButton).toBeDisabled()
