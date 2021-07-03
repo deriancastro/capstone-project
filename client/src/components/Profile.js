@@ -33,7 +33,13 @@ export default function Profile({ image, fullName, aboutYou, onEdit }) {
 
       {isEdited && (
         <WrapperEdit>
-          <EditForm onEdit={onEdit} setIsEdited={setIsEdited} />
+          <EditForm
+            onEdit={onEdit}
+            setIsEdited={setIsEdited}
+            fullNameToEdit={fullName}
+            aboutYouToEdit={aboutYou}
+            imageToEdit={image}
+          />
           <CancelButton onClick={() => setIsEdited(!isEdited)}>
             cancel
           </CancelButton>

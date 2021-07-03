@@ -3,19 +3,28 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
 import axios from 'axios'
-import camera from '../assets/camera.png'
+import camera from '../assets/camera2.png'
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
 EditForm.propTypes = {
+  imageToEdit: PropTypes.string,
+  fullNameToEdit: PropTypes.string.isRequired,
+  aboutYouToEdit: PropTypes.string.isRequired,
   onEdit: PropTypes.func.isRequired,
   setIsEdited: PropTypes.bool,
 }
 
-export default function EditForm({ onEdit, setIsEdited }) {
+export default function EditForm({
+  onEdit,
+  setIsEdited,
+  imageToEdit,
+  fullNameToEdit,
+  aboutYouToEdit,
+}) {
   const [isActive, setIsActive] = useState(true)
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(imageToEdit)
 
   return (
     <Form
@@ -32,6 +41,7 @@ export default function EditForm({ onEdit, setIsEdited }) {
           maxLength="40"
           placeholder="e.g John Doe"
           autoComplete="off"
+          defaultValue={fullNameToEdit}
           required
         />
       </Label>
@@ -42,6 +52,7 @@ export default function EditForm({ onEdit, setIsEdited }) {
           type="text"
           placeholder="Do you want to tell us something different?"
           autoComplete="off"
+          defaultValue={aboutYouToEdit}
           required
         />
       </Label>
@@ -51,21 +62,17 @@ export default function EditForm({ onEdit, setIsEdited }) {
         <small> - optional</small>
       </Text>
       <ImageContainer>
-        {image ? (
-          <Image src={image} alt="your photo" />
-        ) : (
-          <>
-            <WrapperInput>
-              <CameraIcon src={camera} alt="a camera icon" />
-              <InputImage
-                type="file"
-                name="file"
-                onChange={upload}
-                data-testid="inputImage"
-              />
-            </WrapperInput>
-          </>
-        )}
+        <Image src={image} alt="" />
+
+        <WrapperInput>
+          <CameraIcon src={camera} alt="a camera icon" />
+          <InputImage
+            type="file"
+            name="file"
+            onChange={upload}
+            data-testid="inputImage"
+          />
+        </WrapperInput>
       </ImageContainer>
 
       <SaveButton disabled={isActive}>save</SaveButton>
@@ -148,13 +155,9 @@ const Text = styled.p`
 
 const ImageContainer = styled.div`
   display: grid;
-  gap: 10px;
   justify-items: center;
-
-  @media (min-width: 600px) {
-    grid-template-columns: 2/3;
-    grid-template-rows: 2/3;
-  }
+  position: relative;
+  height: 200px;
 `
 const WrapperInput = styled.div`
   border-radius: 50%;
@@ -162,6 +165,8 @@ const WrapperInput = styled.div`
   height: 200px;
   width: 200px;
   justify-self: center;
+  position: absolute;
+  top: -200px;
   position: relative;
 `
 
@@ -171,24 +176,24 @@ const Image = styled.img`
   height: 200px;
   width: 200px;
   justify-self: center;
-
-  @media (min-width: 600px) {
-    height: 190px;
-    width: 190px;
-  }
 `
 
 const CameraIcon = styled.img`
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 130px;
+  right: -5px;
+  background: var(--color-active-background);
+  border-radius: 50%;
+  padding: 5px;
 `
 
 const InputImage = styled.input`
   opacity: 0;
-  height: 180px;
-  width: 180px;
-  justify-self: center;
+  height: 60px;
+  width: 50px;
+  position: absolute;
+  top: 130px;
+  right: 0;
 `
 
 const SaveButton = styled(Button)`
