@@ -28,6 +28,8 @@ export default function EditForm({ onEdit, setIsEdited }) {
         <input
           name="fullName"
           type="text"
+          minLength="1"
+          maxLength="40"
           placeholder="e.g John Doe"
           autoComplete="off"
           required

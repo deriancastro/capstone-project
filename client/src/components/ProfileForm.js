@@ -114,7 +114,6 @@ export default function ProfileForm({ onSubmit }) {
   }
 
   function validateForm(event) {
-    console.log(event)
     const form = event.target.closest('form')
     const inputFullName = form.elements.fullName.value.trim()
     const inputEmail = form.elements.email.value.trim()

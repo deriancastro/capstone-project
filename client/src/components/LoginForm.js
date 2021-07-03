@@ -15,7 +15,6 @@ export default function LoginForm({ onLogin }) {
       onSubmit={handleSubmit}
       onChange={validateForm}
       aria-label="login form"
-      role="form"
     >
       <Label>
         email:
@@ -23,7 +22,7 @@ export default function LoginForm({ onLogin }) {
           name="email"
           type="text"
           placeholder="your email"
-          pattern="^(.+)@(.+)$"
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
           autoComplete="off"
           required
         />

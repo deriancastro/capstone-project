@@ -11,7 +11,6 @@ import GoalsPage from './pages/GoalsPage'
 import techniqueData from './data/techniqueData.json'
 import getLoginUser from './services/getLoginUser'
 import postUser from './services/postUser'
-import getUser from './services/getLoginUser'
 import patchUser from './services/patchUser'
 import postGoal from './services/postGoal'
 import deleteGoal from './services/deleteGoal'
@@ -45,7 +44,10 @@ export default function App() {
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <HomePage onSubmit={handleSubmit} onLogin={handleOnLogin}></HomePage>
+          <HomePage
+            onSubmit={handleResgister}
+            onLogin={handleOnLogin}
+          ></HomePage>
           {!!userId && <Redirect to="/profile" />}
         </Route>
         <Route path="/profile">
@@ -92,16 +94,20 @@ export default function App() {
     </AppGrid>
   )
 
-  function handleSubmit(newProfile) {
+  function handleResgister(newProfile) {
     postUser(newProfile)
       .then(user => {
+        console.log(user)
         setProfile(user)
         setUserId(user._id)
         push('/profile')
       })
-      .catch(error => console.error(error))
+      .catch(error =>
+        window.alert('this email or full name allready exist, try again')
+      )
   }
 
+  //Response from Mongo ist an Array[{object}]
   function handleOnLogin(logProfile) {
     getLoginUser(logProfile)
       .then(user => {
@@ -110,7 +116,7 @@ export default function App() {
         setUserId(logUser[0]._id)
         push('/profile')
       })
-      .catch(error => console.error(error))
+      .catch(error => window.alert('email or password are wrong'))
   }
 
   function handleLogOut() {
@@ -122,13 +128,13 @@ export default function App() {
 
   function handleOnEdit(editProfile) {
     patchUser(userId, editProfile)
-      .catch(error => console.log(error))
       .finally(() => {
         fetch('/api/users/' + userId)
           .then(res => res.json())
           .then(user => setProfile(user))
           .catch(error => console.log(error))
       })
+      .catch(error => window.alert(error.message))
   }
 
   function showDetailPage({ currentTechname, currentUrl }) {
