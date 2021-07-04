@@ -19,10 +19,12 @@ import patchGoal from './services/patchGoal'
 export default function App() {
   const [profile, setProfile] = useLocalStorage('profile', {})
   const [userId, setUserId] = useLocalStorage('userId', null)
-  const [goalsList, setGoalsList] = useState([])
+  const [goalsList, setGoalsList] = useLocalStorage('goals', [])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
+
+  console.log(goalsList)
 
   useEffect(() => {
     userId &&
@@ -162,7 +164,7 @@ export default function App() {
 
   function handleNewGoal(newGoal) {
     postGoal({ ...newGoal, author: userId }).then(goal => {
-      setGoalsList([goal, ...goalsList])
+      setGoalsList([...goalsList, goal])
     })
   }
 

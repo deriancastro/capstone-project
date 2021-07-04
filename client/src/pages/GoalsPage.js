@@ -32,8 +32,8 @@ export default function GoalsPage({
       <GoalsForm onSubmit={onSubmit} />
       <ScrollContainer>
         <List>
-          {goalsList.map(({ text, id, isChecked }, index) => (
-            <ListItem key={id}>
+          {goalsList.map(({ text, isChecked }, index) => (
+            <ListItem key={index + 1}>
               <DeleteButton deleteGoal={deleteGoal} index={index} />
               <Goal
                 goalText={text}
