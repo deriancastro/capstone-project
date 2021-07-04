@@ -2,10 +2,14 @@ import { render, screen } from '@testing-library/react'
 import Header from './Header'
 
 describe('Header', () => {
-  it('renders a title', () => {
-    render(<Header>TUTORIAL</Header>)
-    expect(
-      screen.getByRole('heading', { name: 'TUTORIAL' })
-    ).toBeInTheDocument()
+  const noop = () => {}
+  it('renders a title and a LogoButton', () => {
+    render(<Header toProfile={noop}>TUTORIAL</Header>)
+
+    const heading = screen.getByRole('heading', { name: 'TUTORIAL' })
+    expect(heading).toBeInTheDocument()
+
+    const logoButton = screen.getByRole('button', { name: 'logo2.svg' })
+    expect(logoButton).toBeInTheDocument()
   })
 })

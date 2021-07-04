@@ -17,6 +17,7 @@ GoalsPage.propTypes = {
   onCheckGoal: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   deleteGoal: PropTypes.func.isRequired,
+  toProfile: PropTypes.func.isRequired,
 }
 
 export default function GoalsPage({
@@ -25,15 +26,16 @@ export default function GoalsPage({
   onCheckGoal,
   onSubmit,
   deleteGoal,
+  toProfile,
 }) {
   return (
     <Wrapper>
-      <Header>{pageName}</Header>
+      <Header toProfile={toProfile}>{pageName}</Header>
       <GoalsForm onSubmit={onSubmit} />
       <ScrollContainer>
         <List>
-          {goalsList.map(({ text, id, isChecked }, index) => (
-            <ListItem key={id}>
+          {goalsList.map(({ text, isChecked }, index) => (
+            <ListItem key={index + 1}>
               <DeleteButton deleteGoal={deleteGoal} index={index} />
               <Goal
                 goalText={text}
@@ -51,7 +53,7 @@ export default function GoalsPage({
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: 60px 101px auto;
+  grid-template-rows: 60px 128px auto;
   height: calc(100vh - 60px);
 `
 const ScrollContainer = styled.section`

@@ -4,98 +4,94 @@ import ProfileForm from './ProfileForm'
 
 describe('ProfileForm', () => {
   const noop = () => {}
-  const imageUrl =
-    'http://res.cloudinary.com/did6rcsck/image/upload/v1624026486/derian_u8hh7b.jpg'
+  const handleSubmit = jest.fn()
 
-  it('renders 4 inputs fields: 3 type: text and 1 type: password and 1 button', () => {
+  it('renders 5 inputs fields and 1 button', () => {
     render(<ProfileForm onSubmit={noop} />)
 
-    const inputsTypeText = screen.getAllByRole('textbox')
-    expect(inputsTypeText).toHaveLength(3)
+    const fullNameInput = screen.getByRole('textbox', { name: 'full name:' })
+    expect(fullNameInput).toBeInTheDocument()
 
-    const inputsTypePassword = screen.getByTestId('password')
-    expect(inputsTypePassword).toBeInTheDocument()
+    const emailInput = screen.getByRole('textbox', { name: 'email:' })
+    expect(emailInput).toBeInTheDocument()
 
-    const button = screen.getByRole('button')
-    expect(button).toBeInTheDocument()
+    const passwordInput = screen.getByTestId('password', { name: 'password:' })
+    expect(passwordInput).toBeInTheDocument()
+
+    const aboutYouInput = screen.getByRole('textbox', { name: 'about you:' })
+    expect(aboutYouInput).toBeInTheDocument()
+
+    const imageInput = screen.getByTestId('inputImage')
+    expect(imageInput).toBeInTheDocument()
+
+    const registerButton = screen.getByRole('button', { name: 'register' })
+    expect(registerButton).toBeInTheDocument()
   })
 
-  // it('calls handleSubmit correctly by click on sign up button, when full name, about you, email and password fields are not empty', () => {
-  //   const handleSubmit = jest.fn()
+  it('calls handleSubmit correctly by click registerbutton, when full name, about you, email and password fields are not empty - The image is optional(image was not uploaded)', () => {
+    render(<ProfileForm onSubmit={handleSubmit} />)
 
-  //   render(<ProfileForm onSubmit={handleSubmit} />)
+    const fullName = screen.getByRole('textbox', { name: 'full name:' })
+    userEvent.type(fullName, 'Derian Castro')
 
-  //   const fullName = screen.getByRole('textbox', { name: 'full name:' })
-  //   userEvent.type(fullName, 'Derian Castro')
+    const emailInput = screen.getByRole('textbox', { name: 'email:' })
+    userEvent.type(emailInput, 'deriancastro@hotmail.com')
 
-  //   const email = screen.getByRole('textbox', { name: 'email:' })
-  //   userEvent.type(fullName, 'deriancastro@hotmail.com')
+    const passwordInput = screen.getByTestId('password', { name: 'password:' })
+    userEvent.type(passwordInput, '1234')
 
-  //   const password = screen.getByTestId('password')
-  //   userEvent.type(password, '1234')
+    const aboutYouInput = screen.getByRole('textbox', { name: 'about you:' })
+    userEvent.type(aboutYouInput, 'I like coding and judo')
 
-  //   const aboutYou = screen.getByRole('textbox', {
-  //     name: 'about you:',
-  //   })
-  //   userEvent.type(aboutYou, 'I like coding and judo')
+    const registerButton = screen.getByRole('button', { name: 'register' })
+    userEvent.click(registerButton)
 
-  //   const image = screen.getByTestId('inputImage')
-  //   fireEvent.input(image, imageUrl)
+    expect(handleSubmit).toHaveBeenCalledWith({
+      fullName: 'Derian Castro',
+      email: 'deriancastro@hotmail.com',
+      password: '1234',
+      aboutYou: 'I like coding and judo',
+      password: '1234',
+      image: '',
+    })
+  })
 
-  //   const singUpButton = screen.getByRole('button', { name: 'sign up' })
-  //   userEvent.click(singUpButton)
+  it('calls handleSubmit correctly by -enter-, when full name, about you, email and password fields are not empty - The image is optional(image was not uploaded)', () => {
+    render(<ProfileForm onSubmit={handleSubmit} />)
 
-  //   expect(handleSubmit).toHaveBeenCalledWith({
-  //     fullName: 'Derian Castro',
-  //     email: 'deriancastro@hotmail.com',
-  //     aboutYou: 'I like coding and judo',
-  //     password: '1234',
-  //   })
-  // })
+    const fullName = screen.getByRole('textbox', { name: 'full name:' })
+    userEvent.type(fullName, 'Derian Castro')
 
-  // it('calls handleSubmit and signIn correctly by -Enter-, when full name and about you fields are not empty', () => {
-  //   const handleSubmit = jest.fn()
-  //   const TestSingIn = jest.fn()
+    const emailInput = screen.getByRole('textbox', { name: 'email:' })
+    userEvent.type(emailInput, 'deriancastro@hotmail.com')
 
-  //   render(
-  //     <ProfileForm onSubmit={handleSubmit} upload={noop} signIn={TestSingIn} />
-  //   )
+    const passwordInput = screen.getByTestId('password', { name: 'password:' })
+    userEvent.type(passwordInput, '1234')
 
-  //   const fullName = screen.getByRole('textbox', { name: 'full name:' })
-  //   userEvent.type(fullName, 'Derian Castro')
+    const aboutYouInput = screen.getByRole('textbox', { name: 'about you:' })
+    userEvent.type(aboutYouInput, 'I like coding and judo')
 
-  //   const aboutYou = screen.getByRole('textbox', {
-  //     name: 'about you:',
-  //   })
-  //   userEvent.type(aboutYou, 'I like coding and judo')
+    const profileForm = screen.getByRole('form', { name: 'registration form' })
+    fireEvent.submit(profileForm)
 
-  //   const form = screen.getByRole('form')
-  //   fireEvent.submit(form)
+    expect(handleSubmit).toHaveBeenCalledWith({
+      fullName: 'Derian Castro',
+      email: 'deriancastro@hotmail.com',
+      password: '1234',
+      aboutYou: 'I like coding and judo',
+      password: '1234',
+      image: '',
+    })
+  })
 
-  //   expect(handleSubmit).toHaveBeenCalledWith({
-  //     id: '123',
-  //     fullName: 'Derian Castro',
-  //     aboutYou: 'I like coding and judo',
-  //   })
-  //   expect(TestSingIn).toHaveBeenCalled()
-  // })
+  it('does not call handleSubmit when one of the inputs is empty with the exception of the imageInput - The image is optional(image was not uploaded)', () => {
+    render(<ProfileForm onSubmit={handleSubmit} />)
 
-  // it('does not call handleSubmit and signIn when full name and about you fields are empty', () => {
-  //   const handleSubmit = jest.fn()
-  //   const singIn = jest.fn()
+    const registerButton = screen.getByRole('button', { name: 'register' })
+    expect(registerButton).toBeDisabled()
 
-  //   render(
-  //     <ProfileForm onSubmit={handleSubmit} upload={noop} signIn={singIn} />
-  //   )
+    fireEvent.click(registerButton)
 
-  //   const form = screen.getByRole('form')
-
-  //   const singUpButton = screen.getByRole('button', { name: 'sign up' })
-  //   expect(singUpButton).toBeDisabled()
-
-  //   fireEvent.click(singUpButton)
-
-  //   expect(handleSubmit).toHaveBeenCalledTimes(0)
-  //   expect(singIn).toHaveBeenCalledTimes(0)
-  // })
+    expect(handleSubmit).toHaveBeenCalledTimes(0)
+  })
 })

@@ -2,6 +2,7 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import Header from '../components/Header'
 import Card from '../components/Card'
+import uchimata from '../assets/uchimata2.png'
 
 TutorialPage.propTypes = {
   pageName: PropTypes.string,
@@ -13,12 +14,18 @@ TutorialPage.propTypes = {
     })
   ),
   onDetail: PropTypes.func.isRequired,
+  toProfile: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({ pageName, techniqueList, onDetail }) {
+export default function TutorialPage({
+  pageName,
+  techniqueList,
+  onDetail,
+  toProfile,
+}) {
   return (
     <Wrapper>
-      <Header>{pageName}</Header>
+      <Header toProfile={toProfile}>{pageName}</Header>
       <ScrollContainer>
         <List>
           {techniqueList.map(({ name, id, url }) => (
@@ -41,6 +48,7 @@ const Wrapper = styled.div`
 const ScrollContainer = styled.section`
   overflow-y: scroll;
   padding: 10px;
+  background: center / cover no-repeat url(${uchimata});
 `
 const List = styled.ul`
   display: grid;

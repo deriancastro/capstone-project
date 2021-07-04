@@ -7,17 +7,15 @@ describe('LogoutButton', () => {
   it('renders a button with an svg inside it', () => {
     render(<LogoutButton logOut={noop} />)
 
-    const logoutButton = screen.getByRole('button')
-    expect(logoutButton).toContainHTML(
-      '<svg class="LogoutButton__SVG-wzbbka-1 jnBPOC">logout.svg</svg>'
-    )
+    const logoutButton = screen.getByRole('button', { name: 'logout.svg' })
+    expect(logoutButton).toBeInTheDocument()
   })
 
   it('calls logOut correctly', () => {
     const logOut = jest.fn()
     render(<LogoutButton logOut={logOut} />)
 
-    const logoutButton = screen.getByRole('button')
+    const logoutButton = screen.getByRole('button', { name: 'logout.svg' })
     userEvent.click(logoutButton)
     expect(logOut).toHaveBeenCalledTimes(1)
   })

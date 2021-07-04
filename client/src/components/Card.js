@@ -24,7 +24,7 @@ const Wrapper = styled.section`
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
-  background: white;
+  background: var(--color-secondary-card);
 `
 const Text = styled.h3`
   text-align: center;

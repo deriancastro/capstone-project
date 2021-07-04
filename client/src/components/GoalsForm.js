@@ -13,12 +13,17 @@ export default function GoalsForm({ onSubmit }) {
     <Form
       onSubmit={handleSubmit}
       onChange={validateForm}
-      aria-label="create a goal"
+      aria-label="goals form"
       role="form"
     >
       <Label>
         add goal:
-        <input name="text" type="text" placeholder="write a goal" />
+        <input
+          name="text"
+          type="text"
+          placeholder="write a goal"
+          autoComplete="off"
+        />
       </Label>
       <GoalButton disabled={isActive}>create</GoalButton>
     </Form>
@@ -45,16 +50,15 @@ export default function GoalsForm({ onSubmit }) {
 }
 
 const Form = styled.form`
-  padding: 20px 10px;
+  padding: 10px;
   display: grid;
-  grid-template-columns: auto min-content;
   height: min-content;
   gap: 10px;
   box-shadow: 0 3px 3px #0003;
 `
 
 const Label = styled.label`
-  color: white;
+  color: var(--color-primary);
   font-weight: bold;
   padding: 0 5px;
 
@@ -62,6 +66,7 @@ const Label = styled.label`
     width: 100%;
     border-radius: 8px;
     padding: 8px;
+    background: var(--color-secondary);
   }
 `
 
@@ -69,6 +74,9 @@ const GoalButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
-  background: green;
-  color: white;
+  font-weight: 700;
+  background: var(--color-active-background);
+  color: var(--color-active);
+  width: 80%;
+  justify-self: center;
 `

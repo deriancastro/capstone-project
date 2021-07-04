@@ -4,6 +4,8 @@ import ProfilePage from './ProfilePage'
 
 describe('ProfilePage', () => {
   const noop = () => {}
+  const logOut = jest.fn()
+  const onEdit = jest.fn()
 
   const profileInfo = {
     fullName: 'Derian Castro',
@@ -14,7 +16,13 @@ describe('ProfilePage', () => {
 
   it('renders a heading and a Profile component', () => {
     render(
-      <ProfilePage pageName="PROFILE" profileInfo={profileInfo} logOut={noop} />
+      <ProfilePage
+        pageName="PROFILE"
+        profileInfo={profileInfo}
+        logOut={noop}
+        onEdit={noop}
+        toProfile={noop}
+      />
     )
 
     const heading = screen.getByRole('heading', { name: 'PROFILE' })
@@ -25,12 +33,13 @@ describe('ProfilePage', () => {
   })
 
   it('calls logOut correctly', () => {
-    const logOut = jest.fn()
     render(
       <ProfilePage
         pageName="PROFILE"
         profileInfo={profileInfo}
         logOut={logOut}
+        onEdit={onEdit}
+        toProfile={noop}
       />
     )
 

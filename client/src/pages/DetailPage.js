@@ -12,13 +12,18 @@ DetailPage.propTypes = {
     })
   ),
   onNavigate: PropTypes.func.isRequired,
+  toProfile: PropTypes.func.isRequired,
 }
 
-export default function DetailPage({ onNavigate, currentTechnique }) {
+export default function DetailPage({
+  onNavigate,
+  currentTechnique,
+  toProfile,
+}) {
   const { currentTechname, currentUrl } = currentTechnique
   return (
     <Wrapper>
-      <Header>{currentTechname}</Header>
+      <Header toProfile={toProfile}>{currentTechname}</Header>
       <Container data-testid="video">
         <ReactPlayer
           url={currentUrl}
@@ -54,5 +59,6 @@ const Container = styled.div`
 `
 
 const DetailButton = styled(Button)`
-  background: #bf665e;
+  background: var(--color-secondary-background);
+  color: var(--color-active-text);
 `

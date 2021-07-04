@@ -9,16 +9,17 @@ import DetailPage from './pages/DetailPage'
 import ProfilePage from './pages/ProfilePage'
 import GoalsPage from './pages/GoalsPage'
 import techniqueData from './data/techniqueData.json'
+import getLoginUser from './services/getLoginUser'
 import postUser from './services/postUser'
+import patchUser from './services/patchUser'
 import postGoal from './services/postGoal'
-import getUser from './services/getUser'
 import deleteGoal from './services/deleteGoal'
 import patchGoal from './services/patchGoal'
 
 export default function App() {
   const [profile, setProfile] = useLocalStorage('profile', {})
   const [userId, setUserId] = useLocalStorage('userId', null)
-  const [goalsList, setGoalsList] = useState([])
+  const [goalsList, setGoalsList] = useLocalStorage('goals', [])
   const [currentTechnique, setCurrentTechnique] = useState({})
   const { push } = useHistory()
   const techniqueList = techniqueData
@@ -43,7 +44,10 @@ export default function App() {
     <AppGrid>
       <Switch>
         <Route exact path="/">
-          <HomePage onSubmit={handleSubmit} onLogin={handleOnLogin}></HomePage>
+          <HomePage
+            onSubmit={handleResgister}
+            onLogin={handleOnLogin}
+          ></HomePage>
           {!!userId && <Redirect to="/profile" />}
         </Route>
         <Route path="/profile">
@@ -51,19 +55,23 @@ export default function App() {
             pageName="PROFILE"
             profileInfo={profile}
             logOut={handleLogOut}
+            onEdit={handleOnEdit}
+            toProfile={handleToProfile}
           />
         </Route>
         <Route path="/tutorial">
           <TutorialPage
-            pageName="TUTORIAL"
+            pageName="JUTORIAL"
             techniqueList={techniqueList}
             onDetail={showDetailPage}
+            toProfile={handleToProfile}
           />
         </Route>
         <Route path="/detail">
           <DetailPage
             currentTechnique={currentTechnique}
             onNavigate={showTutorialPage}
+            toProfile={handleToProfile}
           />
         </Route>
         <Route path="/goals">
@@ -73,6 +81,7 @@ export default function App() {
             onCheckGoal={handleCheckedGoal}
             onSubmit={handleNewGoal}
             deleteGoal={handleDeleteGoal}
+            toProfile={handleToProfile}
           />
         </Route>
       </Switch>
@@ -81,7 +90,7 @@ export default function App() {
         <Navigation
           pages={[
             { title: 'profile', path: '/profile' },
-            { title: 'tutorial', path: '/tutorial' },
+            { title: 'jutorial', path: '/tutorial' },
             { title: 'goals', path: '/goals' },
           ]}
         />
@@ -89,25 +98,29 @@ export default function App() {
     </AppGrid>
   )
 
-  function handleSubmit(newProfile) {
+  function handleResgister(newProfile) {
     postUser(newProfile)
       .then(user => {
+        console.log(user)
         setProfile(user)
         setUserId(user._id)
         push('/profile')
       })
-      .catch(error => console.error(error))
+      .catch(error =>
+        window.alert('this email or full name allready exist, try again')
+      )
   }
 
+  //Response from Mongo ist an Array[{object}]
   function handleOnLogin(logProfile) {
-    getUser(logProfile)
+    getLoginUser(logProfile)
       .then(user => {
         setProfile(...user)
         const logUser = [...user]
         setUserId(logUser[0]._id)
         push('/profile')
       })
-      .catch(error => console.error(error))
+      .catch(error => window.alert('email or password are wrong'))
   }
 
   function handleLogOut() {
@@ -117,6 +130,17 @@ export default function App() {
     push('/')
   }
 
+  function handleOnEdit(editProfile) {
+    patchUser(userId, editProfile)
+      .finally(() => {
+        fetch('/api/users/' + userId)
+          .then(res => res.json())
+          .then(user => setProfile(user))
+          .catch(error => console.log(error))
+      })
+      .catch(error => window.alert(error.message))
+  }
+
   function showDetailPage({ currentTechname, currentUrl }) {
     setCurrentTechnique({ currentTechname, currentUrl })
     push('/detail')
@@ -124,6 +148,10 @@ export default function App() {
 
   function showTutorialPage() {
     push('/tutorial')
+  }
+
+  function handleToProfile() {
+    push('/profile')
   }
 
   function handleCheckedGoal(index) {
@@ -142,7 +170,7 @@ export default function App() {
 
   function handleNewGoal(newGoal) {
     postGoal({ ...newGoal, author: userId }).then(goal => {
-      setGoalsList([goal, ...goalsList])
+      setGoalsList([...goalsList, goal])
     })
   }
 

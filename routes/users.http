@@ -2,7 +2,11 @@
 ### (https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 @baseUrl = http://localhost:4000
-@validUserId = 60d4eace04036c2fb4748252
+@validUserId = 60d3474b5ba21119570a31d0
+
+@validEmail = deriancastro@hotmail.com
+
+@validPassword = 1234
 
 ### GET all users
 GET {{baseUrl}}/api/users
@@ -13,16 +17,19 @@ GET {{baseUrl}}/api/users/{{validUserId}}
 ### GET a non existing user (404)
 GET {{baseUrl}}/api/users/2000
 
+### GET - log in a user
+GET {{baseUrl}}/api/users/login/{{validEmail}}/{{validPassword}}
+
 ### POST a new user
-POST http://localhost:4000/api/users
+POST {{baseUrl}}/api/users
 Content-Type: application/json
 
 {
-  "fullName": "Max Mustermann",
-  "email": "max@muster.de",
+  "fullName": "Max Mustermann3",
+  "email": "max@muster3.de",
   "password": "1234",
   "aboutYou": "I am a test too",
-  "image": "http://res.cloudinary.com/did6rcsck/image/upload/v1624372461/IMG_0203_trlmaw.png"
+  "image": "http://res.cloudinary.com/did6rcsck/image/upload/v1625313675/derian-action_lxw5yq.jpg"
 }
 
 ### PATCH a user
@@ -30,8 +37,13 @@ PATCH {{baseUrl}}/api/users/{{validUserId}}
 Content-Type: application/json
 
 {
-  "aboutYou": "I am updating"
+   "fullName": "derian",
+   "aboutYou": "I am updating again",
+   "image": "http://res.cloudinary.com/did6rcsck/image/upload/v1625313675/derian-action_lxw5yq.jpg"
 }
 
 ### DELETE a user
 DELETE {{baseUrl}}/api/users/{{validUserId}}
+
+
+

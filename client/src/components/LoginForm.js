@@ -14,16 +14,15 @@ export default function LoginForm({ onLogin }) {
     <Form
       onSubmit={handleSubmit}
       onChange={validateForm}
-      aria-label="log in form"
-      role="form"
+      aria-label="login form"
     >
       <Label>
         email:
         <input
           name="email"
           type="text"
-          placeholder="e.g johndoe@web.de"
-          pattern="^(.+)@(.+)$"
+          placeholder="your email"
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
           autoComplete="off"
           required
         />
@@ -33,13 +32,14 @@ export default function LoginForm({ onLogin }) {
         <input
           name="password"
           type="password"
-          placeholder="minimum of 4 characters"
+          placeholder="your password"
           minLength="4"
           autoComplete="off"
           required
+          data-testid="password"
         />
       </Label>
-      <SingInButton disabled={isActive}>log in</SingInButton>
+      <SingInButton disabled={isActive}>login</SingInButton>
     </Form>
   )
   function handleSubmit(event) {
@@ -75,7 +75,7 @@ const Form = styled.form`
   gap: 10px;
 `
 const Label = styled.label`
-  color: white;
+  color: var(--color-primary);
   font-weight: bold;
   padding: 0 5px;
 
@@ -83,6 +83,7 @@ const Label = styled.label`
     width: 100%;
     border-radius: 8px;
     padding: 8px;
+    background: var(--color-secondary);
   }
 `
 
@@ -90,6 +91,10 @@ const SingInButton = styled(Button)`
   padding: 8px;
   border-radius: 8px;
   font-size: 1rem;
-  background: green;
-  color: white;
+  font-weight: 700;
+  background: var(--color-active-background);
+  color: var(--color-active);
+  width: 80%;
+  justify-self: center;
+  margin-top: 16px;
 `

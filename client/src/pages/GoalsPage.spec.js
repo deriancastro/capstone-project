@@ -31,6 +31,7 @@ describe('GoalsPage', () => {
         onCheckGoal={noop}
         onSubmit={noop}
         deleteGoal={noop}
+        toProfile={noop}
       />
     )
 
@@ -57,6 +58,7 @@ describe('GoalsPage', () => {
         onCheckGoal={onCheckGoal}
         onSubmit={noop}
         deleteGoal={noop}
+        toProfile={noop}
       />
     )
 
@@ -80,6 +82,7 @@ describe('GoalsPage', () => {
         onCheckGoal={noop}
         onSubmit={onSubmit}
         deleteGoal={noop}
+        toProfile={noop}
       />
     )
 
@@ -103,6 +106,7 @@ describe('GoalsPage', () => {
         onCheckGoal={noop}
         onSubmit={noop}
         deleteGoal={deleteGoal}
+        toProfile={noop}
       />
     )
 

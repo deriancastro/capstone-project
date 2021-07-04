@@ -54,8 +54,6 @@ describe('GoalsForm', () => {
 
     render(<GoalsForm onSubmit={handleSubmit} />)
 
-    const form = screen.getByRole('form')
-
     const createButton = screen.getByRole('button', { name: 'create' })
     expect(createButton).toBeDisabled()
 

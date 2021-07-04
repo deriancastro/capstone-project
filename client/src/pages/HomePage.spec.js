@@ -8,7 +8,7 @@ describe('HomePage', () => {
 
     render(<HomePage onSubmit={noop} onLogin={noop} />)
 
-    const loginForm = screen.getByRole('form', { name: 'log in form' })
+    const loginForm = screen.getByRole('form', { name: 'login form' })
     expect(loginForm).toBeInTheDocument()
 
     const linkButton = screen.getByRole('button', { name: 'or register' })

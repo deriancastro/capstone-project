@@ -16,12 +16,12 @@ export default function LogoutButton({ logOut }) {
 
 const Button = styled.button`
   background: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   border: none;
   position: absolute;
-  right: 340px;
-  top: 10px;
+  right: 10px;
+  top: 13px;
 
   @media (min-width: 600px) {
     right: 620px;
@@ -29,6 +29,6 @@ const Button = styled.button`
   }
 `
 const SVG = styled(LogOut)`
-  fill: #bfa27e;
+  fill: var(--color-danger);
   width: 2rem;
 `
