@@ -21,7 +21,7 @@ const Button = styled.button`
   border: none;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 13px;
 
   @media (min-width: 600px) {
     right: 620px;

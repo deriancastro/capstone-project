@@ -13,6 +13,7 @@ describe('TutorialPage', () => {
         pageName="TUTORIAL"
         techniqueList={techniqueList}
         onDetail={noop}
+        toProfile={noop}
       />
     )
 
@@ -37,6 +38,7 @@ describe('TutorialPage', () => {
           },
         ]}
         onDetail={onDetail}
+        toProfile={noop}
       />
     )
 

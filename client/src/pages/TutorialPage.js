@@ -14,12 +14,18 @@ TutorialPage.propTypes = {
     })
   ),
   onDetail: PropTypes.func.isRequired,
+  toProfile: PropTypes.func.isRequired,
 }
 
-export default function TutorialPage({ pageName, techniqueList, onDetail }) {
+export default function TutorialPage({
+  pageName,
+  techniqueList,
+  onDetail,
+  toProfile,
+}) {
   return (
     <Wrapper>
-      <Header>{pageName}</Header>
+      <Header toProfile={toProfile}>{pageName}</Header>
       <ScrollContainer>
         <List>
           {techniqueList.map(({ name, id, url }) => (

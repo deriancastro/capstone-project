@@ -13,7 +13,7 @@ EditForm.propTypes = {
   fullNameToEdit: PropTypes.string.isRequired,
   aboutYouToEdit: PropTypes.string.isRequired,
   onEdit: PropTypes.func.isRequired,
-  setIsEdited: PropTypes.bool,
+  setIsEdited: PropTypes.func,
 }
 
 export default function EditForm({
@@ -93,7 +93,7 @@ export default function EditForm({
     onEdit(editProfile)
     form.reset()
     event.target.elements.fullName.focus()
-    setIsActive(true)
+    setIsActive()
     setIsEdited(false)
   }
 

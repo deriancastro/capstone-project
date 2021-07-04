@@ -17,6 +17,7 @@ GoalsPage.propTypes = {
   onCheckGoal: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   deleteGoal: PropTypes.func.isRequired,
+  toProfile: PropTypes.func.isRequired,
 }
 
 export default function GoalsPage({
@@ -25,10 +26,11 @@ export default function GoalsPage({
   onCheckGoal,
   onSubmit,
   deleteGoal,
+  toProfile,
 }) {
   return (
     <Wrapper>
-      <Header>{pageName}</Header>
+      <Header toProfile={toProfile}>{pageName}</Header>
       <GoalsForm onSubmit={onSubmit} />
       <ScrollContainer>
         <List>

@@ -5,6 +5,7 @@ import EditForm from './EditForm'
 describe('EditForm', () => {
   const noop = () => {}
   const onEdit = jest.fn()
+  const setIsEdited = jest.fn
   const imageToEdit =
     'https://res.cloudinary.com/did6rcsck/image/upload/v1625336818/derian-action_vysrkf.jpg'
   const aboutYouToEdit = 'I am being updated'
@@ -17,7 +18,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        // setIsEdited={noop}
+        setIsEdited={setIsEdited}
       />
     )
 
@@ -41,7 +42,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        // setIsEdited={noop}
+        setIsEdited={setIsEdited}
       />
     )
 
@@ -69,7 +70,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        // setIsEdited={noop}
+        setIsEdited={setIsEdited}
       />
     )
 
@@ -97,7 +98,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        // setIsEdited={noop}
+        setIsEdited={setIsEdited}
       />
     )
 

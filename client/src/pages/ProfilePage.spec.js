@@ -21,6 +21,7 @@ describe('ProfilePage', () => {
         profileInfo={profileInfo}
         logOut={noop}
         onEdit={noop}
+        toProfile={noop}
       />
     )
 
@@ -38,6 +39,7 @@ describe('ProfilePage', () => {
         profileInfo={profileInfo}
         logOut={logOut}
         onEdit={onEdit}
+        toProfile={noop}
       />
     )
 

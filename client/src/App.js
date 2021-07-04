@@ -56,6 +56,7 @@ export default function App() {
             profileInfo={profile}
             logOut={handleLogOut}
             onEdit={handleOnEdit}
+            toProfile={handleToProfile}
           />
         </Route>
         <Route path="/tutorial">
@@ -63,12 +64,14 @@ export default function App() {
             pageName="JUTORIAL"
             techniqueList={techniqueList}
             onDetail={showDetailPage}
+            toProfile={handleToProfile}
           />
         </Route>
         <Route path="/detail">
           <DetailPage
             currentTechnique={currentTechnique}
             onNavigate={showTutorialPage}
+            toProfile={handleToProfile}
           />
         </Route>
         <Route path="/goals">
@@ -78,6 +81,7 @@ export default function App() {
             onCheckGoal={handleCheckedGoal}
             onSubmit={handleNewGoal}
             deleteGoal={handleDeleteGoal}
+            toProfile={handleToProfile}
           />
         </Route>
       </Switch>
@@ -144,6 +148,10 @@ export default function App() {
 
   function showTutorialPage() {
     push('/tutorial')
+  }
+
+  function handleToProfile() {
+    push('/profile')
   }
 
   function handleCheckedGoal(index) {
