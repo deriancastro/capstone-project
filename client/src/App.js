@@ -24,8 +24,6 @@ export default function App() {
   const { push } = useHistory()
   const techniqueList = techniqueData
 
-  console.log(goalsList)
-
   useEffect(() => {
     userId &&
       fetch('/api/users/' + userId)

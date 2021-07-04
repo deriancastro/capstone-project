@@ -17,7 +17,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        setIsEdited={noop}
+        // setIsEdited={noop}
       />
     )
 
@@ -41,7 +41,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        setIsEdited={noop}
+        // setIsEdited={noop}
       />
     )
 
@@ -69,7 +69,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        setIsEdited={noop}
+        // setIsEdited={noop}
       />
     )
 
@@ -97,7 +97,7 @@ describe('EditForm', () => {
         imageToEdit={imageToEdit}
         aboutYouToEdit={aboutYouToEdit}
         fullNameToEdit={fullNameToEdit}
-        setIsEdited={noop}
+        // setIsEdited={noop}
       />
     )
 

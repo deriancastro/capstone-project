@@ -16,11 +16,11 @@ export default function LogoutButton({ logOut }) {
 
 const Button = styled.button`
   background: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   border: none;
   position: absolute;
-  right: 340px;
+  right: 10px;
   top: 10px;
 
   @media (min-width: 600px) {
