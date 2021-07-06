@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { ReactComponent as Logo } from '../assets/logo2.svg'
+import logoButton from '../assets/logoButton.png'
 
 LogoButton.propTypes = {
   toProfile: PropTypes.func.isRequired,
@@ -9,7 +9,7 @@ LogoButton.propTypes = {
 export default function LogoButton({ toProfile }) {
   return (
     <Button onClick={toProfile}>
-      <SVG />
+      <img src={logoButton} alt="logoButton" />
     </Button>
   )
 }
@@ -21,13 +21,10 @@ const Button = styled.button`
   border: none;
   position: absolute;
   left: 10px;
-  top: 2px;
+  top: 8px;
 
-  @media (min-width: 600px) {
-    right: 620px;
-    top: 10px;
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
   }
-`
-const SVG = styled(Logo)`
-  width: 2.5rem;
 `
