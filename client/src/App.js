@@ -45,7 +45,7 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <HomePage
-            onSubmit={handleResgister}
+            onSubmit={handleRegister}
             onLogin={handleOnLogin}
           ></HomePage>
           {!!userId && <Redirect to="/profile" />}
@@ -98,20 +98,19 @@ export default function App() {
     </AppGrid>
   )
 
-  function handleResgister(newProfile) {
+  function handleRegister(newProfile) {
     postUser(newProfile)
       .then(user => {
-        console.log(user)
         setProfile(user)
         setUserId(user._id)
         push('/profile')
       })
-      .catch(error =>
-        window.alert('this email or full name allready exist, try again')
-      )
+      .catch(error => {
+        window.alert(error.message)
+      })
   }
 
-  //Response from Mongo ist an Array[{object}]
+  //Response from Mongo ist an array[{object}] - the password is not encrypted
   function handleOnLogin(logProfile) {
     getLoginUser(logProfile)
       .then(user => {
@@ -120,7 +119,7 @@ export default function App() {
         setUserId(logUser[0]._id)
         push('/profile')
       })
-      .catch(error => window.alert('email or password are wrong'))
+      .catch(error => window.alert('email or password are wrong')) //if the response is a empty array[]
   }
 
   function handleLogOut() {
