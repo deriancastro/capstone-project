@@ -73,7 +73,7 @@ export default function ProfileForm({ onSubmit }) {
       </Text>
       <ImageContainer>
         {image ? (
-          <Image src={image} alt="your photo" />
+          <Image src={image} alt="" />
         ) : (
           <>
             <WrapperInput>
