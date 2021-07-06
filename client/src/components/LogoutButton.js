@@ -22,11 +22,6 @@ const Button = styled.button`
   position: absolute;
   right: 10px;
   top: 13px;
-
-  @media (min-width: 600px) {
-    right: 620px;
-    top: 10px;
-  }
 `
 const SVG = styled(LogOut)`
   fill: var(--color-danger);
