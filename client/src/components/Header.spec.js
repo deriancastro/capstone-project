@@ -9,7 +9,7 @@ describe('Header', () => {
     const heading = screen.getByRole('heading', { name: 'TUTORIAL' })
     expect(heading).toBeInTheDocument()
 
-    const logoButton = screen.getByRole('button', { name: 'logo2.svg' })
+    const logoButton = screen.getByRole('button', { name: 'logoButton' })
     expect(logoButton).toBeInTheDocument()
   })
 })

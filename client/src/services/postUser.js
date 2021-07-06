@@ -5,5 +5,11 @@ export default function postUser(user) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(user),
-  }).then(res => res.json())
+  }).then(res => {
+    if (res.ok) {
+      return res.json()
+    } else {
+      throw new Error('this email or full name allready exist, try again', res)
+    }
+  })
 }

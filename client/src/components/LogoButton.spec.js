@@ -7,7 +7,7 @@ describe('LogoButton', () => {
   it('renders a button with an svg inside it', () => {
     render(<LogoButton toProfile={noop} />)
 
-    const logoButton = screen.getByRole('button', { name: 'logo2.svg' })
+    const logoButton = screen.getByRole('button', { name: 'logoButton' })
     expect(logoButton).toBeInTheDocument()
   })
 
@@ -15,7 +15,7 @@ describe('LogoButton', () => {
     const toProfile = jest.fn()
     render(<LogoButton toProfile={toProfile} />)
 
-    const logoButton = screen.getByRole('button', { name: 'logo2.svg' })
+    const logoButton = screen.getByRole('button', { name: 'logoButton' })
     userEvent.click(logoButton)
     expect(toProfile).toHaveBeenCalledTimes(1)
   })

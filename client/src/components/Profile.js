@@ -27,7 +27,7 @@ export default function Profile({ image, fullName, aboutYou, onEdit }) {
             <Text>about me: </Text>
             <EditButton onClick={() => setIsEdited(!isEdited)} />
           </WrapperText>
-          <TextBox data-testid="aboutYou">{aboutYou}</TextBox>
+          <TextBox data-testid="aboutYou" value={aboutYou} readOnly></TextBox>
         </AboutYouContainer>
       </Wrapper>
 
@@ -53,7 +53,7 @@ const Wrapper = styled.section`
   display: grid;
   justify-items: center;
   grid-template-rows: 1fr 1fr;
-  gap: 20px;
+  gap: 10px;
   height: calc(100vh - 120px);
   background: var(--color-primary-background);
   position: relative;
@@ -70,36 +70,56 @@ const WrapperEdit = styled.section`
   display: grid;
   gap: 10px;
   position: absolute;
-  right: 10px;
-  top: 70px;
+  top: 60px;
   background: #bfa27e;
-  padding: 22px 10px;
+  padding: 30px 10px;
   border-radius: 8px;
-  width: 355px;
+  width: 100vw;
   box-shadow: 0 4px 4px #0006;
   background: var(--color-primary-background);
-
-  @media (min-width: 600px) {
-    width: 647px;
-    right: 10px;
-    top: 10px;
-  }
 `
 
 const ImageContainer = styled.div`
   display: grid;
   gap: 10px;
   justify-items: center;
+  padding: 10px;
 `
 const Image = styled.img`
   border-radius: 50%;
   border: solid var(--color-active-background) 10px;
   height: 200px;
   width: 200px;
+  //Iphone 6/7/8 - Samsung s9
+  @media (max-width: 670px) {
+    height: 200px;
+    width: 200px;
+  }
+  //Iphone 6/7/8 - rotate
+  @media (max-height: 400px) {
+    height: 170px;
+    width: 170px;
+  }
+  //Samsung s9 - rotate
+  @media (min-width: 738px) {
+    height: 160px;
+    width: 160px;
+  }
 
-  @media (min-width: 600px) {
-    height: 190px;
-    width: 190px;
+  //Iphone XR
+  @media (min-height: 730px) {
+    height: 250px;
+    width: 250px;
+  }
+  //Iphone X/XS - rotate
+  @media (min-width: 810px) {
+    height: 180px;
+    width: 180px;
+  }
+  //Iphone XR - rotate
+  @media (min-width: 815px) {
+    height: 210px;
+    width: 210px;
   }
 `
 const Name = styled.p`
@@ -123,13 +143,28 @@ const Text = styled.p`
   padding: 0 5px;
 `
 
-const TextBox = styled.div`
+const TextBox = styled.textarea`
+  display: flex;
   padding: 20px;
   width: 355px;
   border-radius: 8px;
   box-shadow: 0 4px 4px #0006;
   background: var(--color-secondary);
-  overflow: auto;
+  overflow-y: scroll;
+  font-family: Roboto, sans-serif;
+
+  //samsung s9
+  @media (max-width: 370px) {
+    width: 340px;
+  }
+  //Iphone XR
+  @media (min-width: 400px) {
+    width: 394px;
+  }
+  //Iphone XR - rotate
+  @media (min-width: 800px) {
+    width: 438px;
+  }
 `
 const CancelButton = styled(Button)`
   padding: 8px;
