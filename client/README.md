@@ -2,11 +2,8 @@
 
 # Jutorial
 
-- Be your own Sensei !
-
-With my app you can become your own sensei. You watch tutorials, get inspired by the videos and improve your technical skills to develop as a Judo - fighter.
-
-To do this, you can use the "Goals" function to set yourself goals and challenge yourself. Thus, with Jutorial you can achieve your own goals and set new ones. Through the overview, you can always see which goals you have already achieved.
+With my app you can become your own sensei!
+Watch the videos, get inspired and improve your technical skills to develop as a judo fighter. Use the Goals feature, challenge yourself and set new goals. With the overview you can track your goals.
 
 This application is optimized for mobile use, so please switch your browser to responsive mode (from iPhone 6/7/8 to iPhone XR).
 
