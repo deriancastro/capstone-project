@@ -1,4 +1,4 @@
-<img align="right" src="src/assets/jutorial.gif" alt="" width="200px" style="margin-left:15px"/>
+<img align="right" src="client/src/assets/jutorial.gif" alt="" width="200px" style="margin-left:15px"/>
 
 # Jutorial
 
